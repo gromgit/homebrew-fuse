@@ -9,9 +9,8 @@ class Encfs < Formula
   head "https://github.com/vgough/encfs.git"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-new-life/releases/download/encfs-1.9.5"
-    sha256 "956caa8a19ee1ef925f29d5878a86a024a871782852c542929b84fd5d93f7ed2" => :catalina
-    sha256 "e5a654f8ce30c13ee37630e8a5aec04f8f7c2ec75cfccf5fe07dc0ba48cf2706" => :x86_64_linux
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/encfs-1.9.5"
+    sha256 "8f4401c6165c596ce0e9f4e526c355cd573581c64da5661e754afde9300e71b5" => :x86_64_linux
   end
 
   depends_on "cmake" => :build
