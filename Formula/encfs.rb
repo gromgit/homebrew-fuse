@@ -10,6 +10,7 @@ class Encfs < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/encfs-1.9.5"
+    sha256 "a3ad5e221f05f624c74ff3015164ae6e2bac3a99537b3b0a9d8f0b546130abe7" => :big_sur
     sha256 "8f4401c6165c596ce0e9f4e526c355cd573581c64da5661e754afde9300e71b5" => :x86_64_linux
   end
 
