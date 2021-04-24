@@ -5,7 +5,9 @@ class Encfs < Formula
   homepage "https://vgough.github.io/encfs/"
   url "https://github.com/vgough/encfs/archive/v1.9.5.tar.gz"
   sha256 "4709f05395ccbad6c0a5b40a4619d60aafe3473b1a79bafb3aa700b1f756fd63"
-  license all_of: ["GPL-3.0-only", "LGPL-3.0-only", "MIT", "Zlib"]
+  # The code comprising the EncFS library (libencfs) is licensed under the LGPL.
+  # The main programs (encfs, encfsctl, etc) are licensed under the GPL.
+  license "GPL-3.0"
   head "https://github.com/vgough/encfs.git"
 
   bottle do
@@ -20,9 +22,11 @@ class Encfs < Formula
   depends_on "pkg-config" => :build
   depends_on "gettext"
   depends_on "openssl@1.1"
+
   on_macos do
     depends_on MacfuseRequirement
   end
+
   on_linux do
     depends_on "libfuse"
   end
