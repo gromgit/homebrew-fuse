@@ -1,4 +1,4 @@
-require_relative "../require/macfuse"
+require_relative "../require/macfuse" if OS.mac?
 
 class SshfsAT2 < Formula
   desc "File system client based on SSH File Transfer Protocol"
@@ -12,8 +12,14 @@ class SshfsAT2 < Formula
   depends_on "libtool" => :build
   depends_on "pkg-config" => :build
   depends_on "glib"
-  depends_on MacfuseRequirement
-  depends_on :macos
+
+  on_macos do
+    depends_on MacfuseRequirement
+  end
+
+  on_linux do
+    depends_on "libfuse"
+  end
 
   patch do
     url "https://github.com/libfuse/sshfs/commit/667cf34622e2e873db776791df275c7a582d6295.patch?full_index=1"
