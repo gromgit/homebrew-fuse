@@ -17,6 +17,7 @@ class Ntfs3g < Formula
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ntfs-3g-2017.3.23"
     sha256 cellar: :any, big_sur: "aa1b18477a4dd0f7eb6063180ab38de205677a3013690793de2b786b4665bad4"
+    sha256 cellar: :any, mojave:  "c8623dce65c37dc0f46149f7bc593e8c3e0da2f719c889bdaba0f5015ae7b336"
   end
 
   head do
