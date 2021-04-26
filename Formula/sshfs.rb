@@ -1,11 +1,17 @@
 require_relative "../require/macfuse"
 
-class SshfsAT2 < Formula
+class Sshfs < Formula
   desc "File system client based on SSH File Transfer Protocol"
   homepage "https://github.com/libfuse/sshfs"
   url "https://github.com/libfuse/sshfs/archive/refs/tags/sshfs-2.10.tar.gz"
   sha256 "6af13acda03a4632e3deb559ecc3f35881cb92e16098049a7ba4cc502650ab18"
   license any_of: ["LGPL-2.1-only", "GPL-2.0-only"]
+  revision 1
+
+  bottle do
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/sshfs-2.10"
+    sha256 cellar: :any, big_sur: "28ffe0e1b9e3b78d37630fa183678de2a9217b5399ef05add67828f9b2cf71f5"
+  end
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
@@ -26,6 +32,16 @@ class SshfsAT2 < Formula
     system "autoreconf", "-fiv"
     system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}"
     system "make", "install"
+  end
+
+  def caveats
+    <<~EOS
+      This formula is outdated, and is provided only as a courtesy.
+      It cannot be updated until MacFUSE supports FUSE API version 3.
+
+      If security issues are discovered with this old software,
+      it may be removed without notice.
+    EOS
   end
 
   test do
