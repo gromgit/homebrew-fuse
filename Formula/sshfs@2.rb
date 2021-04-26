@@ -6,6 +6,7 @@ class SshfsAT2 < Formula
   url "https://github.com/libfuse/sshfs/archive/refs/tags/sshfs-2.10.tar.gz"
   sha256 "6af13acda03a4632e3deb559ecc3f35881cb92e16098049a7ba4cc502650ab18"
   license any_of: ["LGPL-2.1-only", "GPL-2.0-only"]
+  revision 1
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
