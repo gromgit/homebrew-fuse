@@ -8,6 +8,11 @@ class Sshfs < Formula
   license any_of: ["LGPL-2.1-only", "GPL-2.0-only"]
   revision 1
 
+  bottle do
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/sshfs-2.10"
+    sha256 cellar: :any, big_sur: "28ffe0e1b9e3b78d37630fa183678de2a9217b5399ef05add67828f9b2cf71f5"
+  end
+
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
