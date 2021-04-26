@@ -20,6 +20,6 @@ class MacfuseRequirement < Requirement
   end
 
   def message
-    "This formula requires MacFUSE. Please run `brew install --cask gromgit/fuse/macfuse` first."
+    "This formula requires MacFUSE. Please run `brew install --cask macfuse` first."
   end
 end
