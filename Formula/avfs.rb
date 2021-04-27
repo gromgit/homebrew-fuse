@@ -8,7 +8,8 @@ class Avfs < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/avfs-1.1.4"
-    sha256 big_sur: "330fbd827479a4f6f0e5f218a5b711f2693bbfd92f17735fd5057100205abaca"
+    sha256 big_sur:  "330fbd827479a4f6f0e5f218a5b711f2693bbfd92f17735fd5057100205abaca"
+    sha256 catalina: "bcce73a08b09330cf8814b03f5fe5836e46c823c33d07829fba0f865b7fda35e"
   end
 
   depends_on "pkg-config" => :build
