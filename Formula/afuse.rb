@@ -9,7 +9,8 @@ class Afuse < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/afuse-0.4.1"
-    sha256 cellar: :any, big_sur: "5793a602add435689cfcd384bd1e7627568765c2417a30014525eb0e40e71ef5"
+    sha256 cellar: :any, big_sur:  "5793a602add435689cfcd384bd1e7627568765c2417a30014525eb0e40e71ef5"
+    sha256 cellar: :any, catalina: "2e3018f85263dffcd6ef7e906453ba274601219461bcda3c79d105465f55a175"
   end
 
   depends_on "pkg-config" => :build
