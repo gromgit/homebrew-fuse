@@ -9,9 +9,7 @@ class BindfsMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/bindfs-mac-1.15.1"
-    sha256 cellar: :any, big_sur:  "f940f18270f1319c5f27c755538949c87a3d282ab0cf2c7397067c3df67c6306"
-    sha256 cellar: :any, catalina: "3d2d4117dc51e3c77a23baa2c35edefc3a2d184eb41ad8656840a7a43922ed07"
-    sha256 cellar: :any, mojave:   "e7fcdd329d514eff00daad7f368dd31c01aafb6c305237f167ea99d710dee73d"
+    sha256 cellar: :any, big_sur: "edb43ff7dd67f03169b9e4c84b527a2ec729c743baeff1e47319008722fccb15"
   end
 
   head do
