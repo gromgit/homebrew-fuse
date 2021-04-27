@@ -10,7 +10,8 @@ class Ext4fuseMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ext4fuse-mac-0.1.3"
-    sha256 cellar: :any, big_sur: "9105318c87415a8c9466580b92c4e370abffaab1addb33712fd9d6ff78ed4824"
+    sha256 cellar: :any, big_sur:  "9105318c87415a8c9466580b92c4e370abffaab1addb33712fd9d6ff78ed4824"
+    sha256 cellar: :any, catalina: "10cb5934f23ce95bd49b76c371c919638dcd2896967718fc3950434d0538f6e8"
   end
 
   depends_on "pkg-config" => :build
