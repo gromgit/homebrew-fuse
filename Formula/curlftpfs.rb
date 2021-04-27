@@ -11,6 +11,7 @@ class Curlftpfs < Formula
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/curlftpfs-0.9.2"
     sha256 cellar: :any, big_sur:  "8d2060b8190ac5bb9ced1aebb2ff8c978a2a48e87ab2e1442f1dd6c4c5cc41c9"
     sha256 cellar: :any, catalina: "30938fb4225dfd85415d9fafdf7e3d9b220583bdbd9bfbc189de1018ca4b2cb6"
+    sha256 cellar: :any, mojave:   "c4dc618a80e0edde991318b3eecfcda775fff86307f059355a2695000cd8f35d"
   end
 
   depends_on "autoconf" => :build
