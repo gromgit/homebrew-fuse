@@ -10,6 +10,7 @@ class AvfsMac < Formula
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/avfs-mac-1.1.4"
     sha256 big_sur:  "536a8ff3129d4ca73bafa08d059ecaa057dec2a24b0c4509762e8f62ad1117ca"
     sha256 catalina: "edfe514eaacc649484b26a67f37a2c8aa38d4bf7cff97ff06477417df4396701"
+    sha256 mojave:   "eb4171d8c40b058d72fb0cbf480c21c0a89b201498fcc37d2dfd4c050219aacd"
   end
 
   depends_on "pkg-config" => :build
