@@ -10,9 +10,7 @@ class FuseZipMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/fuse-zip-mac-0.7.2"
-    sha256 cellar: :any, big_sur:  "4e7bbaf05a17ccf3282e6a15cdbe7e46b66e3f6ebe269b3600a05a8c3cf9571a"
-    sha256 cellar: :any, catalina: "bed4d00e3b56d18a4ebb7a76bcc9e1f6b4f7e0492b6956275285f8a0d5a3391c"
-    sha256 cellar: :any, mojave:   "1641e4fed95580af8f2146bf3b9e03b8197b016793d8ecaa9defbb6f00c66e62"
+    sha256 cellar: :any, big_sur: "2fc541f86072d8faba8a4aa99ab1de342f38e6f4af8ffecf8764a45b1b747e2b"
   end
 
   depends_on "pkg-config" => :build
