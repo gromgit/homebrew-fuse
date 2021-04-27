@@ -10,9 +10,8 @@ class SshfsMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/sshfs-mac-2.10"
-    sha256 cellar: :any, big_sur:  "28ffe0e1b9e3b78d37630fa183678de2a9217b5399ef05add67828f9b2cf71f5"
-    sha256 cellar: :any, catalina: "2d1e986c38364093529da58fd474c587dc63d8d90b5f889e8881049525ecc955"
-    sha256 cellar: :any, mojave:   "d647dc7757e960cb204a7da9147801eb9d6a449fc3237dfe5d8c7ddfab7af680"
+    sha256 cellar: :any, big_sur:  "9e021d24580ec55f4ab034dba0e264906d9db5c57036fe83710bc601bc6885c6"
+    sha256 cellar: :any, catalina: "09f254420411218a784c783df760d2c652acd280eecc875d60e41014f80011cc"
   end
 
   depends_on "autoconf" => :build

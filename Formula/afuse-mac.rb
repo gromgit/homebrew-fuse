@@ -1,6 +1,6 @@
 require_relative "../require/macfuse"
 
-class AfuseMacMac < Formula
+class AfuseMac < Formula
   desc "Automounting file system implemented in userspace with FUSE"
   homepage "https://github.com/pcarrier/afuse/"
   url "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/afuse/afuse-0.4.1.tar.gz"
@@ -8,7 +8,7 @@ class AfuseMacMac < Formula
   license "GPL-2.0-only"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/afuse-mac-mac-0.4.1"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/afuse-mac-0.4.1"
     sha256 cellar: :any, big_sur:  "5793a602add435689cfcd384bd1e7627568765c2417a30014525eb0e40e71ef5"
     sha256 cellar: :any, catalina: "2e3018f85263dffcd6ef7e906453ba274601219461bcda3c79d105465f55a175"
     sha256 cellar: :any, mojave:   "d98cbc816c74cdb8c7423234b9542600cb5aa29581608e98ba34c9cbf4db7b86"
