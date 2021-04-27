@@ -1,6 +1,6 @@
 require_relative "../require/macfuse"
 
-class Sshfs < Formula
+class SshfsMac < Formula
   desc "File system client based on SSH File Transfer Protocol"
   homepage "https://github.com/libfuse/sshfs"
   url "https://github.com/libfuse/sshfs/archive/refs/tags/sshfs-2.10.tar.gz"
@@ -9,7 +9,7 @@ class Sshfs < Formula
   revision 1
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/sshfs-2.10"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/sshfs-mac-2.10"
     sha256 cellar: :any, big_sur:  "28ffe0e1b9e3b78d37630fa183678de2a9217b5399ef05add67828f9b2cf71f5"
     sha256 cellar: :any, catalina: "2d1e986c38364093529da58fd474c587dc63d8d90b5f889e8881049525ecc955"
     sha256 cellar: :any, mojave:   "d647dc7757e960cb204a7da9147801eb9d6a449fc3237dfe5d8c7ddfab7af680"

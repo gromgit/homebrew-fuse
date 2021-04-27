@@ -10,5 +10,7 @@
   "encfs": "encfs-mac",
   "ext4fuse": "ext4fuse-mac",
   "fuse-zip": "fuse-zip-mac",
-  "gcsfuse": "gcsfuse-mac"
+  "gcsfuse": "gcsfuse-mac",
+  "ntfs-3g": "ntfs-3g-mac",
+  "sshfs": "sshfs-mac"
 }
