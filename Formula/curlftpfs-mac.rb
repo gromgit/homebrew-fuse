@@ -9,7 +9,8 @@ class CurlftpfsMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/curlftpfs-mac-0.9.2"
-    sha256 cellar: :any, big_sur: "cd9cee6bb3058e276f82313f91a1647466b7d7ad385aaeaae75d66f9f6fa56f4"
+    sha256 cellar: :any, big_sur:  "cd9cee6bb3058e276f82313f91a1647466b7d7ad385aaeaae75d66f9f6fa56f4"
+    sha256 cellar: :any, catalina: "989cd7c3567a7f55aa7f6b32f251adbfdf508c35515a38cd0030d66ff11c36d1"
   end
 
   depends_on "autoconf" => :build
