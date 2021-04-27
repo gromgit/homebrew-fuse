@@ -1,6 +1,6 @@
 require_relative "../require/macfuse"
 
-class Gcsfuse < Formula
+class GcsfuseMac < Formula
   desc "User-space file system for interacting with Google Cloud"
   homepage "https://github.com/googlecloudplatform/gcsfuse"
   url "https://github.com/GoogleCloudPlatform/gcsfuse/archive/v0.34.1.tar.gz"
@@ -9,7 +9,7 @@ class Gcsfuse < Formula
   head "https://github.com/GoogleCloudPlatform/gcsfuse.git"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gcsfuse-0.34.1"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gcsfuse-mac-0.34.1"
     sha256 cellar: :any_skip_relocation, big_sur: "5cc9476ccee4b8359d3ddffed4e2e2faef68e352eb0204a43947eb0e716769e3"
   end
 
