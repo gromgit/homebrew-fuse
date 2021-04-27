@@ -10,7 +10,8 @@ class BtfsMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/btfs-mac-2.24"
-    sha256 cellar: :any, big_sur: "d92d62980a61112eaf05240b150122226cabaaeb9e52910d06a3db5475c9cf0d"
+    sha256 cellar: :any, big_sur:  "d92d62980a61112eaf05240b150122226cabaaeb9e52910d06a3db5475c9cf0d"
+    sha256 cellar: :any, catalina: "8820a96d3817703851cae7871711fc635a94dfc419fffeba70155f8fd09a21bf"
   end
 
   depends_on "autoconf" => :build
