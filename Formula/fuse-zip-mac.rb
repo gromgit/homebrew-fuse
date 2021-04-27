@@ -1,6 +1,6 @@
 require_relative "../require/macfuse"
 
-class FuseZip < Formula
+class FuseZipMac < Formula
   desc "FUSE file system to create & manipulate ZIP archives"
   homepage "https://bitbucket.org/agalanin/fuse-zip"
   url "https://bitbucket.org/agalanin/fuse-zip/get/0.7.2.tar.gz"
@@ -9,7 +9,7 @@ class FuseZip < Formula
   head "https://bitbucket.org/agalanin/fuse-zip", using: :hg
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/fuse-zip-0.7.2"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/fuse-zip-mac-0.7.2"
     sha256 cellar: :any, big_sur:  "4e7bbaf05a17ccf3282e6a15cdbe7e46b66e3f6ebe269b3600a05a8c3cf9571a"
     sha256 cellar: :any, catalina: "bed4d00e3b56d18a4ebb7a76bcc9e1f6b4f7e0492b6956275285f8a0d5a3391c"
     sha256 cellar: :any, mojave:   "1641e4fed95580af8f2146bf3b9e03b8197b016793d8ecaa9defbb6f00c66e62"

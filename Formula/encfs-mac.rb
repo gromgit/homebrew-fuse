@@ -1,6 +1,6 @@
 require_relative "../require/macfuse"
 
-class Encfs < Formula
+class EncfsMac < Formula
   desc "Encrypted pass-through FUSE file system"
   homepage "https://vgough.github.io/encfs/"
   url "https://github.com/vgough/encfs/archive/v1.9.5.tar.gz"
@@ -11,7 +11,7 @@ class Encfs < Formula
   head "https://github.com/vgough/encfs.git"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/encfs-1.9.5"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/encfs-mac-1.9.5"
     sha256 big_sur:      "a3ad5e221f05f624c74ff3015164ae6e2bac3a99537b3b0a9d8f0b546130abe7"
     sha256 catalina:     "41efd14389d04bf5d2a0bc957972b15b6e1ff511452c89749ddc68b6bca6e3e7"
     sha256 mojave:       "aaf2aa568786ed055114cf54ee4b46acd66f74a7bc10715b446198164afa1871"

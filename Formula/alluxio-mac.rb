@@ -1,6 +1,6 @@
 require_relative "../require/macfuse"
 
-class Alluxio < Formula
+class AlluxioMac < Formula
   desc "Open Source Memory Speed Virtual Distributed Storage"
   homepage "https://www.alluxio.io/"
   url "https://downloads.alluxio.io/downloads/files/2.5.0-2/alluxio-2.5.0-2-bin.tar.gz"

@@ -1,3 +1,14 @@
 {
+  "afuse": "afuse-mac",
+  "afuse-mac": "afuse-mac-mac",
+  "alluxio": "alluxio-mac",
+  "archivemount": "archivemount-mac",
+  "avfs": "avfs-mac",
+  "bindfs": "bindfs-mac",
+  "curlftpfs": "curlftpfs-mac",
+  "dislocker": "dislocker-mac",
+  "encfs": "encfs-mac",
+  "ext4fuse": "ext4fuse-mac",
+  "fuse-zip": "fuse-zip-mac",
   "gcsfuse": "gcsfuse-mac"
 }
