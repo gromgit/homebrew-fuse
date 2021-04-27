@@ -9,7 +9,8 @@ class DislockerMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/dislocker-mac-0.7.3"
-    sha256 big_sur: "964e32ec0176c6373424e843f6baa3e1fe47f383a917eb2429c33a4460486a80"
+    sha256 big_sur:  "964e32ec0176c6373424e843f6baa3e1fe47f383a917eb2429c33a4460486a80"
+    sha256 catalina: "db46215c80f270b02c8a73a6272f0d251b534b32fad08162ed9bec482ddd93a9"
   end
 
   depends_on "cmake" => :build
