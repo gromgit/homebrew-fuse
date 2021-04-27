@@ -14,6 +14,7 @@ class EncfsMac < Formula
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/encfs-mac-1.9.5"
     sha256 big_sur:  "1e40532f256119f88304d5fa3033b8a60e513f3c3531cd3471455a83fcebafa7"
     sha256 catalina: "ab083e7303625337405e8f384f99d51a5208c54f4cd713dbd99b3bc196da2e90"
+    sha256 mojave:   "7c363d28eac6e6582b352202db79f17f0a0efa4871a4991313c158cd04911dcd"
   end
 
   depends_on "cmake" => :build
