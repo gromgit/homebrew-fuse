@@ -1,6 +1,5 @@
 {
   "afuse": "afuse-mac",
-  "afuse-mac": "afuse-mac-mac",
   "alluxio": "alluxio-mac",
   "archivemount": "archivemount-mac",
   "avfs": "avfs-mac",
