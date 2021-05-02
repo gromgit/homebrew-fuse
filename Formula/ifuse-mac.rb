@@ -10,7 +10,8 @@ class IfuseMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ifuse-mac-1.1.4"
-    sha256 cellar: :any, big_sur: "f6c2e432e98e35ea512c85e9eed06015e157477c58ccc3209fc915401a4a3bdc"
+    sha256 cellar: :any, big_sur:  "f6c2e432e98e35ea512c85e9eed06015e157477c58ccc3209fc915401a4a3bdc"
+    sha256 cellar: :any, catalina: "bafcd207118ffb63fcb67ce909f52bde7dc2fa138a592be30e6d7cdb96580377"
   end
 
   depends_on "autoconf" => :build
