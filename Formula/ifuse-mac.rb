@@ -8,6 +8,11 @@ class IfuseMac < Formula
   license "LGPL-2.1-or-later"
   head "https://cgit.sukimashita.com/ifuse.git"
 
+  bottle do
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ifuse-mac-1.1.4"
+    sha256 cellar: :any, big_sur: "f6c2e432e98e35ea512c85e9eed06015e157477c58ccc3209fc915401a4a3bdc"
+  end
+
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
