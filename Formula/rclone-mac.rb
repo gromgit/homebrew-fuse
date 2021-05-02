@@ -8,12 +8,6 @@ class RcloneMac < Formula
   license "MIT"
   head "https://github.com/rclone/rclone.git"
 
-  bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/rclone-mac-1.55.1"
-    sha256 cellar: :any_skip_relocation, big_sur:  "e3995f20333c76153842de0538b9402670bfa4b1e2bfac2d30333340303fc184"
-    sha256 cellar: :any_skip_relocation, catalina: "3723635e2a6232b41514848e5035d53ea9b3a2b99597676ae709e21ae8a0a5e0"
-  end
-
   depends_on "go" => :build
   depends_on MacfuseRequirement
   depends_on :macos
