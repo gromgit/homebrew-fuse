@@ -21,7 +21,7 @@ class RcloneMac < Formula
     system bin/name.to_s, "genautocomplete", "zsh", "_#{name}"
     inreplace "#{name}.bash" do |s|
       s.gsub! "commands=(\"rclone\")", "commands=(\"#{name}\")"
-      s.gsub! /(-F __start_rclone) rclone$/, "\\1 #{name}"
+      s.gsub!(/(-F __start_rclone) rclone$/, "\\1 #{name}")
     end
     inreplace "_#{name}", /(#compdef _rclone) rclone$/, "\\1 #{name}"
     bash_completion.install "#{name}.bash" => name.to_s
