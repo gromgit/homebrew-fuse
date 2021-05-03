@@ -16,9 +16,9 @@ class GocryptfsMac < Formula
 
   depends_on "go" => :build
   depends_on "pkg-config" => :build
-  depends_on "openssl@1.1"
   depends_on MacfuseRequirement
   depends_on :macos
+  depends_on "openssl@1.1"
 
   # Remove SOURCE_DATE_EPOCH support (requires GNU date)
   patch :DATA
