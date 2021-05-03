@@ -3,16 +3,14 @@ require_relative "../require/macfuse"
 class GcsfuseMac < Formula
   desc "User-space file system for interacting with Google Cloud"
   homepage "https://github.com/googlecloudplatform/gcsfuse"
-  url "https://github.com/GoogleCloudPlatform/gcsfuse/archive/v0.34.1.tar.gz"
-  sha256 "740b3823a67b7431ac201a5fc715114ecc44ee43b913492c8b837474b22caf0c"
+  url "https://github.com/GoogleCloudPlatform/gcsfuse/archive/v0.35.0.tar.gz"
+  sha256 "7d1f9586cb9645ab9d4a6eba6ece6eab78591e01e8149797bb48d7b72ab9031f"
   license "Apache-2.0"
   head "https://github.com/GoogleCloudPlatform/gcsfuse.git"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gcsfuse-mac-0.34.1"
-    sha256 cellar: :any_skip_relocation, big_sur:  "aa6c393e63620d59d9fc3cd95a0e2b47bb23d04e63f4af99e5c79a1f1d4b1113"
-    sha256 cellar: :any_skip_relocation, catalina: "cbd6ae4d73a7a906ef5c84d2d399a02a73dc05c15924d1356d6b03c110a7b2f5"
-    sha256 cellar: :any_skip_relocation, mojave:   "890d1b4e89f2a197700d15c64b1ac1a23eed893d73ec64d650927f5c13029152"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gcsfuse-mac-0.35.0"
+    sha256 cellar: :any_skip_relocation, big_sur: "1a43e1ffed4c8a8c1924d3165ac28a6ffe9744d53972533083b735b16596c22e"
   end
 
   depends_on "go" => :build
