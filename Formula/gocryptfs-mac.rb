@@ -11,6 +11,7 @@ class GocryptfsMac < Formula
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gocryptfs-mac-1.8.0"
     sha256 cellar: :any, big_sur:  "dbaf4cf915cf5753752a82b2558de4df5c0afeedbb721a670e383f87dcf0ac23"
     sha256 cellar: :any, catalina: "5dc85ece4509ea6fb4b2c4954c30d103f3da87ebe4cf54626624d84276d0af9f"
+    sha256 cellar: :any, mojave:   "6f9ea595c99e7786fbb45fe65fe4f8b1665265314f1f8823464673c69dd7ef95"
   end
 
   depends_on "go" => :build
