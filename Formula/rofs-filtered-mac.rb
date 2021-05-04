@@ -11,6 +11,7 @@ class RofsFilteredMac < Formula
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/rofs-filtered-mac-1.7"
     sha256 cellar: :any, big_sur:  "cb7cbae756a0415b639c86a4d7998fd95bc66cde8be46f6cac08d8a158595f55"
     sha256 cellar: :any, catalina: "b1606a594b8aa539680f7796ef2dd16f8f38fb239da08b2af2a5b1914a9c480f"
+    sha256 cellar: :any, mojave:   "d3fc41566f4d522148ed320f31751e48b325935fe94f79cd17293b840011bdf7"
   end
 
   depends_on "cmake" => :build
