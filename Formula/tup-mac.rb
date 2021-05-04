@@ -10,7 +10,8 @@ class TupMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/tup-mac-0.7.10"
-    sha256 cellar: :any, big_sur: "b53eb5dc159f063f9fc2e744c866b7582acd3baafa9a8bee7f0df7cb22ab91c8"
+    sha256 cellar: :any, big_sur:  "b53eb5dc159f063f9fc2e744c866b7582acd3baafa9a8bee7f0df7cb22ab91c8"
+    sha256 cellar: :any, catalina: "d9d25e760b8b9b29cb73bdb1e573a383a3a5a8698e9437f272b66108103bc7de"
   end
 
   depends_on "pkg-config" => :build
