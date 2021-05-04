@@ -12,6 +12,7 @@ class S3fsMac < Formula
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/s3fs-mac-1.89"
     sha256 cellar: :any, big_sur:  "58bf4c03848d57791f3ba33c82a04c0b0cd45aeb08ba744cff39322ee10707cc"
     sha256 cellar: :any, catalina: "8d742b27f566d7dbc7ea146510a0e4fba3c31f27192dd8fc149d24f1c05f9873"
+    sha256 cellar: :any, mojave:   "4cb700a39849dc1427cee981e6da68b5a0486c3d2c0ef8266c7904d6f953ec9f"
   end
 
   depends_on "autoconf" => :build
