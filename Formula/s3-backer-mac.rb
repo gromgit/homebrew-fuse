@@ -9,7 +9,8 @@ class S3BackerMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/s3-backer-mac-1.6.1"
-    sha256 cellar: :any, big_sur: "7fd2974f3287fbed90f2d2cabd83c07b4fc6a832ac774fe10dcc57a5466d428b"
+    sha256 cellar: :any, big_sur:  "7fd2974f3287fbed90f2d2cabd83c07b4fc6a832ac774fe10dcc57a5466d428b"
+    sha256 cellar: :any, catalina: "4efa010416a73885fa3e9727d59180f83cb90ffbd6844feda2aaa04e32db1421"
   end
 
   depends_on "pkg-config" => :build
