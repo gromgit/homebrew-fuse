@@ -10,6 +10,7 @@ class Ext2fuseMac < Formula
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ext2fuse-mac-0.8.1"
     sha256 cellar: :any, big_sur:  "8dba44571e8df43bac8356f7fe74719200f965318e9075fdc717e863dbf8aad7"
     sha256 cellar: :any, catalina: "0b24132b10c92b0f9ca6bde9c72caa54281e812c07f1f491034fe71e305eba67"
+    sha256 cellar: :any, mojave:   "e46c5e7eff79716a8e075752e429bea3e9027b6516538df45fbbdc98ba878b94"
   end
 
   depends_on "gcc" => :build
