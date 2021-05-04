@@ -9,7 +9,8 @@ class WdfsMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/wdfs-mac-1.4.2"
-    sha256 cellar: :any, big_sur: "8e9cbe0059e88abf08f411c3b30b63c6a5b73e57a2d150a4cdfcded9e02863ac"
+    sha256 cellar: :any, big_sur:  "8e9cbe0059e88abf08f411c3b30b63c6a5b73e57a2d150a4cdfcded9e02863ac"
+    sha256 cellar: :any, catalina: "ff22c3b38115e75154a5bfd334481acc8594f04486cd667ab5f0a78fd9be67b9"
   end
 
   depends_on "pkg-config" => :build
