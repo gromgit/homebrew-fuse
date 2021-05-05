@@ -8,7 +8,8 @@ class XmountMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/xmount-mac-0.7.6"
-    sha256 big_sur: "7759a60875ac63e16cf33d1b87376be2f1cc57adc2ac4653e71d7bc10b5707db"
+    sha256 big_sur:  "7759a60875ac63e16cf33d1b87376be2f1cc57adc2ac4653e71d7bc10b5707db"
+    sha256 catalina: "9e25523204f40e98d32026209e5380ecda4048b9f9a4abed15574fb07c50d765"
   end
 
   depends_on "cmake" => :build
