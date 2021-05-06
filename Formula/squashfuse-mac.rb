@@ -17,11 +17,11 @@ class SquashfuseMac < Formula
   depends_on "pkg-config" => :build
   depends_on "lz4"
   depends_on "lzo"
+  depends_on MacfuseRequirement
+  depends_on :macos
   depends_on "squashfs"
   depends_on "xz"
   depends_on "zstd"
-  depends_on MacfuseRequirement
-  depends_on :macos
 
   def install
     system "./configure", "--disable-dependency-tracking",

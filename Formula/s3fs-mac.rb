@@ -20,9 +20,9 @@ class S3fsMac < Formula
   depends_on "pkg-config" => :build
   depends_on "gnutls"
   depends_on "libgcrypt"
-  depends_on "nettle"
   depends_on MacfuseRequirement
   depends_on :macos
+  depends_on "nettle"
 
   def install
     system "./autogen.sh"
