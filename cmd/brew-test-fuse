@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#:`brew test-fuse`
+#:    Tests local FUSE installation
+
+. "$(dirname "$0")"/../lib/funcs.sh
+
+tmpdir=/tmp/fuse-test.$$
+mkdir -p "$tmpdir"
+trap 'rm -fr "$tmpdir"' EXIT
+
+[[ $(uname -s) == "Darwin" ]] || fatal "This script can only be run on macOS"
+
+cd "$tmpdir"
+eval "$(brew shellenv)"
+
+info "Checking for FUSE installation"
+cmd pkgutil --pkg-info io.macfuse.installer.components.core
+cmd pkgutil --lsbom io.macfuse.installer.components.core
+
+info "Test FUSE build"
+# Get the last FUSE 2.x lowlevel example file
+cmd curl -sOL https://raw.githubusercontent.com/libfuse/libfuse/46b9c3326d50aebe52c33d63885b83a47a2e74ea/example/hello_ll.c
+# Build it Homebrew-style
+cmd clang -D_FILE_OFFSET_BITS=64 -I/usr/local/include/fuse -L/usr/local/lib -g -O2 -Wall -o hello_ll hello_ll.c -lfuse -lpthread
