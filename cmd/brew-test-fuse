@@ -5,7 +5,7 @@
 . "$(dirname "$0")"/../lib/funcs.sh
 
 tmpdir=/tmp/fuse-test.$$
-mkdir -p "$tmpdir"
+mkdir -p "$tmpdir"/test_mount
 trap 'rm -fr "$tmpdir"' EXIT
 
 [[ $(uname -s) == "Darwin" ]] || fatal "This script can only be run on macOS"
@@ -18,7 +18,16 @@ cmd pkgutil --pkg-info io.macfuse.installer.components.core
 cmd pkgutil --lsbom io.macfuse.installer.components.core
 
 info "Test FUSE build"
-# Get the last FUSE 2.x lowlevel example file
-cmd curl -sOL https://raw.githubusercontent.com/libfuse/libfuse/46b9c3326d50aebe52c33d63885b83a47a2e74ea/example/hello_ll.c
-# Build it Homebrew-style
-cmd clang -D_FILE_OFFSET_BITS=64 -I/usr/local/include/fuse -L/usr/local/lib -g -O2 -Wall -o hello_ll hello_ll.c -lfuse -lpthread
+examples=(
+  https://raw.githubusercontent.com/libfuse/libfuse/46b9c3326d50aebe52c33d63885b83a47a2e74ea/example/hello.c
+  https://raw.githubusercontent.com/libfuse/libfuse/46b9c3326d50aebe52c33d63885b83a47a2e74ea/example/hello_ll.c
+  https://raw.githubusercontent.com/libfuse/libfuse/46b9c3326d50aebe52c33d63885b83a47a2e74ea/example/null.c
+)
+for u in "${examples[@]}"; do
+  # Get the last FUSE 2.x lowlevel example file
+  cmd curl -sOL "$u"
+  # Build it Homebrew-style
+  f=${u##*/}; p=${f%.c}
+  cmd clang -D_FILE_OFFSET_BITS=64 -I/usr/local/include/fuse -L/usr/local/lib -g -O2 -Wall -o "$p" "$f" -lfuse -lpthread
+  cmd ./"$p" "$tmpdir"/test_mount
+done
