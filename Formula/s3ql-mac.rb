@@ -145,6 +145,16 @@ class S3qlMac < Formula
     venv.pip_install_and_link buildpath
   end
 
+  def caveats
+    <<~EOS
+      This formula is outdated, and is provided only as a courtesy.
+      It cannot be updated until MacFUSE supports FUSE API version 3.
+
+      If security issues are discovered with this old software,
+      it may be removed without notice.
+    EOS
+  end
+
   test do
     assert_match "S3QL ", shell_output(bin/"mount_s3ql --version")
 
