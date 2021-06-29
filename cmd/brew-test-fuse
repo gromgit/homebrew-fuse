@@ -29,5 +29,4 @@ for u in "${examples[@]}"; do
   # Build it Homebrew-style
   f=${u##*/}; p=${f%.c}
   cmd clang -D_FILE_OFFSET_BITS=64 -I/usr/local/include/fuse -L/usr/local/lib -g -O2 -Wall -o "$p" "$f" -lfuse -lpthread
-  cmd ./"$p" "$tmpdir"/test_mount
 done
