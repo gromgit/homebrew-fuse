@@ -40,3 +40,11 @@ To avoid a naming conflict with the formula called `XYZ` that still exists in Ho
 ### Why is the XYZ _program_ installed as `XYZ-mac`?
 
 `brew info gromgit/fuse/XYZ-mac` and read the _Caveats_ section.
+
+### Why can't I build XYZ on an M1 Mac?
+
+Homebrew currently [filters out `/usr/local` entirely during M1-based builds](https://github.com/Homebrew/brew/blob/04532cb6216b69a5b067aa7a4e22cff0944b257d/Library/Homebrew/shims/super/cc#L266-L270). I'm still looking for a solution to this; for now, if you really need to run any of these formulae on an M1 Mac, you'll have to set up a Rosetta-based Homebrew installation:
+```
+arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/usr/local/bin/brew install <FUSE_formula>
+```
