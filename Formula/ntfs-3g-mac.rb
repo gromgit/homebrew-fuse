@@ -37,6 +37,7 @@ class Ntfs3gMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     ENV.append "LDFLAGS", "-lintl"
 
     args = %W[
