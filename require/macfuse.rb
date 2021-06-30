@@ -11,6 +11,8 @@ class MacfuseRequirement < Requirement
   end
 
   env do
+    :std if Hardware::CPU.arm?
+
     ENV.append_path "PKG_CONFIG_PATH", HOMEBREW_LIBRARY/"Homebrew/os/mac/pkgconfig/fuse"
 
     unless HOMEBREW_PREFIX.to_s == "/usr/local"
