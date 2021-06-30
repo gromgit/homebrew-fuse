@@ -1,5 +1,7 @@
+# typed: false
 # frozen_string_literal: true
 
+# USAGE: `depends_on MacfuseRequirement`
 class MacfuseRequirement < Requirement
   fatal true
 
@@ -19,24 +21,39 @@ class MacfuseRequirement < Requirement
   end
 end
 
+# Add `setup_fuse` to base Formula class, for use by FUSE formulae
 class Formula
-
-  def setup_fuse
-    unless HOMEBREW_PREFIX.to_s == "/usr/local"
-      odebug "Setting up FUSE temp environment under #{buildpath}/temp"
-      mkdir buildpath/"temp/include" do
-        Dir["/usr/local/include/fuse*"].each { |f| cp_r f, "." }
-      end
-      mkdir buildpath/"temp/lib" do
-        Dir["/usr/local/lib/*fuse*"].each { |f| cp_r f, "." }
-      end
-      Dir.glob(buildpath/"temp/**/*.*").each { |f| odebug ">>> #{f}" }
-      ENV.append "CFLAGS", "-I#{buildpath}/temp/include"
-      ENV.append "CFLAGS", "-I#{buildpath}/temp/include/fuse"
-      ENV.append "CPPFLAGS", "-I#{buildpath}/temp/include"
-      ENV.append "CPPFLAGS", "-I#{buildpath}/temp/include/fuse"
-      ENV.append "LDFLAGS", "-I#{buildpath}/temp/lib"
+  def setup_fuse_includes
+    mkdir buildpath/"temp/include" do
+      Dir["/usr/local/include/fuse*"].each { |f| cp_r f, "." }
     end
   end
 
+  def setup_fuse_libs
+    mkdir buildpath/"temp/lib" do
+      Dir["/usr/local/lib/*fuse*"].each { |f| cp_r f, "." }
+    end
+  end
+
+  def setup_fuse_env
+    odebug "Setting up FUSE temp environment under #{buildpath}/temp"
+    setup_fuse_includes
+    setup_fuse_libs
+    Dir.glob(buildpath/"temp/**/*.*").each { |f| odebug ">>> #{f}" }
+  end
+
+  def setup_fuse_flags
+    ENV.append "CFLAGS", "-I#{buildpath}/temp/include"
+    ENV.append "CFLAGS", "-I#{buildpath}/temp/include/fuse"
+    ENV.append "CPPFLAGS", "-I#{buildpath}/temp/include"
+    ENV.append "CPPFLAGS", "-I#{buildpath}/temp/include/fuse"
+    ENV.append "LDFLAGS", "-I#{buildpath}/temp/lib"
+  end
+
+  def setup_fuse
+    return if HOMEBREW_PREFIX.to_s == "/usr/local"
+
+    setup_fuse_env
+    setup_fuse_flags
+  end
 end
