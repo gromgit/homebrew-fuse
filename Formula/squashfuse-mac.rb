@@ -24,6 +24,7 @@ class SquashfuseMac < Formula
   depends_on "zstd"
 
   def install
+    setup_fuse
     system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",
                           "--prefix=#{prefix}"

@@ -21,6 +21,7 @@ class WdfsMac < Formula
   depends_on "neon"
 
   def install
+    setup_fuse
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
                           "--prefix=#{prefix}"
     system "make", "install"

@@ -23,7 +23,8 @@ class SecurefsMac < Formula
   patch :DATA
 
   def install
-    system "cmake", ".", *std_cmake_args
+    setup_fuse
+    system "cmake", ".", *fuse_cmake_args, *std_cmake_args
     system "make", "install"
   end
 

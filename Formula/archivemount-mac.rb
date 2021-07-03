@@ -19,6 +19,7 @@ class ArchivemountMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     ENV.append_to_cflags "-I/usr/local/include/osxfuse"
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",

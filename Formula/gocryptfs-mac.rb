@@ -24,6 +24,7 @@ class GocryptfsMac < Formula
   patch :DATA
 
   def install
+    setup_fuse
     ENV["GOPATH"] = buildpath
     (buildpath/"src/github.com/rfjakob/gocryptfs").install buildpath.children
     cd "src/github.com/rfjakob/gocryptfs" do

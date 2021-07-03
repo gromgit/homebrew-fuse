@@ -23,7 +23,8 @@ class DislockerMac < Formula
   patch :DATA
 
   def install
-    system "cmake", "-DCMAKE_DISABLE_FIND_PACKAGE_Ruby=TRUE", *std_cmake_args
+    setup_fuse
+    system "cmake", "-DCMAKE_DISABLE_FIND_PACKAGE_Ruby=TRUE", *fuse_cmake_args, *std_cmake_args
     system "make"
     system "make", "install"
   end

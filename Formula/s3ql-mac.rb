@@ -130,6 +130,7 @@ class S3qlMac < Formula
   end
 
   def install
+    setup_fuse
     venv = virtualenv_create(libexec, "python3")
     resources.each do |r|
       venv.pip_install r

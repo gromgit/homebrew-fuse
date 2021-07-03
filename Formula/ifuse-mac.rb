@@ -26,6 +26,7 @@ class IfuseMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     system "./autogen.sh"
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}"

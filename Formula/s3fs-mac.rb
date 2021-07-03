@@ -25,6 +25,7 @@ class S3fsMac < Formula
   depends_on "nettle"
 
   def install
+    setup_fuse
     system "./autogen.sh"
     system "./configure", "--disable-dependency-tracking", "--with-gnutls", "--prefix=#{prefix}"
     system "make", "install"

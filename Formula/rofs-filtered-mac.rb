@@ -19,8 +19,9 @@ class RofsFilteredMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     mkdir "build" do
-      system "cmake", "..", "-DCMAKE_INSTALL_SYSCONFDIR=#{etc}", *std_cmake_args
+      system "cmake", "..", "-DCMAKE_INSTALL_SYSCONFDIR=#{etc}", *fuse_cmake_args, *std_cmake_args
       system "make", "install"
     end
   end

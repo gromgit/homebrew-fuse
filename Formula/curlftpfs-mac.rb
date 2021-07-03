@@ -25,6 +25,7 @@ class CurlftpfsMac < Formula
   # TODO: depend on specific X11 formulae instead
 
   def install
+    setup_fuse
     ENV.append "CPPFLAGS", "-D__off_t=off_t"
     system "autoreconf", "-fvi"
     system "./configure", "--disable-dependency-tracking",

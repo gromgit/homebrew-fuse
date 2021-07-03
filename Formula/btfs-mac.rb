@@ -23,6 +23,7 @@ class BtfsMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     ENV.cxx11
     inreplace "configure.ac", "fuse >= 2.8.0", "fuse >= 2.7.3"
     system "autoreconf", "--force", "--install"

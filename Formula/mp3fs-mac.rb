@@ -25,6 +25,7 @@ class Mp3fsMac < Formula
   patch :DATA
 
   def install
+    setup_fuse
     system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}"
     system "make", "install"
   end

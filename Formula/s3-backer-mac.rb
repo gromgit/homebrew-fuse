@@ -20,6 +20,7 @@ class S3BackerMac < Formula
   depends_on "openssl@1.1"
 
   def install
+    setup_fuse
     system "./configure", "--prefix=#{prefix}"
     system "make", "install"
   end

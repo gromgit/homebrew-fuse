@@ -25,10 +25,11 @@ class EncfsMac < Formula
   depends_on "openssl@1.1"
 
   def install
+    setup_fuse
     ENV.cxx11
 
     mkdir "build" do
-      system "cmake", "..", *std_cmake_args
+      system "cmake", "..", *fuse_cmake_args, *std_cmake_args
       system "make", "install"
     end
   end

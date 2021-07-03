@@ -25,6 +25,7 @@ class SimpleMtpfsMac < Formula
   patch :DATA
 
   def install
+    setup_fuse
     system "./autogen.sh"
     system "./configure", "--prefix=#{prefix}"
     system "make"

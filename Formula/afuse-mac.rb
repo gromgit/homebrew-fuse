@@ -19,6 +19,7 @@ class AfuseMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}"
     system "make", "install"
   end

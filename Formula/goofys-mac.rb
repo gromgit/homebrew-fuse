@@ -21,6 +21,7 @@ class GoofysMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     contents = Dir["*"]
     gopath = buildpath/"gopath"
     (gopath/"src/github.com/kahing/goofys").install contents

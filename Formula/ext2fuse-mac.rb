@@ -19,6 +19,7 @@ class Ext2fuseMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     ENV.append "LIBS", "-lfuse"
     ENV.append "CFLAGS",
       "-D__FreeBSD__=10 -DENABLE_SWAPFS -I/usr/local/include/fuse "

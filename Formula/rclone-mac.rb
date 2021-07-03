@@ -13,6 +13,7 @@ class RcloneMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     system "go", "build",
       "-ldflags", "-s -X github.com/rclone/rclone/fs.Version=v#{version}",
       "-tags", "cmount", *std_go_args

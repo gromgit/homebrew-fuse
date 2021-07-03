@@ -20,6 +20,7 @@ class AvfsMac < Formula
   depends_on "xz"
 
   def install
+    setup_fuse
     args = %W[
       --prefix=#{prefix}
       --disable-debug

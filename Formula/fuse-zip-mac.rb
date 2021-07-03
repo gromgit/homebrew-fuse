@@ -21,7 +21,8 @@ class FuseZipMac < Formula
   depends_on :macos
 
   def install
-    system "make", "prefix=#{prefix}", "install"
+    setup_fuse
+    system "make", "prefix=#{prefix}", "PKG_CONFIG=#{fuse_pkgconfig}", "install"
   end
 
   test do

@@ -20,6 +20,7 @@ class TupMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     ENV["TUP_LABEL"] = version
     system "./build.sh"
     bin.install "build/tup"

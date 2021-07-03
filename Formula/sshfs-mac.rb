@@ -31,6 +31,7 @@ class SshfsMac < Formula
   patch :DATA
 
   def install
+    setup_fuse
     system "autoreconf", "-fiv"
     system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}"
     system "make", "install"

@@ -26,6 +26,7 @@ class BindfsMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     args = %W[
       --disable-debug
       --disable-dependency-tracking

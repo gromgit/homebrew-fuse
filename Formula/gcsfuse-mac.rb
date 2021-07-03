@@ -20,6 +20,7 @@ class GcsfuseMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     # Build the build_gcsfuse tool. Ensure that it doesn't pick up any
     # libraries from the user's GOPATH; it should have no dependencies.
     ENV.delete("GOPATH")

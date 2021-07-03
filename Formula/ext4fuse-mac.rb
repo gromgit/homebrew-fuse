@@ -20,6 +20,7 @@ class Ext4fuseMac < Formula
   depends_on :macos
 
   def install
+    setup_fuse
     system "make"
     bin.install "ext4fuse"
   end
