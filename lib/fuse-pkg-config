@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+fuse_root=%FUSE_ROOT%
+
+# Collect args
+pkgs=()
+flags=()
+
+for a in "$@"; do
+  [[ $a == -* ]] && flags+=("$a") || pkgs+=("$a")
+done
+
+if [[ ${#pkgs[@]} -eq 0 ]]; then
+  pkg-config "${flags[@]}"
+else
+  for p in "${pkgs[@]}"; do
+    if [[ $p == fuse ]]; then
+      pkg-config "${flags[@]}" "$p" | sed "s@/usr/local@${fuse_root}@g"
+    else
+      pkg-config "${flags[@]}" "$p"
+    fi
+  done
+fi
