@@ -52,6 +52,18 @@ class SshfsMac < Formula
   end
 end
 __END__
+diff --git a/configure.ac b/configure.ac
+index 76026ad..671810b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,7 +16,6 @@ case "$target_os" in
+     *) osname=unknown;;
+ esac
+ 
+-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+ PKG_CHECK_MODULES([SSHFS], [fuse >= 2.3 glib-2.0 gthread-2.0])
+ have_fuse_opt_parse=no
+ oldlibs="$LIBS"
 diff --git a/sshfs.c b/sshfs.c
 index 97eaf06..d442577 100644
 --- a/sshfs.c
