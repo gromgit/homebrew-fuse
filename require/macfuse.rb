@@ -61,7 +61,6 @@ class Formula
     mkdir "#{alt_fuse_root}/bin" do
       cp path/"../../lib/fuse-pkg-config", "."
       inreplace "fuse-pkg-config", "%FUSE_ROOT%", "#{alt_fuse_root}"
-      #ENV.prepend_path "PATH", "#{alt_fuse_root}/bin"
     end
   end
 
@@ -92,6 +91,7 @@ class Formula
     ENV.append "CGO_CPPFLAGS", "-I#{alt_fuse_root}/include"
     ENV.append "CGO_CPPFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
     ENV.append "CGO_LDFLAGS", "-L#{alt_fuse_root}/lib"
+    ENV.append "PKG_CONFIG", "#{fuse_pkgconfig}"
   end
 
   def setup_fuse
