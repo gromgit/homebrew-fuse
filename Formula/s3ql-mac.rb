@@ -8,21 +8,19 @@ class S3qlMac < Formula
   url "https://github.com/s3ql/s3ql/releases/download/release-3.3.2/s3ql-3.3.2.tar.bz2"
   sha256 "72b310052752e281a17468a8bbe9006db7fa1f0184b83b38c5667239dfd59e73"
   license "GPL-3.0-only"
+  revision 1
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/s3ql-mac-3.3.2"
-    sha256 cellar: :any, big_sur:  "cf66cae83b1b0b01c6c31fd324717b143def621ff26a3d88b6b46e86390d921a"
-    sha256 cellar: :any, catalina: "944b6532b7cade5cf20a70aef23867e9ddf7df71735d0240578fdfe38a946aac"
-    sha256 cellar: :any, mojave:   "7462fa0b038b1ad22d8dd9990a04dfd41dd59405bb22752d5a17a017a547a1c7"
+    sha256 cellar: :any, big_sur: "d25584692de92f2e9982ac22a60371844032fdd4461507eff126ff2ea5077414"
   end
 
   depends_on "pkg-config" => :build
+  depends_on "libffi"
   depends_on MacfuseRequirement
   depends_on :macos
   depends_on "openssl@1.1"
   depends_on "python@3.8"
-
-  uses_from_macos "libffi"
 
   resource "apsw" do
     url "https://files.pythonhosted.org/packages/b5/a1/3de5a2d35fc34939672f4e1bd7d68cca359a31b76926f00d95f434c63aaa/apsw-3.9.2-r1.tar.gz"
