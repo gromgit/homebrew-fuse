@@ -12,7 +12,8 @@ class GitfsMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gitfs-mac-0.5.2"
-    sha256 cellar: :any, big_sur: "206de8ca6c75933d8ead8b69dc912474d3c3b517983de832875a3317ec31812a"
+    sha256 cellar: :any, big_sur:  "206de8ca6c75933d8ead8b69dc912474d3c3b517983de832875a3317ec31812a"
+    sha256 cellar: :any, catalina: "887355db52ae9db159a311e48350ca006a363a360abf46e3167884dbe9654cba"
   end
 
   depends_on "libgit2"
