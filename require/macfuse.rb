@@ -38,9 +38,9 @@ class Formula
       -DCMAKE_INCLUDE_PATH=#{alt_fuse_root}/include/fuse;#{alt_fuse_root}/include
       -DCMAKE_LIBRARY_PATH=#{alt_fuse_root}/lib
       -DCMAKE_CXX_FLAGS=-I#{alt_fuse_root}/include/fuse\ -D_USE_FILE_OFFSET_BITS=64
-      -DPKG_CONFIG=#{fuse_pkgconfig}
-      -DPKG_CONFIG_EXECUTABLE=#{fuse_pkgconfig}
     ]
+    # -DPKG_CONFIG=#{fuse_pkgconfig}
+    # -DPKG_CONFIG_EXECUTABLE=#{fuse_pkgconfig}
     # -DFUSE_INCLUDE_DIR=#{alt_fuse_root}/include/fuse
     # -DFUSE_LIBRARIES=#{alt_fuse_root}/lib/libfuse.dylib
   end
@@ -58,16 +58,25 @@ class Formula
   end
 
   def setup_fuse_pkgconfig
-    mkdir "#{alt_fuse_root}/bin" do
-      cp path/"../../lib/fuse-pkg-config", "."
-      inreplace "fuse-pkg-config", "%FUSE_ROOT%", "#{alt_fuse_root}"
+    ### OLD METHOD: Fake pkg-config
+    # mkdir "#{alt_fuse_root}/bin" do
+    #  cp path/"../../lib/fuse-pkg-config", "."
+    #  inreplace "fuse-pkg-config", "%FUSE_ROOT%", "#{alt_fuse_root}"
+    # end
+    # ENV["PKG_CONFIG"] = "#{fuse_pkgconfig}"
+
+    ### NEW METHOD: Fix fuse.pc in alt root
+    mkdir "#{alt_fuse_root}/lib/pkgconfig" do
+      cp "/usr/local/lib/pkgconfig/fuse.pc", "."
+      inreplace "fuse.pc", "/usr/local", alt_fuse_root.to_s
     end
+    ENV.prepend_path "PKG_CONFIG_PATH", "#{alt_fuse_root}/lib/pkgconfig"
   end
 
-  def fuse_pkgconfig
-    return "#{alt_fuse_root}/bin/fuse-pkg-config" if need_alt_fuse?
-    "pkg-config"
-  end
+  # def fuse_pkgconfig
+  #  return "#{alt_fuse_root}/bin/fuse-pkg-config" if need_alt_fuse?
+  #  "pkg-config"
+  # end
 
   def setup_fuse_env
     odebug "Setting up FUSE temp environment under #{alt_fuse_root}"
@@ -91,8 +100,8 @@ class Formula
     ENV.append "CGO_CPPFLAGS", "-I#{alt_fuse_root}/include"
     ENV.append "CGO_CPPFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
     ENV.append "CGO_LDFLAGS", "-L#{alt_fuse_root}/lib"
-    ENV["PKG_CONFIG"] = "#{fuse_pkgconfig}"
     odebug "PKG_CONFIG = #{ENV["PKG_CONFIG"]}"
+    odebug "PKG_CONFIG_PATH = #{ENV["PKG_CONFIG_PATH"]}"
     odebug "CFLAGS = #{ENV["CFLAGS"]}"
   end
 
