@@ -3,15 +3,13 @@ require_relative "../require/macfuse"
 class CryfsMac < Formula
   desc "Encrypts your files so you can safely store them in Dropbox, iCloud, etc."
   homepage "https://www.cryfs.org"
-  url "https://github.com/cryfs/cryfs/releases/download/0.10.3/cryfs-0.10.3.tar.xz"
-  sha256 "051d8d8e6b3751a088effcc4aedd39061be007c34dc1689a93430735193d979f"
+  url "https://github.com/cryfs/cryfs/releases/download/0.11.0/cryfs-0.11.0.tar.xz"
+  sha256 "5583f84f3fcbd4bdbdcc9bfe4bb10971b2fca80a67b539b340556b5de482b737"
   license "LGPL-3.0-only"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.10.3"
-    sha256 cellar: :any, big_sur:  "50ad034e80fc0cb9ca197ba1563d08761e8716c72ebf131550a74be15c2eb203"
-    sha256 cellar: :any, catalina: "6580d5df0615a854a347a0d7eb5414b020032e50a194d25184629aa6fecc45c4"
-    sha256 cellar: :any, mojave:   "85c14c719bc3ca56e0fca178830d2d19160d500d84084f577b495eca78456de3"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.11.0"
+    sha256 cellar: :any, big_sur: "aebb5495fbbce0865daa8d78eb10bbf5f2353c80a7db15168f6579b43bb63493"
   end
 
   head do
@@ -27,8 +25,6 @@ class CryfsMac < Formula
   depends_on MacfuseRequirement
   depends_on :macos
   depends_on "openssl@1.1"
-
-  patch :DATA
 
   def install
     setup_fuse
@@ -72,30 +68,3 @@ class CryfsMac < Formula
     assert_match "Operation not permitted", pipe_output("#{bin}/cryfs -f basedir mountdir 2>&1", "password")
   end
 end
-__END__
-diff --git a/src/fspp/fuse/CMakeLists.txt b/src/fspp/fuse/CMakeLists.txt
-index b991bd7..df1f481 100644
---- a/src/fspp/fuse/CMakeLists.txt
-+++ b/src/fspp/fuse/CMakeLists.txt
-@@ -37,7 +37,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
- 
- elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-   set(CMAKE_FIND_FRAMEWORK LAST)
--  find_library_with_path(FUSE "osxfuse" FUSE_LIB_PATH)
-+  find_library_with_path(FUSE "fuse" FUSE_LIB_PATH)
-   target_link_libraries(${PROJECT_NAME} PUBLIC ${FUSE})
- else() # Linux
-   find_library_with_path(FUSE "fuse" FUSE_LIB_PATH)
-diff --git a/src/fspp/fuse/params.h b/src/fspp/fuse/params.h
-index 4a45ef7..dfbac60 100644
---- a/src/fspp/fuse/params.h
-+++ b/src/fspp/fuse/params.h
-@@ -6,7 +6,7 @@
- #if defined(__linux__) || defined(__FreeBSD__)
- #include <fuse.h>
- #elif __APPLE__
--#include <osxfuse/fuse.h>
-+#include <fuse.h>
- #elif defined(_MSC_VER)
- #include <fuse.h> // Dokany fuse
- #else
