@@ -18,9 +18,9 @@ class GitfsMac < Formula
   end
 
   depends_on "libgit2"
-  depends_on "python@3.9"
   depends_on MacfuseRequirement
   depends_on :macos
+  depends_on "python@3.9"
 
   uses_from_macos "libffi"
 
