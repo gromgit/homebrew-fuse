@@ -40,7 +40,7 @@ class SshfsMac < Formula
   def caveats
     <<~EOS
       This formula is outdated, and is provided only as a courtesy.
-      It cannot be updated until MacFUSE supports FUSE API version 3.
+      It cannot be updated until macFUSE supports FUSE API version 3.
 
       If security issues are discovered with this old software,
       it may be removed without notice.

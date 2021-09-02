@@ -17,7 +17,11 @@ class MacfuseRequirement < Requirement
   end
 
   def message
-    "This formula requires MacFUSE. Please run `brew install --cask macfuse` first."
+    "This formula requires macFUSE. Please run `brew install --cask macfuse` first."
+  end
+
+  def display_s
+    "macFUSE"
   end
 end
 
