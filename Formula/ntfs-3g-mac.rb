@@ -15,7 +15,8 @@ class Ntfs3gMac < Formula
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ntfs-3g-mac-2021.8.22"
     rebuild 1
-    sha256 cellar: :any, big_sur: "968b41b875cc84b63bbe968a2915e238c9d7156c7ff21a1f31b330ad6632654f"
+    sha256 cellar: :any, big_sur:  "968b41b875cc84b63bbe968a2915e238c9d7156c7ff21a1f31b330ad6632654f"
+    sha256 cellar: :any, catalina: "60b68f563a0b12e22f036633f41632119ebf93224891c73447d0db9f705834d2"
   end
 
   head do
