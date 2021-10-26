@@ -8,6 +8,7 @@ class GitfsMac < Formula
   url "https://github.com/presslabs/gitfs/archive/0.5.2.tar.gz"
   sha256 "921e24311e3b8ea3a5448d698a11a747618ee8dd62d5d43a85801de0b111cbf3"
   license "Apache-2.0"
+  revision 1
   head "https://github.com/presslabs/gitfs.git"
 
   bottle do
@@ -47,6 +48,13 @@ class GitfsMac < Formula
   resource "pygit2" do
     url "https://files.pythonhosted.org/packages/6b/23/a8c5b726a58282fe2cadcc63faaddd4be147c3c8e0bd38b233114adf98fd/pygit2-1.6.1.tar.gz"
     sha256 "c3303776f774d3e0115c1c4f6e1fc35470d15f113a7ae9401a0b90acfa1661ac"
+
+    # libgit2 1.3 support
+    # https://github.com/libgit2/pygit2/pull/1089
+    patch do
+      url "https://raw.githubusercontent.com/Homebrew/formula-patches/54d3a0d1f241fdd4e9229312ced0d8da85d964b1/pygit2/libgit2-1.3.0.patch"
+      sha256 "4d501c09d6642d50d89a1a4d691980e3a4a2ebcb6de7b45d22cce16a451b9839"
+    end
   end
 
   resource "six" do
@@ -63,6 +71,10 @@ class GitfsMac < Formula
     url "https://files.pythonhosted.org/packages/68/9e/49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a/pycparser-2.19.tar.gz"
     sha256 "a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
   end
+
+  # pygit2 1.6.1 support
+  # https://github.com/presslabs/gitfs/pull/379
+  patch :DATA
 
   def install
     virtualenv_install_with_resources
@@ -94,3 +106,29 @@ class GitfsMac < Formula
     end
   end
 end
+__END__
+diff --git a/gitfs/mounter.py b/gitfs/mounter.py
+index 31b436d..391e899 100644
+--- a/gitfs/mounter.py
++++ b/gitfs/mounter.py
+@@ -19,7 +19,7 @@ import resource
+ 
+ from fuse import FUSE
+ from pygit2 import Keypair, UserPass
+-from pygit2.remote import RemoteCallbacks
++from pygit2.callbacks import RemoteCallbacks
+ 
+ from gitfs import __version__
+ from gitfs.utils import Args
+diff --git a/requirements.txt b/requirements.txt
+index fb7d0f3..42c4d1f 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -2,6 +2,6 @@ atomiclong==0.1.1
+ cffi==1.12.3
+ fusepy==3.0.1
+ pycparser==2.19
+-pygit2==0.28.2
++pygit2==1.16.1
+ raven==6.10.0
+ six==1.12.0
