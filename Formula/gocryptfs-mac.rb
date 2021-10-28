@@ -3,15 +3,13 @@ require_relative "../require/macfuse"
 class GocryptfsMac < Formula
   desc "Encrypted overlay filesystem written in Go"
   homepage "https://nuetzlich.net/gocryptfs/"
-  url "https://github.com/rfjakob/gocryptfs/releases/download/v2.0.1/gocryptfs_v2.0.1_src-deps.tar.gz"
-  sha256 "31be3f3a9400bd5eb8a4d5f86f7aee52a488207e12d312f2601ae08e7e26dd02"
+  url "https://github.com/rfjakob/gocryptfs/releases/download/v2.2.1/gocryptfs_v2.2.1_src-deps.tar.gz"
+  sha256 "8d3f66fe426de6b31dfd56122f26047cc8cda679d2fba7bc26d78448701da5e3"
   license "MIT"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gocryptfs-mac-2.0.1"
-    sha256 cellar: :any, big_sur:  "27ebed45ea3f76615889f61306ead4d8f718a569f9916b25a2961211ecadd521"
-    sha256 cellar: :any, catalina: "8795cf8f374a9177a6cdc57a80fb97438c23e18cf73b478f9a39b31112d12ff4"
-    sha256 cellar: :any, mojave:   "6a638d16925bf127e42e462c7051969ea34d5abbff4a200bf9a2230aebb09a9a"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gocryptfs-mac-2.2.1"
+    sha256 cellar: :any, big_sur: "1c618b3a27524e560372f5d26d0718434f04a32ffe6cd0faa18b39f6019df13d"
   end
 
   depends_on "go" => :build
@@ -21,7 +19,7 @@ class GocryptfsMac < Formula
   depends_on "openssl@1.1"
 
   # Remove SOURCE_DATE_EPOCH support (requires GNU date)
-  patch :DATA
+  # patch :DATA
 
   def install
     setup_fuse
