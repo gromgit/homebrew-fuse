@@ -18,9 +18,6 @@ class GocryptfsMac < Formula
   depends_on :macos
   depends_on "openssl@1.1"
 
-  # Remove SOURCE_DATE_EPOCH support (requires GNU date)
-  # patch :DATA
-
   def install
     setup_fuse
     ENV["GOPATH"] = buildpath
@@ -38,21 +35,3 @@ class GocryptfsMac < Formula
     assert_predicate testpath/"encdir/gocryptfs.conf", :exist?
   end
 end
-__END__
-diff --git a/build.bash b/build.bash
-index b5a0c4d..11f2f4c 100755
---- a/build.bash
-+++ b/build.bash
-@@ -57,12 +57,6 @@ if [[ -z ${BUILDDATE:-} ]] ; then
- 	BUILDDATE=$(date +%Y-%m-%d)
- fi
- 
--# If SOURCE_DATE_EPOCH is set, it overrides BUILDDATE. This is the
--# standard environment variable for faking the date in reproducible builds.
--if [[ -n ${SOURCE_DATE_EPOCH:-} ]] ; then
--	BUILDDATE=$(date --utc --date="@${SOURCE_DATE_EPOCH}" +%Y-%m-%d)
--fi
--
- # Only set GOFLAGS if it is not already set by the user
- if [[ -z ${GOFLAGS:-} ]] ; then
- 	GOFLAGS=""
