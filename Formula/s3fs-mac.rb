@@ -3,16 +3,14 @@ require_relative "../require/macfuse"
 class S3fsMac < Formula
   desc "FUSE-based file system backed by Amazon S3"
   homepage "https://github.com/s3fs-fuse/s3fs-fuse/wiki"
-  url "https://github.com/s3fs-fuse/s3fs-fuse/archive/v1.89.tar.gz"
-  sha256 "2bb9c8cad855df5a877440edac9539bd405850d2a3c366cebd9d1fec6f802e29"
+  url "https://github.com/s3fs-fuse/s3fs-fuse/archive/v1.90.tar.gz"
+  sha256 "75fad9560174e041b273bf510d0d6e8d926508eba2b1ffaec9e2a652b3e8afaa"
   license "GPL-2.0-or-later"
   head "https://github.com/s3fs-fuse/s3fs-fuse.git"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/s3fs-mac-1.89"
-    sha256 cellar: :any, big_sur:  "58bf4c03848d57791f3ba33c82a04c0b0cd45aeb08ba744cff39322ee10707cc"
-    sha256 cellar: :any, catalina: "8d742b27f566d7dbc7ea146510a0e4fba3c31f27192dd8fc149d24f1c05f9873"
-    sha256 cellar: :any, mojave:   "4cb700a39849dc1427cee981e6da68b5a0486c3d2c0ef8266c7904d6f953ec9f"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/s3fs-mac-1.90"
+    sha256 cellar: :any, big_sur: "dcf5910b3393e0b247436369bfb785a06093fb19a04431f1101a03d012cdc8e1"
   end
 
   depends_on "autoconf" => :build
