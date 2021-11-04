@@ -2,6 +2,14 @@
 
 This tap exists to support macOS FUSE-related software that have been dropped from Homebrew core.
 
+---
+
+# !!! WARNING: Mojave Deprecation !!!
+
+Homebrew dropped support for macOS Mojave as of 25 Oct 2021. I'll continue to build Mojave bottles for the FUSE formulae for now, but ***not*** for any external dependencies that they rely on, _especially core formulae_. Therefore, at some point in 2022, I will also no longer support Mojave in this tap.
+
+---
+
 ## How do I install these formulae?
 
 First, if you've already installed FUSE formulae from the core tap _before_ they were disabled, you might _not_ want to switch over to my formulae, because:
