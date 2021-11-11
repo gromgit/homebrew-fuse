@@ -8,6 +8,7 @@ class ArchivemountMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/archivemount-mac-0.9.1"
+    sha256 cellar: :any, monterey: "b938c74e2a690d66ebb85a82e75cbca0a9724d7fdb8596818588975a1f1adad5"
     sha256 cellar: :any, big_sur:  "84dfb26c79c5d3cd6596bbbbb1398dd7d0a855eab32ff2b1192cd36235c34ab9"
     sha256 cellar: :any, catalina: "0d838c1b6684201cf9ff7bcc1120052bfce87c31950622961852a9e17243cd94"
     sha256 cellar: :any, mojave:   "42170c737f1fd151a4e36276c6929fe49aa69137886238ec38f04a84c123f26b"
