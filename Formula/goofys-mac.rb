@@ -11,6 +11,7 @@ class GoofysMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/goofys-mac-0.24.0"
+    sha256 cellar: :any_skip_relocation, monterey: "0edf3be0d9fb22e7637e981539a5e93158d4543050a61afb5d11ce0ec80f0e17"
     sha256 cellar: :any_skip_relocation, big_sur:  "f3f73dc39927ee0a94a26a3bc8ae4b097e083d48e311b79274a85ac7f547e85a"
     sha256 cellar: :any_skip_relocation, catalina: "b61cf142b7a484520ad554d17947d7022ed0c3fdab04d6cf89da93b986d6de15"
     sha256 cellar: :any_skip_relocation, mojave:   "648d204e47b710662db2b778164346ef2b9fd77a4ec02af210fc8116eee7bb7f"
