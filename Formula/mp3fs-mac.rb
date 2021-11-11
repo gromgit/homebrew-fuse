@@ -9,6 +9,7 @@ class Mp3fsMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/mp3fs-mac-1.1.1"
+    sha256 cellar: :any, monterey: "6a87fa45e92a95ef436a88352494dd2d3b2907d02e213cb24af9612a8475fa4c"
     sha256 cellar: :any, big_sur:  "f5d8b429073bd633bb0e3bfdf0fa5d72170e3e2c50ea35498169203c3aeb7b5a"
     sha256 cellar: :any, catalina: "87445edbdfdec0ee366b5bbfb57349b4b7fc380fda83fe0c866049055ecfcda7"
     sha256 cellar: :any, mojave:   "64aeb9e00ab95135f27a62319c607ee47ecbaf24459e27289da40ff8c70366a2"
