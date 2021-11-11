@@ -10,6 +10,7 @@ class IfuseMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ifuse-mac-1.1.4"
+    sha256 cellar: :any, monterey: "b2b302e5373d5461fc0d41c680e500b5874c11a195a337e265ac6fad5cb9fba3"
     sha256 cellar: :any, big_sur:  "f6c2e432e98e35ea512c85e9eed06015e157477c58ccc3209fc915401a4a3bdc"
     sha256 cellar: :any, catalina: "bafcd207118ffb63fcb67ce909f52bde7dc2fa138a592be30e6d7cdb96580377"
     sha256 cellar: :any, mojave:   "5c2d874a7377fa5c91bad47e7ee82adb4d965e3019fbf4b5128c318549f66180"
