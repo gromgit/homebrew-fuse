@@ -10,9 +10,11 @@ class UnionfsFuse < Formula
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/unionfs-fuse-2.1"
     sha256 cellar: :any, monterey: "0c1c5cd2c5fba1a924e5cf6f9b1435cb8920c48eb87d6b7f434829dc19064227"
+    sha256 cellar: :any, big_sur:  "9faf84e3cae16165222a3a0ad505e7d7c76b75106f858e9d10a2a0f4291e4380"
   end
 
   depends_on MacfuseRequirement
+  depends_on "pkg-config"
 
   def install
     setup_fuse
