@@ -9,6 +9,7 @@ class SimpleMtpfsMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/simple-mtpfs-mac-0.4.0"
+    sha256 cellar: :any, monterey: "dab8ca53f1513d943c8102be2d592adf42d36f6d62d65fdd0af5914e7786c530"
     sha256 cellar: :any, big_sur:  "ab2daeee7f6e6c6bd9795f34b7d1746b3e9add149e4a33e88db29be02de20541"
     sha256 cellar: :any, catalina: "6a07721c8bbd594f8ceeaf3a2503e780d3eb6ce3c4431ca785c40c8c71e8900c"
     sha256 cellar: :any, mojave:   "bbe032821fb0ea78e661a16fd79a185d969e8b2a602fd990c8ceb035cc7fee84"
