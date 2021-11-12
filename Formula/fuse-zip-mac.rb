@@ -10,6 +10,7 @@ class FuseZipMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/fuse-zip-mac-0.7.2"
+    sha256 cellar: :any, monterey: "c5c646516f1642b7fc9401c7013b70fe8aa5807ac7168fee904e6c61bfc3ab7b"
     sha256 cellar: :any, big_sur:  "2fc541f86072d8faba8a4aa99ab1de342f38e6f4af8ffecf8764a45b1b747e2b"
     sha256 cellar: :any, catalina: "b2e45519d7a30220bcbb666abc00e299436965dd64c55abe4d656542a1e0fa29"
     sha256 cellar: :any, mojave:   "f4c68265733a7625566fbdaa7addf5696f52909920fd940630ece3e90b80309e"
@@ -22,7 +23,7 @@ class FuseZipMac < Formula
 
   def install
     setup_fuse
-    system "make", "prefix=#{prefix}", "PKG_CONFIG=#{fuse_pkgconfig}", "install"
+    system "make", "prefix=#{prefix}", "install"
   end
 
   test do
