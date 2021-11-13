@@ -9,6 +9,7 @@ class CryfsMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.11.0"
+    sha256 cellar: :any, monterey: "4a3ab5f5949e9cb0f881c16447a2660553cf539f31a8c746b389e009c0d16997"
     sha256 cellar: :any, big_sur:  "aebb5495fbbce0865daa8d78eb10bbf5f2353c80a7db15168f6579b43bb63493"
     sha256 cellar: :any, catalina: "9e60ca10a4fef208741d9c0675d529f60a8bf51f2f90a522b69887f72cb7c423"
     sha256 cellar: :any, mojave:   "4a944758eccb9d7fa906425a1944ee3bb1337134b2d0051c1ee39ba7d0f52017"
@@ -22,14 +23,17 @@ class CryfsMac < Formula
   depends_on "conan" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
-  depends_on "boost"
+  depends_on "curl"
   depends_on "libomp"
   depends_on MacfuseRequirement
   depends_on :macos
   depends_on "openssl@1.1"
 
+  patch :DATA
+
   def install
     setup_fuse
+
     configure_args = [
       "-GNinja",
       "-DBUILD_TESTING=off",
@@ -70,3 +74,17 @@ class CryfsMac < Formula
     assert_match "Operation not permitted", pipe_output("#{bin}/cryfs -f basedir mountdir 2>&1", "password")
   end
 end
+__END__
+diff --git a/conanfile.py b/conanfile.py
+index c9dac7d5..567c8678 100644
+--- a/conanfile.py
++++ b/conanfile.py
+@@ -3,7 +3,7 @@ from conans import ConanFile, CMake
+ class CryFSConan(ConanFile):
+ 	settings = "os", "compiler", "build_type", "arch"
+ 	requires = [
+-		"range-v3/0.11.0@ericniebler/stable",
++		"range-v3/0.11.0",
+ 		"spdlog/1.8.5",
+ 		"boost/1.75.0",
+ 	]
