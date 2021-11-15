@@ -36,7 +36,7 @@ class UnionfsFuse < Formula
              "#{testpath}/t1=RW:#{testpath}/t2=RO", testpath/"t3"
       assert_match "test 2", pipe_output("cat #{testpath}/t3/test2.txt")
     ensure
-      system "umount #{testpath}/t3"
+      system "umount", "#{testpath}/t3"
     end
   end
 end
