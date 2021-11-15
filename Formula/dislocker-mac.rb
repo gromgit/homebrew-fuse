@@ -12,6 +12,7 @@ class DislockerMac < Formula
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/dislocker-mac-0.7.3"
     rebuild 1
     sha256 monterey: "701af14f991f776425578a38ee054bca520f4d2310071a90031df65558e6132a"
+    sha256 big_sur:  "2d972fe6fb9e2cba0674c4309805166224cdf8a752d5855eb8d52758e2378856"
   end
 
   depends_on "cmake" => :build
