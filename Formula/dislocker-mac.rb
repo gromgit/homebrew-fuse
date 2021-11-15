@@ -17,7 +17,7 @@ class DislockerMac < Formula
   depends_on "cmake" => :build
   depends_on MacfuseRequirement
   depends_on :macos
-  depends_on "mbedtls"
+  depends_on "mbedtls@2"
 
   # Fix OSXFUSE-isms
   patch :DATA
