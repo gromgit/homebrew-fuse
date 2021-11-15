@@ -13,6 +13,7 @@ class DislockerMac < Formula
     rebuild 1
     sha256 monterey: "701af14f991f776425578a38ee054bca520f4d2310071a90031df65558e6132a"
     sha256 big_sur:  "2d972fe6fb9e2cba0674c4309805166224cdf8a752d5855eb8d52758e2378856"
+    sha256 catalina: "14cea99377a68eef03508d53550987025eab4b1d0cdf4d07e7b144f0489d7594"
   end
 
   depends_on "cmake" => :build
