@@ -3,16 +3,13 @@ require_relative "../require/macfuse"
 class CryfsMac < Formula
   desc "Encrypts your files so you can safely store them in Dropbox, iCloud, etc."
   homepage "https://www.cryfs.org"
-  url "https://github.com/cryfs/cryfs/releases/download/0.11.0/cryfs-0.11.0.tar.xz"
-  sha256 "5583f84f3fcbd4bdbdcc9bfe4bb10971b2fca80a67b539b340556b5de482b737"
+  url "https://github.com/cryfs/cryfs/releases/download/0.11.1/cryfs-0.11.1.tar.xz"
+  sha256 "55f139b07b9737851cc0d6e26c425a7debc2fabd2a62aa43ba56e5a33ca93ece"
   license "LGPL-3.0-only"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.11.0"
-    sha256 cellar: :any, monterey: "4a3ab5f5949e9cb0f881c16447a2660553cf539f31a8c746b389e009c0d16997"
-    sha256 cellar: :any, big_sur:  "aebb5495fbbce0865daa8d78eb10bbf5f2353c80a7db15168f6579b43bb63493"
-    sha256 cellar: :any, catalina: "9e60ca10a4fef208741d9c0675d529f60a8bf51f2f90a522b69887f72cb7c423"
-    sha256 cellar: :any, mojave:   "4a944758eccb9d7fa906425a1944ee3bb1337134b2d0051c1ee39ba7d0f52017"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.11.1"
+    sha256 cellar: :any, big_sur: "a573385e28448c307cafe1d68bea18f78787167389eb7ce0e83aa49d2f386ea6"
   end
 
   head do
@@ -28,8 +25,6 @@ class CryfsMac < Formula
   depends_on MacfuseRequirement
   depends_on :macos
   depends_on "openssl@1.1"
-
-  patch :DATA
 
   def install
     setup_fuse
@@ -74,17 +69,3 @@ class CryfsMac < Formula
     assert_match "Operation not permitted", pipe_output("#{bin}/cryfs -f basedir mountdir 2>&1", "password")
   end
 end
-__END__
-diff --git a/conanfile.py b/conanfile.py
-index c9dac7d5..567c8678 100644
---- a/conanfile.py
-+++ b/conanfile.py
-@@ -3,7 +3,7 @@ from conans import ConanFile, CMake
- class CryFSConan(ConanFile):
- 	settings = "os", "compiler", "build_type", "arch"
- 	requires = [
--		"range-v3/0.11.0@ericniebler/stable",
-+		"range-v3/0.11.0",
- 		"spdlog/1.8.5",
- 		"boost/1.75.0",
- 	]
