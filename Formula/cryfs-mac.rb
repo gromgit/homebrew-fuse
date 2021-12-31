@@ -9,7 +9,8 @@ class CryfsMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.11.1"
-    sha256 cellar: :any, big_sur: "a573385e28448c307cafe1d68bea18f78787167389eb7ce0e83aa49d2f386ea6"
+    sha256 cellar: :any, monterey: "3591a302c8d6951748db9841ba015b3a4ee5b31c7e1fef5aa4965e1155a5c2f5"
+    sha256 cellar: :any, big_sur:  "a573385e28448c307cafe1d68bea18f78787167389eb7ce0e83aa49d2f386ea6"
   end
 
   head do
