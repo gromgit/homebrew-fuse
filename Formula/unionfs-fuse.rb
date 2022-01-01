@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class UnionfsFuse < Formula
   desc "Union filesystem using FUSE"
   homepage "https://github.com/rpodgorny/unionfs-fuse"
-  url "https://github.com/rpodgorny/unionfs-fuse/archive/refs/tags/v2.1.tar.gz"
-  sha256 "c705072a33a18cbc73ffe799331d43410b6deef5d6f2042038f8fd3ab17b6e2e"
+  url "https://github.com/rpodgorny/unionfs-fuse/archive/refs/tags/v2.2.tar.gz"
+  sha256 "248a0fee9979146b79b05fc728621869da5936c1f43a27e36e7515b301817e43"
   license "BSD-3-Clause"
 
   bottle do
