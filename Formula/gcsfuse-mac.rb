@@ -10,9 +10,10 @@ class GcsfuseMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gcsfuse-mac-0.35.1"
-    sha256 cellar: :any_skip_relocation, big_sur:  "5c49e2ba988a1fda0ca3f28ca2745c37f1e6b8abd2eff55b91b857b1907fe068"
-    sha256 cellar: :any_skip_relocation, catalina: "9824cf0f7e905dc207a5591a233f12a6c9130bfafa6e04c2447506b447a6c52f"
-    sha256 cellar: :any_skip_relocation, mojave:   "6322a98c0157d6d5cf7ea56f564dfb90f1bd6bc51f0786d24fb8aca3460fbe22"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "42983de1de81aba6500d6e84f926eeffa97ec1081f39bfe5f06a565d427fe65c"
+    sha256 cellar: :any_skip_relocation, big_sur:        "5c49e2ba988a1fda0ca3f28ca2745c37f1e6b8abd2eff55b91b857b1907fe068"
+    sha256 cellar: :any_skip_relocation, catalina:       "9824cf0f7e905dc207a5591a233f12a6c9130bfafa6e04c2447506b447a6c52f"
+    sha256 cellar: :any_skip_relocation, mojave:         "6322a98c0157d6d5cf7ea56f564dfb90f1bd6bc51f0786d24fb8aca3460fbe22"
   end
 
   depends_on "go" => :build
