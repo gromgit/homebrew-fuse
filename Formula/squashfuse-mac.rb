@@ -9,10 +9,11 @@ class SquashfuseMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/squashfuse-mac-0.1.104"
-    sha256 cellar: :any, monterey: "d8cb1d3b4e8cd06e737330d505cef93b6db04ba5bc4a9532d0a95bfa155eab7d"
-    sha256 cellar: :any, big_sur:  "71e48214e5e13234e5270af7a8e4332adbf0a4e5b7b45fa754f6c06776b4b132"
-    sha256 cellar: :any, catalina: "2e2f3ae67cff7da3ea72bbe60c82030cee19068b2490fe28ee518339366cc59f"
-    sha256 cellar: :any, mojave:   "eac9534833ef065791327d82fd7d9dfe675b3c5921e3fa41dde963917625e300"
+    sha256 cellar: :any, arm64_monterey: "40535144bf69ea83cc6f83eb0fbf13d465e95374b55159056099c15079767632"
+    sha256 cellar: :any, monterey:       "d8cb1d3b4e8cd06e737330d505cef93b6db04ba5bc4a9532d0a95bfa155eab7d"
+    sha256 cellar: :any, big_sur:        "71e48214e5e13234e5270af7a8e4332adbf0a4e5b7b45fa754f6c06776b4b132"
+    sha256 cellar: :any, catalina:       "2e2f3ae67cff7da3ea72bbe60c82030cee19068b2490fe28ee518339366cc59f"
+    sha256 cellar: :any, mojave:         "eac9534833ef065791327d82fd7d9dfe675b3c5921e3fa41dde963917625e300"
   end
 
   depends_on "pkg-config" => :build
