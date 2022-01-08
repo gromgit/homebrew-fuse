@@ -12,9 +12,10 @@ class S3qlMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/s3ql-mac-3.3.2"
-    sha256 cellar: :any, big_sur:  "d25584692de92f2e9982ac22a60371844032fdd4461507eff126ff2ea5077414"
-    sha256 cellar: :any, catalina: "5263041b72989e71d60fd9dacf95fb3138d488fc04f25ff7438fd2f73e20e8a5"
-    sha256 cellar: :any, mojave:   "c8438bb43cc23a6addf967de989d564af559793f639553834232319913915b67"
+    sha256 cellar: :any, arm64_monterey: "28591bf8f937e22571aebb9ea52b5a41a6674bca0e285d49009d3b6f3daff494"
+    sha256 cellar: :any, big_sur:        "d25584692de92f2e9982ac22a60371844032fdd4461507eff126ff2ea5077414"
+    sha256 cellar: :any, catalina:       "5263041b72989e71d60fd9dacf95fb3138d488fc04f25ff7438fd2f73e20e8a5"
+    sha256 cellar: :any, mojave:         "c8438bb43cc23a6addf967de989d564af559793f639553834232319913915b67"
   end
 
   depends_on "pkg-config" => :build
