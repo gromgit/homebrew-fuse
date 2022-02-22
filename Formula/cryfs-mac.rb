@@ -11,6 +11,7 @@ class CryfsMac < Formula
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.11.2"
     sha256 cellar: :any, arm64_monterey: "f4b9f8c635f85b06dc55ef6f1bf44c2b30d2d6635fa43834df73b973399b2032"
     sha256 cellar: :any, monterey:       "b6385cbf5baa774ef3b68cdedcba883523b768238be6318b2613bed61d5b0aea"
+    sha256 cellar: :any, big_sur:        "b0bd3cfc1c8f466df9edd09abb9927561a2d057561137889931a95f94fe915bb"
     sha256 cellar: :any, mojave:         "1d9df6d37cfe7f8c36ef942bcc093a3e8a50318ace2ebc5a7500af9120a589b2"
   end
 
