@@ -3,16 +3,13 @@ require_relative "../require/macfuse"
 class CryfsMac < Formula
   desc "Encrypts your files so you can safely store them in Dropbox, iCloud, etc."
   homepage "https://www.cryfs.org"
-  url "https://github.com/cryfs/cryfs/releases/download/0.11.1/cryfs-0.11.1.tar.xz"
-  sha256 "55f139b07b9737851cc0d6e26c425a7debc2fabd2a62aa43ba56e5a33ca93ece"
+  url "https://github.com/cryfs/cryfs/releases/download/0.11.2/cryfs-0.11.2.tar.xz"
+  sha256 "951ef565d37521df5586b00ed898f1cb76188739c27b9db866cc91ca14fdf1bd"
   license "LGPL-3.0-only"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.11.1"
-    sha256 cellar: :any, monterey: "3591a302c8d6951748db9841ba015b3a4ee5b31c7e1fef5aa4965e1155a5c2f5"
-    sha256 cellar: :any, big_sur:  "a573385e28448c307cafe1d68bea18f78787167389eb7ce0e83aa49d2f386ea6"
-    sha256 cellar: :any, catalina: "83695fe6cb732222e690245c4bacd2a1283c133f6c6d69e264ab7ae7ba642dfb"
-    sha256 cellar: :any, mojave:   "68712ddc9c9c997506e732287fd036172aa574f8d2c1a42bf9ba918da4ddd9ad"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.11.2"
+    sha256 cellar: :any, arm64_monterey: "f4b9f8c635f85b06dc55ef6f1bf44c2b30d2d6635fa43834df73b973399b2032"
   end
 
   head do
@@ -32,21 +29,14 @@ class CryfsMac < Formula
   def install
     setup_fuse
 
+    libomp = Formula["libomp"]
     configure_args = [
       "-GNinja",
       "-DBUILD_TESTING=off",
+      "-DOpenMP_CXX_FLAGS='-Xpreprocessor -fopenmp -I#{libomp.include}'",
+      "-DOpenMP_CXX_LIB_NAMES=omp",
+      "-DOpenMP_omp_LIBRARY=#{libomp.lib}/libomp.dylib",
     ]
-
-    if build.head?
-      libomp = Formula["libomp"]
-      configure_args.concat(
-        [
-          "-DOpenMP_CXX_FLAGS='-Xpreprocessor -fopenmp -I#{libomp.include}'",
-          "-DOpenMP_CXX_LIB_NAMES=omp",
-          "-DOpenMP_omp_LIBRARY=#{libomp.lib}/libomp.dylib",
-        ],
-      )
-    end
 
     # macFUSE puts pkg-config into /usr/local/lib/pkgconfig, which is not included in
     # homebrew's default PKG_CONFIG_PATH. We need to tell pkg-config about this path for our build
