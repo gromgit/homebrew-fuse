@@ -13,6 +13,7 @@ class RcloneMac < Formula
     rebuild 1
     sha256 cellar: :any_skip_relocation, monterey: "a2892ed47fc18c19984ffb3f824b0c371ce783686b260329624b19c5837a85bd"
     sha256 cellar: :any_skip_relocation, big_sur:  "3be0a1c0414d5261f483c34a60dcf61a377d3478e248650cc862fb25edde483b"
+    sha256 cellar: :any_skip_relocation, catalina: "af363ef59ca700b40bb23338f0c4059fe593b0f8c1b6ba63b60e3dde474a7ddd"
   end
 
   depends_on "go" => :build
