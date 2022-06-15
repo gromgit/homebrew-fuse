@@ -4,13 +4,13 @@ class SecurefsMac < Formula
   desc "Filesystem with transparent authenticated encryption"
   homepage "https://github.com/netheril96/securefs"
   url "https://github.com/netheril96/securefs.git",
-      tag:      "0.12.0",
-      revision: "a4972834d93e89117e67dae58998f10f8a7c0fbb"
+      tag:      "0.13.0",
+      revision: "1705d14b8fef5ebb826a74549d609c6ab6cb63f7"
   license "MIT"
   head "https://github.com/netheril96/securefs.git"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/securefs-mac-0.12.0"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/securefs-mac-0.13.0"
     sha256 cellar: :any_skip_relocation, arm64_monterey: "a8fc0484d4e992eaa090ae75b91d6a3cc19ed21d32d31aebd158385505de3011"
     sha256 cellar: :any,                 monterey:       "33933601d2dd7e914fdb0d33fa389372c0cb005c9508b3e8f96f1349dbe10f16"
     sha256 cellar: :any,                 big_sur:        "70db42eeea99f3ba3f2cc630e54d889160557a578c288fab05c3a4a16f6313b1"
