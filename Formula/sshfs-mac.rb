@@ -3,10 +3,9 @@ require_relative "../require/macfuse"
 class SshfsMac < Formula
   desc "File system client based on SSH File Transfer Protocol"
   homepage "https://github.com/libfuse/sshfs"
-  url "https://github.com/libfuse/sshfs/archive/refs/tags/sshfs-2.10.tar.gz"
-  sha256 "6af13acda03a4632e3deb559ecc3f35881cb92e16098049a7ba4cc502650ab18"
+  url "https://github.com/libfuse/sshfs/archive/refs/tags/sshfs-3.7.3.tar.gz"
+  sha256 "52a1a1e017859dfe72a550e6fef8ad4f8703ce312ae165f74b579fd7344e3a26"
   license any_of: ["LGPL-2.1-only", "GPL-2.0-only"]
-  revision 1
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/sshfs-mac-2.10"
