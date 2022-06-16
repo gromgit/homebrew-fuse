@@ -12,6 +12,7 @@ class SecurefsMac < Formula
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/securefs-mac-0.13.0"
     sha256 cellar: :any_skip_relocation, arm64_monterey: "d4befffc32ea6cfd3b3a64efc297d65b10f55696477a57c47f55ea1286ca6702"
+    sha256 cellar: :any,                 monterey:       "cd01d4f2acccf83ac6d6126655ef6ed90efcfe160c635811d6eb4f53bd9d0ba5"
     sha256 cellar: :any,                 big_sur:        "664cf88693667af20d27239d00120ba58a4bcbf341ed051a68be21b7df0c043c"
     sha256 cellar: :any,                 catalina:       "c530c8f50c3c7515fb47504c14c2f1325d8e69fe7d37ced432e6d3bdb38648f1"
     sha256 cellar: :any,                 mojave:         "a584a77dcb42a7fb9f3000e2c91c504ca9b399897d1f25f22aa472e89ab71b29"
