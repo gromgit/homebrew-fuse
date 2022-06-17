@@ -14,6 +14,7 @@ class GcsfuseMac < Formula
     sha256 cellar: :any_skip_relocation, monterey:       "dc0d3b705fb10edd70354773c9d477e00e05b83467f57e7b464f18a9ef768070"
     sha256 cellar: :any_skip_relocation, big_sur:        "4871ca5601b1bdafa2f8472ddd37accbdc597281650bb759f069b8334af3ac11"
     sha256 cellar: :any_skip_relocation, catalina:       "01e9e9f5bad80073ebb007a81623c71fe6246dacb249ae6e19ad56c11acf0429"
+    sha256 cellar: :any_skip_relocation, mojave:         "041027dc8a85627097b391fa2e756463f044fe8473bc4cc21205d97efdd63935"
   end
 
   depends_on "go" => :build
