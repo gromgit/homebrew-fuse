@@ -17,6 +17,7 @@ class Ntfs3gMac < Formula
     sha256 cellar: :any, arm64_monterey: "9b56b3d030aace12240cfcca5c505a16d7403c5d08ae22880eb2edf888e59175"
     sha256 cellar: :any, monterey:       "ee6068cc63819c203b24ab4749bc69894beda8f8a204aaa63668f626ec7d4471"
     sha256 cellar: :any, big_sur:        "c279548d3d07fdb950cb98cf27d195789021c046b49ddbd3cf0c0306382f62b7"
+    sha256 cellar: :any, catalina:       "f20a4b41c9e0e16625b40c1210898300f4e12aa87709f07c94e2c70dc5821b25"
     sha256 cellar: :any, mojave:         "f0691c942eae549d753e1b1dd3efe6a177e919c8975f5b0022f0cc27c7f3c870"
   end
 
