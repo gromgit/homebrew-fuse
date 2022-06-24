@@ -104,9 +104,9 @@ class Formula
     ENV.append "CGO_CPPFLAGS", "-I#{alt_fuse_root}/include"
     ENV.append "CGO_CPPFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
     ENV.append "CGO_LDFLAGS", "-L#{alt_fuse_root}/lib"
-    odebug "PKG_CONFIG = #{ENV["PKG_CONFIG"]}"
-    odebug "PKG_CONFIG_PATH = #{ENV["PKG_CONFIG_PATH"]}"
-    odebug "CFLAGS = #{ENV["CFLAGS"]}"
+    odebug "PKG_CONFIG = #{ENV.fetch("PKG_CONFIG", nil)}"
+    odebug "PKG_CONFIG_PATH = #{ENV.fetch("PKG_CONFIG_PATH", nil)}"
+    odebug "CFLAGS = #{ENV.fetch("CFLAGS", nil)}"
   end
 
   def setup_fuse
