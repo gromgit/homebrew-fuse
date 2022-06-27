@@ -13,6 +13,7 @@ class UnionfsFuse < Formula
     sha256 cellar: :any,                 monterey:       "5325c885b86d7da9a263b0dccb5f40fa0b59b431bf8d9c5efb48d8b3cd043dc6"
     sha256 cellar: :any,                 big_sur:        "4ce1e7bf69c4d4b47af623ace7a33f2ff467e3a944181e910e8ae81e27d1db80"
     sha256 cellar: :any,                 catalina:       "a1961f1ecf7bfb8f6ce0af19ff3f1529986da999da813551bd58b6023e7f5a3f"
+    sha256 cellar: :any,                 mojave:         "0042e85328d5f2a83db5673882579fc4a71bc96148f165ad93d571fb7dbec988"
   end
 
   depends_on MacfuseRequirement
