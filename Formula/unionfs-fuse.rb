@@ -3,22 +3,36 @@ require_relative "../require/macfuse"
 class UnionfsFuse < Formula
   desc "Union filesystem using FUSE"
   homepage "https://github.com/rpodgorny/unionfs-fuse"
-  url "https://github.com/rpodgorny/unionfs-fuse/archive/refs/tags/v2.1.tar.gz"
-  sha256 "c705072a33a18cbc73ffe799331d43410b6deef5d6f2042038f8fd3ab17b6e2e"
+  url "https://github.com/rpodgorny/unionfs-fuse/archive/refs/tags/v2.2.tar.gz"
+  sha256 "248a0fee9979146b79b05fc728621869da5936c1f43a27e36e7515b301817e43"
   license "BSD-3-Clause"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/unionfs-fuse-2.1"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "5605b20fd13a41e92c5fd981d6a2c0ab5ab0cf7661f9e6ccab0ebcb3d2cde580"
-    sha256 cellar: :any,                 monterey:       "0c1c5cd2c5fba1a924e5cf6f9b1435cb8920c48eb87d6b7f434829dc19064227"
-    sha256 cellar: :any,                 big_sur:        "9faf84e3cae16165222a3a0ad505e7d7c76b75106f858e9d10a2a0f4291e4380"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/unionfs-fuse-2.2"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "f0bf63f52a20a6ff3703b0225243c35837d620696c261208e7e2256050c486fb"
   end
 
   depends_on MacfuseRequirement
   depends_on "pkg-config"
 
+  # macOS compatibility patches
+  # Review all the below on next release
+  patch do
+    url "https://github.com/rpodgorny/unionfs-fuse/commit/f27d75b36a128ab62f432a8c70f33747d4f76bc5.patch?full_index=1"
+    sha256 "4a40c424ced2d1627c83c0b795984258057fad7c23f07cb2036db55d6a9d7c75"
+  end
+  patch do
+    url "https://github.com/rpodgorny/unionfs-fuse/commit/b6377071716d051542024e050c372ac5b0588dcd.patch?full_index=1"
+    sha256 "bbf6292c267d8c068a9bc294ed1293b63a9a8c129640dc0674ef2d61e98a6c0d"
+  end
+  patch do
+    url "https://github.com/rpodgorny/unionfs-fuse/commit/edcf3ee1461ad839f8784ecc484070773e37c81c.patch?full_index=1"
+    sha256 "3b6e129f0afd23eda43a7eccdb4d25cb176175b993ed13d252e27bc8d2a886e0"
+  end
+
   def install
     setup_fuse
+    inreplace "CMakeLists.txt", "/usr/local", alt_fuse_root.to_s
     system "make", "PREFIX=#{prefix}", "install"
   end
 
