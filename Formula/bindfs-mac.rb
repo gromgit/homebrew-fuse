@@ -3,17 +3,13 @@ require_relative "../require/macfuse"
 class BindfsMac < Formula
   desc "FUSE file system for mounting to another location"
   homepage "https://bindfs.org/"
-  url "https://bindfs.org/downloads/bindfs-1.15.1.tar.gz"
-  sha256 "04dd3584a6cdf9af4344d403c62185ca9fab31ce3ae5a25d0101bc10936c68ab"
+  url "https://bindfs.org/downloads/bindfs-1.17.0.tar.gz"
+  sha256 "70da57d49e7794fe54b8575bfdd6a7943aab54ada2e8e2fdf4be04e0011451dc"
   license "GPL-2.0-or-later"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/bindfs-mac-1.15.1"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "32cf0fc09d3e0246378dd899b961e50b61ea78edf274f9232dc1a82d51c717f1"
-    sha256 cellar: :any,                 monterey:       "e89fa355bac808effa0103fd3bdd307b111d0c937309913a9a38af808cfba8b2"
-    sha256 cellar: :any,                 big_sur:        "edb43ff7dd67f03169b9e4c84b527a2ec729c743baeff1e47319008722fccb15"
-    sha256 cellar: :any,                 catalina:       "eaabdbc55f58e3782705dbf4a1be9862f741939630bbd6d82e27915309995a2c"
-    sha256 cellar: :any,                 mojave:         "a774f403c90cfc617385b6f1a6b0166dd19c9da44983207643cbca7d48808c46"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/bindfs-mac-1.17.0"
+    sha256 cellar: :any, mojave: "c48f0834685c79d272f7af5801f9b8cab86686b5d0e82b255b028f1f4a57a115"
   end
 
   head do
