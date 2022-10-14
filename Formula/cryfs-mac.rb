@@ -3,17 +3,13 @@ require_relative "../require/macfuse"
 class CryfsMac < Formula
   desc "Encrypts your files so you can safely store them in Dropbox, iCloud, etc."
   homepage "https://www.cryfs.org"
-  url "https://github.com/cryfs/cryfs/releases/download/0.11.2/cryfs-0.11.2.tar.xz"
-  sha256 "951ef565d37521df5586b00ed898f1cb76188739c27b9db866cc91ca14fdf1bd"
+  url "https://github.com/cryfs/cryfs/releases/download/0.11.3/cryfs-0.11.3.tar.xz"
+  sha256 "18f68e0defdcb7985f4add17cc199b6653d5f2abc6c4d237a0d48ae91a6c81c0"
   license "LGPL-3.0-only"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.11.2"
-    sha256 cellar: :any, arm64_monterey: "f4b9f8c635f85b06dc55ef6f1bf44c2b30d2d6635fa43834df73b973399b2032"
-    sha256 cellar: :any, monterey:       "b6385cbf5baa774ef3b68cdedcba883523b768238be6318b2613bed61d5b0aea"
-    sha256 cellar: :any, big_sur:        "b0bd3cfc1c8f466df9edd09abb9927561a2d057561137889931a95f94fe915bb"
-    sha256 cellar: :any, catalina:       "e75d601613188573b09714d0829c1309f3b7acaa822e1046484ed8df93881b9c"
-    sha256 cellar: :any, mojave:         "1d9df6d37cfe7f8c36ef942bcc093a3e8a50318ace2ebc5a7500af9120a589b2"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.11.3"
+    sha256 cellar: :any, arm64_monterey: "225fae9b8f7deff22021f8246b0c5cfcb7ed2148a203db913129f51fd2127e70"
   end
 
   head do
