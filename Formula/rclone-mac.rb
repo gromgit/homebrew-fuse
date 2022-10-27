@@ -11,6 +11,7 @@ class RcloneMac < Formula
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/rclone-mac-1.60.0"
     sha256 cellar: :any_skip_relocation, arm64_monterey: "5a0b4e4d87f6c492bce0f75783c88e94f390fe62399bdd85384d86592b3d506d"
+    sha256 cellar: :any_skip_relocation, monterey:       "7efcd181a779b3ead3e4350966ef6176eda620de4f7103ea623d1615bfcf08bd"
   end
 
   depends_on "go" => :build
