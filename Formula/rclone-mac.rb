@@ -13,6 +13,7 @@ class RcloneMac < Formula
     sha256 cellar: :any_skip_relocation, arm64_monterey: "5a0b4e4d87f6c492bce0f75783c88e94f390fe62399bdd85384d86592b3d506d"
     sha256 cellar: :any_skip_relocation, monterey:       "7efcd181a779b3ead3e4350966ef6176eda620de4f7103ea623d1615bfcf08bd"
     sha256 cellar: :any_skip_relocation, big_sur:        "59d25e2659235fae87dd0baa52c9764902bd72da24a3c9bb14db49ec63880bc2"
+    sha256 cellar: :any_skip_relocation, catalina:       "aaaf2a8ef8436960b72c6bed216fbbbdd67eae15c629a55cca2a950d4e569bc3"
   end
 
   depends_on "go" => :build
