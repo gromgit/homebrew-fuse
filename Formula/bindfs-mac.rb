@@ -12,6 +12,7 @@ class BindfsMac < Formula
     sha256 cellar: :any_skip_relocation, arm64_monterey: "41730479fb8fa81ff002c07d33fcc21a734dab1b59b5dcaec943b8103bc369bd"
     sha256 cellar: :any,                 monterey:       "a1ba8e02ea9cc9495ddd397a6d0bd49a862b191e8bee8b8ce432b965125a709e"
     sha256 cellar: :any,                 big_sur:        "1749f4dc83b556ccc1ac40b743645d1939f9e0726bddbc004d901c6f32454fa6"
+    sha256 cellar: :any,                 catalina:       "e265bd4c3015d7ce7e8c6efe0a0e0010aae344bff9081e23723978949dece36e"
   end
 
   head do
