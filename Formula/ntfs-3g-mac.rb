@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class Ntfs3gMac < Formula
   desc "Read-write NTFS driver for FUSE"
   homepage "https://www.tuxera.com/community/open-source-ntfs-3g/"
-  url "https://tuxera.com/opensource/ntfs-3g_ntfsprogs-2022.5.17.tgz"
-  sha256 "0489fbb6972581e1b417ab578d543f6ae522e7fa648c3c9b49c789510fd5eb93"
+  url "https://tuxera.com/opensource/ntfs-3g_ntfsprogs-2022.10.3.tgz"
+  sha256 "f20e36ee68074b845e3629e6bced4706ad053804cbaf062fbae60738f854170c"
   license all_of: ["GPL-2.0-or-later", "LGPL-2.0-or-later"]
 
   livecheck do
@@ -13,12 +13,8 @@ class Ntfs3gMac < Formula
   end
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ntfs-3g-mac-2022.5.17"
-    sha256 cellar: :any, arm64_monterey: "9b56b3d030aace12240cfcca5c505a16d7403c5d08ae22880eb2edf888e59175"
-    sha256 cellar: :any, monterey:       "ee6068cc63819c203b24ab4749bc69894beda8f8a204aaa63668f626ec7d4471"
-    sha256 cellar: :any, big_sur:        "c279548d3d07fdb950cb98cf27d195789021c046b49ddbd3cf0c0306382f62b7"
-    sha256 cellar: :any, catalina:       "f20a4b41c9e0e16625b40c1210898300f4e12aa87709f07c94e2c70dc5821b25"
-    sha256 cellar: :any, mojave:         "f0691c942eae549d753e1b1dd3efe6a177e919c8975f5b0022f0cc27c7f3c870"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ntfs-3g-mac-2022.10.3"
+    sha256 cellar: :any, arm64_monterey: "ed54a93dead27f066e7342cd702952a3606e98adaadc9b67dd0eea2b4ca8561d"
   end
 
   head do
