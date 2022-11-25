@@ -15,6 +15,7 @@ class SecurefsMac < Formula
     sha256 cellar: :any,                 monterey:       "33cf7a1a981086a428770a5a7a1ed33dcec521fc9d20531ccec2d7bdaff835a0"
     sha256 cellar: :any,                 big_sur:        "43f02b250cf103c61bca92e7132ebb90dfbbab0836bfc55f729841206addb273"
     sha256 cellar: :any,                 catalina:       "b3415327bc9e130b416f74897271488df6b6d6ec75a2f5f2f5099901b4d02794"
+    sha256 cellar: :any_skip_relocation, mojave:         "d1de1707eef8b902fbfb89bff3ac6475011a67b3ea60d1bd26b32e5243e687d1"
   end
 
   depends_on "cmake" => :build
