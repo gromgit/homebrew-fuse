@@ -40,10 +40,7 @@ class Ntfs3gMac < Formula
     setup_fuse
     ENV.append "LDFLAGS", "-lintl"
 
-    args = %W[
-      --disable-debug
-      --disable-dependency-tracking
-      --prefix=#{prefix}
+    args = std_configure_args + %W[
       --exec-prefix=#{prefix}
       --mandir=#{man}
       --with-fuse=external

@@ -5,6 +5,17 @@ class AvfsMac < Formula
   homepage "https://avf.sourceforge.io/"
   url "https://downloads.sourceforge.net/project/avf/avfs/1.1.4/avfs-1.1.4.tar.bz2"
   sha256 "3a7981af8557f864ae10d4b204c29969588fdb526e117456e8efd54bf8faa12b"
+  license all_of: [
+    "GPL-2.0-only",
+    "LGPL-2.0-only", # for shared library
+    "GPL-2.0-or-later", # modules/dav_ls.c
+    "Zlib", # zlib/*
+  ]
+
+  livecheck do
+    url :stable
+    regex(%r{url=.*?/avfs[._-]v?(\d+(?:\.\d+)+)\.t}i)
+  end
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/avfs-mac-1.1.4"
@@ -24,16 +35,13 @@ class AvfsMac < Formula
   def install
     setup_fuse
     args = %W[
-      --prefix=#{prefix}
-      --disable-debug
-      --disable-dependency-tracking
       --disable-silent-rules
       --enable-fuse
       --enable-library
       --with-ssl=#{Formula["openssl@1.1"].opt_prefix}
     ]
 
-    system "./configure", *args
+    system "./configure", *std_configure_args, *args
     system "make", "install"
   end
 
