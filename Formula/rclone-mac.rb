@@ -3,18 +3,14 @@ require_relative "../require/macfuse"
 class RcloneMac < Formula
   desc "Rsync for cloud storage (with macOS FUSE mount support)"
   homepage "https://rclone.org/"
-  url "https://github.com/rclone/rclone/archive/v1.60.0.tar.gz"
-  sha256 "357ee8bb1c1589d9640f1eb87ffeb9dbe8bc7ea6f33f90f56df142515a32f4f2"
+  url "https://github.com/rclone/rclone/archive/v1.60.1.tar.gz"
+  sha256 "b0037124c04fd1c31a1d9ae1c80e25555da3a22d7ab1ae714ed2c02247fbdac5"
   license "MIT"
   head "https://github.com/rclone/rclone.git"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/rclone-mac-1.60.0"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "5a0b4e4d87f6c492bce0f75783c88e94f390fe62399bdd85384d86592b3d506d"
-    sha256 cellar: :any_skip_relocation, monterey:       "7efcd181a779b3ead3e4350966ef6176eda620de4f7103ea623d1615bfcf08bd"
-    sha256 cellar: :any_skip_relocation, big_sur:        "59d25e2659235fae87dd0baa52c9764902bd72da24a3c9bb14db49ec63880bc2"
-    sha256 cellar: :any_skip_relocation, catalina:       "aaaf2a8ef8436960b72c6bed216fbbbdd67eae15c629a55cca2a950d4e569bc3"
-    sha256 cellar: :any_skip_relocation, mojave:         "da00e610024ced7e0a5567343ff62cdae3623f37b8cd99008159d860bd0d166f"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/rclone-mac-1.60.1"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "98dd82b6632d44325ac427a9ccf1bfe49c31c60032ce8a78734d87a52ab33929"
   end
 
   depends_on "go" => :build
