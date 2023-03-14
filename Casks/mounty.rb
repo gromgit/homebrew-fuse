@@ -11,6 +11,9 @@ cask "mounty" do
     version "2.0"
     sha256 "52bfb90e54368c62ad6fb980af610c6b30094426bbd22853265a8788e7e4e8eb"
 
+    depends_on cask: "macfuse"
+    depends_on formula: "gromgit/fuse/ntfs-3g-mac"
+
     livecheck do
       url :homepage
       regex(/Latest\s+version:\s*(\d+(?:\.\d+)+)/i)
@@ -21,9 +24,6 @@ cask "mounty" do
   name "Mounty for NTFS"
   desc "Re-mounts write-protected NTFS volumes"
   homepage "https://mounty.app/"
-
-  depends_on cask: "macfuse"
-  depends_on formula: "gromgit/fuse/ntfs-3g-mac"
 
   app "Mounty.app"
 
