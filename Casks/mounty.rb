@@ -8,8 +8,8 @@ cask "mounty" do
     end
   end
   on_big_sur :or_newer do
-    version "2.0"
-    sha256 "52bfb90e54368c62ad6fb980af610c6b30094426bbd22853265a8788e7e4e8eb"
+    version "2.1"
+    sha256 "2aeeb012ebaf1d60767d268e48c8b90726e3f05b2e35945f4293c11fbad84381"
 
     depends_on cask: "macfuse"
     depends_on formula: "gromgit/fuse/ntfs-3g-mac"
