@@ -19,7 +19,8 @@ class AvfsMac < Formula
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/avfs-mac-1.1.5"
-    sha256 big_sur: "5500a012293e374d1ed9476fe45c740c3739c15b416d503cde99fad1f9b3079d"
+    sha256 monterey: "9b0e55804b9c8b98a25aac295d0fb7ae352f9b446c35e210b260821e27ef0d9b"
+    sha256 big_sur:  "5500a012293e374d1ed9476fe45c740c3739c15b416d503cde99fad1f9b3079d"
   end
 
   depends_on "pkg-config" => :build
