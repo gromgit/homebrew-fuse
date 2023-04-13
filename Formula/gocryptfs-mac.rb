@@ -3,17 +3,13 @@ require_relative "../require/macfuse"
 class GocryptfsMac < Formula
   desc "Encrypted overlay filesystem written in Go"
   homepage "https://nuetzlich.net/gocryptfs/"
-  url "https://github.com/rfjakob/gocryptfs/releases/download/v2.3/gocryptfs_v2.3_src-deps.tar.gz"
-  sha256 "945e3287311547f9227f4a5b5d051fd6df8b8b41ce2a65f424de9829cc785129"
+  url "https://github.com/rfjakob/gocryptfs/releases/download/v2.3.1/gocryptfs_v2.3.1_src-deps.tar.gz"
+  sha256 "62a856a9771307b34a75a1e9ab9489abe4a4e7e7f9230c2b1046ca037ea2ba50"
   license "MIT"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gocryptfs-mac-2.3"
-    sha256 cellar: :any, arm64_monterey: "0341aa2dd0a2326278296966ff0948c28a754ec96deb07c064bb4492ec23ccd4"
-    sha256 cellar: :any, monterey:       "21c1865d764e951e7604f4e9c2f54030428f88bf14a8310d6bfc9da8114770a6"
-    sha256 cellar: :any, big_sur:        "a070a32ab604101810789b4529d379d484e80704692634949f72c4b172d87b35"
-    sha256 cellar: :any, catalina:       "53176991d453b646c5375816c21451b547a06fa805da95fdd5ae9157761925da"
-    sha256 cellar: :any, mojave:         "b8304e57a71f41583174b0abec99942d2621ebdbcc0784b879ce746a100bd1cb"
+    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gocryptfs-mac-2.3.1"
+    sha256 cellar: :any, arm64_monterey: "8eebd6792d724b5cb7fe33bc039d7ce7e76e83bc1a46898a52a92157b1e90362"
   end
 
   depends_on "go" => :build
