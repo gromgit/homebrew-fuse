@@ -11,6 +11,7 @@ class SquashfuseMac < Formula
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/squashfuse-mac-0.1.104"
     rebuild 1
     sha256 cellar: :any, arm64_monterey: "d54920002790e1cbf24e78ae5e0bfdd4d88ab8f0b8282c20d902e9202f474569"
+    sha256 cellar: :any, big_sur:        "d90a812d02c57e0515044fb7294d50216e8d68503da793234f5759444bf8f079"
   end
 
   depends_on "pkg-config" => :build
