@@ -10,6 +10,7 @@ class GocryptfsMac < Formula
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gocryptfs-mac-2.3.2"
     sha256 cellar: :any, arm64_monterey: "42e024906747e1cd13cf1c91e550ef37332e4d0ce296d866894e828efebfa7ef"
+    sha256 cellar: :any, big_sur:        "8fda3199d4b9b8bd1523ffe8b20e4965cfbacdb706b6b7a4f4d8e1b694ca6992"
   end
 
   depends_on "go" => :build
