@@ -11,6 +11,7 @@ class S3fsMac < Formula
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/s3fs-mac-1.92"
     sha256 cellar: :any, arm64_monterey: "25ec0f6ef2007436aacb9d10f0aabde8682e2fc8401eeb2588c5d926f49d8d9a"
+    sha256 cellar: :any, monterey:       "47412ac05763761d837732468a813229a78f884912090608a5223ec65092e1cc"
     sha256 cellar: :any, big_sur:        "4ec4d56e890e2ec95c5fbba9720dd7a319d9919e56aa01fc67166c8a093e0aef"
   end
 
