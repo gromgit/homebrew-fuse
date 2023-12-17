@@ -8,16 +8,16 @@ cask "mounty" do
     end
   end
   on_big_sur :or_newer do
-    version "2.1"
-    sha256 "2aeeb012ebaf1d60767d268e48c8b90726e3f05b2e35945f4293c11fbad84381"
-
-    depends_on cask: "macfuse"
-    depends_on formula: "gromgit/fuse/ntfs-3g-mac"
+    version "2.3"
+    sha256 "452326c4b96b231f62e3840e71f9b2bca0f0f2af4f7f4ddeaef54af5459b43e2"
 
     livecheck do
       url :homepage
       regex(/Latest\s+version:\s*(\d+(?:\.\d+)+)/i)
     end
+
+    depends_on cask: "macfuse"
+    depends_on formula: "gromgit/fuse/ntfs-3g-mac"
   end
 
   url "https://mounty.app/releases/Mounty-#{version}.dmg"
