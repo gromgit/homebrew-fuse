@@ -11,13 +11,13 @@ cask "mounty" do
     version "2.3"
     sha256 "452326c4b96b231f62e3840e71f9b2bca0f0f2af4f7f4ddeaef54af5459b43e2"
 
-    depends_on cask: "macfuse"
-    depends_on formula: "gromgit/fuse/ntfs-3g-mac"
-
     livecheck do
       url :homepage
       regex(/Latest\s+version:\s*(\d+(?:\.\d+)+)/i)
     end
+
+    depends_on cask: "macfuse"
+    depends_on formula: "gromgit/fuse/ntfs-3g-mac"
   end
 
   url "https://mounty.app/releases/Mounty-#{version}.dmg"
