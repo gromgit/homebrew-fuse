@@ -30,10 +30,14 @@ class RcloneMac < Formula
     system bin/name.to_s, "genautocomplete", "bash", "#{name}.bash"
     system bin/name.to_s, "genautocomplete", "zsh", "_rclone"
     system bin/name.to_s, "genautocomplete", "zsh", "_#{name}"
+    system bin/name.to_s, "genautocomplete", "fish", "rclone.fish"
+    system bin/name.to_s, "genautocomplete", "fish", "#{name}.fish"
     bash_completion.install "rclone.bash" => "rclone"
     bash_completion.install "#{name}.bash" => name.to_s
     zsh_completion.install "_rclone"
     zsh_completion.install "_#{name}"
+    fish_completion.install "rclone.fish" => "rclone"
+    fish_completion.install "#{name}.fish" => name.to_s
   end
 
   def caveats
