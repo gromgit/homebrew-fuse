@@ -23,6 +23,7 @@ class BindfsMac < Formula
     args = %W[
       --disable-debug
       --disable-dependency-tracking
+      --disable-macos-fs-link
       --prefix=#{prefix}
     ]
 
