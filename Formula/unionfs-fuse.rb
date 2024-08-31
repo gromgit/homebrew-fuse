@@ -10,11 +10,19 @@ class UnionfsFuse < Formula
 
   depends_on MacfuseRequirement
   depends_on "pkg-config"
+  depends_on "cmake"
 
   def install
     setup_fuse
     inreplace "CMakeLists.txt", "/usr/local", alt_fuse_root.to_s
-    system "make", "PREFIX=#{prefix}", "install"
+    mkdir "build" do
+      # Run CMake to configure the build system
+      system "cmake", "..", 
+        "-DCMAKE_C_COMPILER=clang", 
+        "-DCMAKE_C_FLAGS=-std=gnu99", 
+        *std_cmake_args
+      system "make", "install"
+    end
   end
 
   test do
