@@ -5,10 +5,7 @@ on:
   pull_request:
 jobs:
   test-bot:
-    strategy:
-      matrix:
-        os: [macOS-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: macos-13
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
@@ -16,7 +13,7 @@ jobs:
 
       - name: Cache Homebrew Bundler RubyGems
         id: cache
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ${{ steps.set-up-homebrew.outputs.gems-path }}
           key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
