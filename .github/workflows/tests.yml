@@ -1,8 +1,11 @@
 name: brew test-bot
+
 on:
   push:
-    branches: main
+    branches:
+      - main
   pull_request:
+
 jobs:
   test-bot:
     strategy:
@@ -15,16 +18,11 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@master
 
       - name: Cache Homebrew Bundler RubyGems
-        id: cache
         uses: actions/cache@v4
         with:
           path: ${{ steps.set-up-homebrew.outputs.gems-path }}
-          key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
-          restore-keys: ${{ runner.os }}-rubygems-
-
-      - name: Install Homebrew Bundler RubyGems
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: brew install-bundler-gems
+          key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: ${{ matrix.os }}-rubygems-
 
       - run: brew install --cask macfuse
 
@@ -34,12 +32,12 @@ jobs:
 
       - run: brew test-bot --only-tap-syntax
 
-      - run: brew test-bot --only-formulae
+      - run: brew test-bot --only-formulae --root-url='https://ghcr.io/v2/gromgit/fuse'
         if: github.event_name == 'pull_request'
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v4
         with:
-          name: bottles
+          name: bottles_${{ matrix.os }}
           path: '*.bottle.*'
