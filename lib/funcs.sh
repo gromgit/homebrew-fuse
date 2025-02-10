@@ -1,3 +1,5 @@
+# shellcheck shell=bash
+# shellcheck disable=SC2034
 # string formatters
 if [[ -t 1 ]]
 then
@@ -16,6 +18,8 @@ Tty_white=$(Tty_mkbold 37)
 Tty_underscore=$(Tty_escape 38)
 Tty_bold=$(Tty_mkbold 39)
 Tty_reset=$(Tty_escape 0)
+
+msg_prefix=""
 
 # fatal: Report fatal error
 # USAGE: fatal <msg> ...
@@ -54,7 +58,6 @@ need_progs() {
   if [[ ${#missing[@]} -gt 0 ]]
   then
     fatal "Commands missing: ${missing[*]}"
-    exit 1
   fi
 }
 
