@@ -3,7 +3,7 @@ require_relative "../require/macfuse"
 class BtfsMac < Formula
   desc "BitTorrent filesystem based on FUSE"
   homepage "https://github.com/johang/btfs"
-  url "https://github.com/johang/btfs/archive/v2.24.tar.gz"
+  url "https://github.com/johang/btfs/archive/refs/tags/v2.24.tar.gz"
   sha256 "d71ddefe3c572e05362542a0d9fd0240d8d4e1578ace55a8b3245176e7fd8935"
   license "GPL-3.0-only"
   head "https://github.com/johang/btfs.git"

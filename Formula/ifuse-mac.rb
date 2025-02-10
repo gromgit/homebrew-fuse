@@ -3,7 +3,7 @@ require_relative "../require/macfuse"
 class IfuseMac < Formula
   desc "FUSE module for iOS devices"
   homepage "https://www.libimobiledevice.org/"
-  url "https://github.com/libimobiledevice/ifuse/archive/1.1.4.tar.gz"
+  url "https://github.com/libimobiledevice/ifuse/archive/refs/tags/1.1.4.tar.gz"
   sha256 "2a00769e8f1d8bad50898b9d00baf12c8ae1cda2d19ff49eaa9bf580e5dbe78c"
   license "LGPL-2.1-or-later"
   head "https://cgit.sukimashita.com/ifuse.git"

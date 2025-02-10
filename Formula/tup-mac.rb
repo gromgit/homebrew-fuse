@@ -3,7 +3,7 @@ require_relative "../require/macfuse"
 class TupMac < Formula
   desc "File-based build system"
   homepage "http://gittup.org/tup/"
-  url "https://github.com/gittup/tup/archive/v0.7.11.tar.gz"
+  url "https://github.com/gittup/tup/archive/refs/tags/v0.7.11.tar.gz"
   sha256 "be24dff5f1f32cc85c73398487a756b4a393adab5e4d8500fd5164909d3e85b9"
   license "GPL-2.0-only"
   head "https://github.com/gittup/tup.git"

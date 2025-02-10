@@ -3,7 +3,7 @@ require_relative "../require/macfuse"
 class RofsFilteredMac < Formula
   desc "Filtered read-only filesystem for FUSE"
   homepage "https://github.com/gburca/rofs-filtered/"
-  url "https://github.com/gburca/rofs-filtered/archive/rel-1.7.tar.gz"
+  url "https://github.com/gburca/rofs-filtered/archive/refs/tags/rel-1.7.tar.gz"
   sha256 "d66066dfd0274a2fb7b71dd929445377dd23100b9fa43e3888dbe3fc7e8228e8"
   license "GPL-2.0-or-later"
 

@@ -3,7 +3,7 @@ require_relative "../require/macfuse"
 class DislockerMac < Formula
   desc "FUSE driver to read/write Windows' BitLocker-ed volumes"
   homepage "https://github.com/Aorimn/dislocker"
-  url "https://github.com/Aorimn/dislocker/archive/v0.7.3.tar.gz"
+  url "https://github.com/Aorimn/dislocker/archive/refs/tags/v0.7.3.tar.gz"
   sha256 "8d5275577c44f2bd87f6e05dd61971a71c0e56a9cbedf000bd38deadd8b6c1e6"
   license "GPL-2.0-or-later"
   revision 1

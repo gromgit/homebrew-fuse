@@ -14,14 +14,9 @@ Homebrew dropped support for macOS Mojave as of 25 Oct 2021. I'll continue to bu
 
 First, if you've already installed FUSE formulae from the core tap _before_ they were disabled, you might _not_ want to switch over to my formulae, because:
 1. As far as I know, Homebrew will not remove them from your system, even after the formulae themselves are deleted.
-2. Many of these formulae are rather old, so you're unlikely to find updates anyway. 
+2. Many of these formulae are rather old, so you're unlikely to find updates anyway.
 
-But if you _do_ want to install my formulae over the core ones, you should uninstall the latter first:
-```
-brew uninstall XYZ
-brew install gromgit/fuse/XYZ-mac
-```
-Note the `-mac` suffix to the formula name.
+But if you _do_ want to install my formulae over the core ones, you should uninstall the latter first.
 
 ## Documentation
 

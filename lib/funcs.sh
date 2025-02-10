@@ -1,5 +1,6 @@
 # string formatters
-if [[ -t 1 ]]; then
+if [[ -t 1 ]]
+then
   Tty_escape() { printf "\033[%sm" "$1"; }
 else
   Tty_escape() { :; }
@@ -46,10 +47,12 @@ info() {
 need_progs() {
   local missing=()
   local i
-  for i in "$@"; do
-    type -P "$i" &>/dev/null || missing+=("$i")
+  for i in "$@"
+  do
+    type -P "${i}" &>/dev/null || missing+=("${i}")
   done
-  if [[ ${#missing[@]} -gt 0 ]]; then
+  if [[ ${#missing[@]} -gt 0 ]]
+  then
     fatal "Commands missing: ${missing[*]}"
     exit 1
   fi
@@ -65,8 +68,9 @@ cmd() {
 # git_in: Run Git command in repo
 # USAGE: git_in <repo> <cmd> ...
 git_in() {
-  local repo=$1; shift
-  pushd "$repo" >/dev/null || fatal "Can't cd to '$repo'"
+  local repo=$1
+  shift
+  pushd "${repo}" >/dev/null || fatal "Can't cd to '${repo}'"
   cmd git "$@"
-  popd >/dev/null
+  popd >/dev/null || exit
 }

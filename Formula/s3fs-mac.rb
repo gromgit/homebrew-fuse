@@ -3,7 +3,7 @@ require_relative "../require/macfuse"
 class S3fsMac < Formula
   desc "FUSE-based file system backed by Amazon S3"
   homepage "https://github.com/s3fs-fuse/s3fs-fuse/wiki"
-  url "https://github.com/s3fs-fuse/s3fs-fuse/archive/v1.92.tar.gz"
+  url "https://github.com/s3fs-fuse/s3fs-fuse/archive/refs/tags/v1.92.tar.gz"
   sha256 "76ebea3c0784c5c0f6b84e009d555806aff86258886ced39eee316bf02ae8750"
   license "GPL-2.0-or-later"
   head "https://github.com/s3fs-fuse/s3fs-fuse.git"
