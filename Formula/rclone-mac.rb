@@ -42,6 +42,10 @@ class RcloneMac < Formula
       If you need to use it as `rclone`, add the "rclone" directory
       to your PATH like:
         PATH="#{opt_libexec}/rclone:$PATH"
+
+      `#{name}` supports the `mount` command on macOS, unlike the
+      Homebrew core `rclone`.  If you don't need `mount`, please
+      `brew install rclone` instead.
     EOS
   end
 
