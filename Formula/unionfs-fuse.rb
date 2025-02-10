@@ -8,12 +8,9 @@ class UnionfsFuse < Formula
   license "BSD-3-Clause"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/unionfs-fuse-2.2"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "f0bf63f52a20a6ff3703b0225243c35837d620696c261208e7e2256050c486fb"
-    sha256 cellar: :any,                 monterey:       "5325c885b86d7da9a263b0dccb5f40fa0b59b431bf8d9c5efb48d8b3cd043dc6"
-    sha256 cellar: :any,                 big_sur:        "4ce1e7bf69c4d4b47af623ace7a33f2ff467e3a944181e910e8ae81e27d1db80"
-    sha256 cellar: :any,                 catalina:       "a1961f1ecf7bfb8f6ce0af19ff3f1529986da999da813551bd58b6023e7f5a3f"
-    sha256 cellar: :any,                 mojave:         "0042e85328d5f2a83db5673882579fc4a71bc96148f165ad93d571fb7dbec988"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma: "5a0c0f743d06d272dac36193370071247d72beb391f7d95f8445d5a86079a1c5"
+    sha256 cellar: :any,                 ventura:      "053749fc797bf0ece88d571b7213d79082e112678a758c6e8ec6120f4e69a7d5"
   end
 
   depends_on "cmake" => :build
