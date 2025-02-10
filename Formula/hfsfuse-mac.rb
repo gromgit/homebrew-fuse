@@ -8,6 +8,12 @@ class HfsfuseMac < Formula
   license all_of: ["BSD-2-Clause", "MIT"]
   head "https://github.com/0x09/hfsfuse.git", branch: "master"
 
+  bottle do
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    sha256 cellar: :any, arm64_sonoma: "5c3fb573d7abe2b4ffff56c52509bd1a98d2379af89db53668b2a3ecbae58129"
+    sha256 cellar: :any, ventura:      "6edd19c3dfd49a01787af0c19b652f7e7b2a6d5671810733b02d0fce92041338"
+  end
+
   depends_on "lzfse"
   depends_on MacfuseRequirement
   depends_on :macos
