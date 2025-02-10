@@ -8,9 +8,9 @@ class BindfsMac < Formula
   license "GPL-2.0-or-later"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/bindfs-mac-1.17.4"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "15edc10eb2e8ed76603f8e1bb8c501c7447cb2c8ecbda7297bf7f40884ab75e5"
-    sha256 cellar: :any,                 big_sur:        "f136a250b5c6caeb8cd67e7b5db5a99e169cebaf96f11f57b7a86393c906ef85"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma: "d4478d1def846dbd6b0bdefd01d29b4b9e08890b088ccd788a3a11927695f196"
+    sha256 cellar: :any,                 ventura:      "05629478d5bdb21cd1ef3001fcddc6fba0c3b16feb58ec3d09e6d3c2ba45a172"
   end
 
   head do
