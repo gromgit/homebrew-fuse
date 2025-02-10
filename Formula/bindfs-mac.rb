@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class BindfsMac < Formula
   desc "FUSE file system for mounting to another location"
   homepage "https://bindfs.org/"
-  url "https://bindfs.org/downloads/bindfs-1.17.4.tar.gz"
-  sha256 "6fd4af9ba2ec2bdb603ef8eea2a9d12db2e5fe9cbe52b8640b415734a59f3dcc"
+  url "https://bindfs.org/downloads/bindfs-1.17.7.tar.gz"
+  sha256 "c0b060e94c3a231a1d4aa0bcf266ff189981a4ef38e42fbe23296a7d81719b7a"
   license "GPL-2.0-or-later"
 
   bottle do
@@ -14,7 +14,8 @@ class BindfsMac < Formula
   end
 
   head do
-    url "https://github.com/mpartel/bindfs.git"
+    url "https://github.com/mpartel/bindfs.git", branch: "master"
+
     depends_on "autoconf" => :build
     depends_on "automake" => :build
     depends_on "libtool" => :build
@@ -26,18 +27,8 @@ class BindfsMac < Formula
 
   def install
     setup_fuse
-    args = %W[
-      --disable-debug
-      --disable-dependency-tracking
-      --prefix=#{prefix}
-    ]
-
-    if build.head?
-      system "./autogen.sh", *args
-    else
-      system "./configure", *args
-    end
-
+    configure = build.head? ? "./autogen.sh" : "./configure"
+    system configure, "--disable-macos-fs-link", *std_configure_args
     system "make", "install"
   end
 
