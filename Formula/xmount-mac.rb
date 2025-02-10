@@ -2,9 +2,9 @@ require_relative "../require/macfuse"
 
 class XmountMac < Formula
   desc "Convert between multiple input & output disk image types"
-  homepage "https://www.pinguin.lu/xmount/"
-  url "https://files.pinguin.lu/xmount-0.7.6.tar.gz"
-  sha256 "76e544cd55edc2dae32c42a38a04e11336f4985e1d59cec9dd41e9f9af9b0008"
+  homepage "https://www.sits.lu/xmount"
+  url "https://code.sits.lu/foss/xmount/-/archive/1.2.0/xmount-1.2.0.tar.gz"
+  sha256 "abded7b53646c5d56ab9caf30473d75d0deb543e8262cadf2af572da3e1d127d"
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/xmount-mac-0.7.6"
@@ -15,21 +15,22 @@ class XmountMac < Formula
   end
 
   depends_on "cmake" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "afflib"
   depends_on "libewf"
   depends_on MacfuseRequirement
   depends_on :macos
-  depends_on "openssl@1.1"
+  depends_on "openssl@3"
 
   patch :DATA
 
   def install
     setup_fuse
-    ENV.prepend_path "PKG_CONFIG_PATH", Formula["openssl@1.1"].opt_lib/"pkgconfig"
+    ENV.prepend_path "PKG_CONFIG_PATH", Formula["openssl@3"].opt_lib/"pkgconfig"
 
-    system "cmake", ".", *fuse_cmake_args, *std_cmake_args
-    system "make", "install"
+    system "cmake", "-S", ".", "-B", "build", *fuse_cmake_args, *std_cmake_args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
   end
 
   test do
@@ -37,8 +38,10 @@ class XmountMac < Formula
   end
 end
 __END__
---- xmount-0.7.6/cmake_modules/FindLibOSXFUSE.cmake.orig	2021-05-05 14:32:44.220213677 +0800
-+++ xmount-0.7.6/cmake_modules/FindLibOSXFUSE.cmake	2021-05-05 14:35:07.185349574 +0800
+diff --git a/cmake_modules/FindLibOSXFUSE.cmake b/cmake_modules/FindLibOSXFUSE.cmake
+index 9b98990..315fe88 100644
+--- a/cmake_modules/FindLibOSXFUSE.cmake
++++ b/cmake_modules/FindLibOSXFUSE.cmake
 @@ -1,6 +1,6 @@
  # Try pkg-config first
  find_package(PkgConfig)
