@@ -17,7 +17,10 @@ class GoofysMac < Formula
     sha256 cellar: :any_skip_relocation, mojave:   "648d204e47b710662db2b778164346ef2b9fd77a4ec02af210fc8116eee7bb7f"
   end
 
-  depends_on "go@1.14" => :build
+  # Discussion ref: https://github.com/Homebrew/homebrew-core/pull/122082#issuecomment-1436535501
+  disable! date: "2024-02-12", because: :does_not_build
+
+  depends_on "go" => :build
   depends_on MacfuseRequirement
   depends_on :macos
 
