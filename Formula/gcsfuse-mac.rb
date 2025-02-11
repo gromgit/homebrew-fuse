@@ -20,6 +20,8 @@ class GcsfuseMac < Formula
     sha256 cellar: :any_skip_relocation, big_sur:        "7aae298075c4ab1a56635d3bec54360e6986c59596b66a132fcc2cdba8633a14"
   end
 
+  deprecate! date: "2025-02-11", because: :does_not_build
+
   depends_on "go" => :build
   depends_on MacfuseRequirement
   depends_on :macos
@@ -40,6 +42,14 @@ class GcsfuseMac < Formula
     # Use that tool to build gcsfuse itself.
     gcsfuse_version = build.head? ? Utils.git_short_head : version
     system "./build_gcsfuse", buildpath, prefix, gcsfuse_version, "-buildvcs=false"
+  end
+
+  def caveats
+    <<~EOS
+      Upstream doesn't officially support macOS (https://github.com/GoogleCloudPlatform/gcsfuse/issues/1299)
+      and current versions don't build at all on macOS.
+      This formula will not be updated until macOS is officially supported.
+    EOS
   end
 
   test do
