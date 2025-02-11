@@ -7,6 +7,11 @@ class DwarfsFuseMac < Formula
   sha256 "36767290a39f92782e41daaa3eb45e39550ad1a4294a6d8365bc0f456f75f00c"
   license "GPL-3.0-or-later"
 
+  livecheck do
+    url :stable
+    regex(/^(?:release[._-])?v?(\d+(?:\.\d+)+)$/i)
+  end
+
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
     sha256 cellar: :any, arm64_sonoma: "012c2ee263305d9ba037ff8a3c3656ab879b8e212b409f74d4558a83e832bf78"
