@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class S3BackerMac < Formula
   desc "FUSE-based single file backing store via Amazon S3"
   homepage "https://github.com/archiecobbs/s3backer"
-  url "https://archie-public.s3.amazonaws.com/s3backer/s3backer-2.0.2.tar.gz"
-  sha256 "0b2432f08e9b986364e35674f39dd11afc1670be382b23cdb7375e86ce132a02"
+  url "https://archie-public.s3.amazonaws.com/s3backer/s3backer-2.1.3.tar.gz"
+  sha256 "b49a7cae66bc29e8104db889e7e63137748d4a3442d88ebad9fffa4705808a81"
   license "GPL-2.0-or-later"
 
   bottle do
@@ -16,20 +16,16 @@ class S3BackerMac < Formula
     sha256 cellar: :any, mojave:         "a6d732072a6b2992c3cb08adcedac1fff5472da7e7c1858c57508b84af5570c2"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
+  depends_on "curl"
+  depends_on "expat"
   depends_on MacfuseRequirement
   depends_on :macos
-  depends_on "openssl@1.1"
-
-  # Fix missing environ declaration
-  patch do
-    url "https://github.com/archiecobbs/s3backer/commit/303a669356fa7cd6bc95ac7076ce51b1cab3970a.patch?full_index=1"
-    sha256 "b887d4498ae6a5f69e03b0f43db6f8ba0fba9907195cf706806e0ba9bd10ac5f"
-  end
+  depends_on "openssl@3"
 
   def install
     setup_fuse
-    system "./configure", "--prefix=#{prefix}"
+    system "./configure", "--disable-silent-rules", *std_configure_args
     system "make", "install"
   end
 
