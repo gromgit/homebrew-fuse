@@ -9,11 +9,9 @@ class CryfsMac < Formula
   head "https://github.com/cryfs/cryfs.git", branch: "develop"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/cryfs-mac-0.11.3"
-    sha256 cellar: :any, arm64_monterey: "225fae9b8f7deff22021f8246b0c5cfcb7ed2148a203db913129f51fd2127e70"
-    sha256 cellar: :any, monterey:       "86109f34aee00d844c118284841f01c76913506a3ab91799b8fcba37dd2872fc"
-    sha256 cellar: :any, big_sur:        "1db05c98160e1a5a27374df23cb23ccb16aa3b8480441ad655c4634773339f25"
-    sha256 cellar: :any, catalina:       "2bb057bb09d92948c76f563fa2347b0260b2c00872655b30dc83b4a54ca4bd74"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    sha256 cellar: :any, arm64_sonoma: "b5175d3198f2be05e267ffdee0000ce54a2f2a56dba534e71a3755b1abcedda3"
+    sha256 cellar: :any, ventura:      "38006b9bbd045368a952af0dc34997a2f51eb2b0a5d41feccd75e8e699aee0d0"
   end
 
   depends_on "cmake" => :build
