@@ -6,6 +6,11 @@ class ArchivemountMac < Formula
   url "https://www.cybernoia.de/software/archivemount/archivemount-0.9.1.tar.gz"
   sha256 "c529b981cacb19541b48ddafdafb2ede47a40fcaf16c677c1e2cd198b159c5b3"
 
+  livecheck do
+    url "https://raw.githubusercontent.com/cybernoid/archivemount/refs/heads/master/CHANGELOG"
+    regex(/\*\s+v?(\d+(?:\.\d+)+)\s+/i)
+  end
+
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/archivemount-mac-0.9.1"
     sha256 cellar: :any, arm64_monterey: "c79ff7d0b53fbdad256912dbfd3e92727e0f68d5248281e1ffdac941b1b1cfc5"
