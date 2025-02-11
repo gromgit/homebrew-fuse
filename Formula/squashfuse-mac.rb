@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class SquashfuseMac < Formula
   desc "FUSE filesystem to mount squashfs archives"
   homepage "https://github.com/vasi/squashfuse"
-  url "https://github.com/vasi/squashfuse/releases/download/0.1.104/squashfuse-0.1.104.tar.gz"
-  sha256 "aa52460559e0d0b1753f6b1af5c68cfb777ca5a13913285e93f4f9b7aa894b3a"
+  url "https://github.com/vasi/squashfuse/releases/download/0.5.2/squashfuse-0.5.2.tar.gz"
+  sha256 "54e4baaa20796e86a214a1f62bab07c7c361fb7a598375576d585712691178f5"
   license "BSD-2-Clause"
 
   bottle do
@@ -15,20 +15,22 @@ class SquashfuseMac < Formula
     sha256 cellar: :any, big_sur:        "d90a812d02c57e0515044fb7294d50216e8d68503da793234f5759444bf8f079"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+  depends_on "libtool" => :build
+  depends_on "pkgconf" => :build
   depends_on "lz4"
   depends_on "lzo"
   depends_on MacfuseRequirement
   depends_on :macos
   depends_on "squashfs"
   depends_on "xz"
+  depends_on "zlib"
   depends_on "zstd"
 
   def install
     setup_fuse
-    system "./configure", "--disable-dependency-tracking",
-                          "--disable-silent-rules",
-                          "--prefix=#{prefix}"
+    system "./configure", *std_configure_args
     system "make", "install"
   end
 
