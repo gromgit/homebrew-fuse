@@ -6,7 +6,7 @@ class Ext4fuseMac < Formula
   url "https://github.com/gerard/ext4fuse/archive/refs/tags/v0.1.3.tar.gz"
   sha256 "550f1e152c4de7d4ea517ee1c708f57bfebb0856281c508511419db45aa3ca9f"
   license "GPL-2.0-only"
-  head "https://github.com/gerard/ext4fuse.git"
+  head "https://github.com/gerard/ext4fuse.git", branch: "master"
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ext4fuse-mac-0.1.3"
@@ -17,7 +17,7 @@ class Ext4fuseMac < Formula
     sha256 cellar: :any,                 mojave:         "ddda15d4eac7e188e0fae145301c25acba30e0dbaa774332257a2966c2653524"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on MacfuseRequirement
   depends_on :macos
 
