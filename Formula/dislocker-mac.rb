@@ -5,8 +5,8 @@ class DislockerMac < Formula
   homepage "https://github.com/Aorimn/dislocker"
   url "https://github.com/Aorimn/dislocker/archive/refs/tags/v0.7.3.tar.gz"
   sha256 "8d5275577c44f2bd87f6e05dd61971a71c0e56a9cbedf000bd38deadd8b6c1e6"
-  license "GPL-2.0-or-later"
-  revision 1
+  license "GPL-2.0-only"
+  revision 2
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/dislocker-mac-0.7.3"
@@ -21,16 +21,24 @@ class DislockerMac < Formula
   depends_on "cmake" => :build
   depends_on MacfuseRequirement
   depends_on :macos
-  depends_on "mbedtls@2"
+  depends_on "mbedtls"
+
+  # Backport support for mbedtls 3.x
+  patch do
+    url "https://github.com/Aorimn/dislocker/commit/2cfbba2c8cc07e529622ba134d0a6982815d2b30.patch?full_index=1"
+    sha256 "07e0e3cac520a04a478f1f08d612340fc2743fd492b0835c7fb41cfdb5ef4244"
+  end
 
   # Fix OSXFUSE-isms
   patch :DATA
 
   def install
     setup_fuse
-    system "cmake", "-DCMAKE_DISABLE_FIND_PACKAGE_Ruby=TRUE", *fuse_cmake_args, *std_cmake_args
-    system "make"
-    system "make", "install"
+    system "cmake", "-S", ".", "-B", "build",
+           "-DCMAKE_DISABLE_FIND_PACKAGE_Ruby=TRUE",
+           *fuse_cmake_args, *std_cmake_args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
   end
 
   test do
