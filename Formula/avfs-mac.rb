@@ -24,22 +24,22 @@ class AvfsMac < Formula
     sha256 big_sur:        "5500a012293e374d1ed9476fe45c740c3739c15b416d503cde99fad1f9b3079d"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
+  depends_on "bzip2"
   depends_on MacfuseRequirement
   depends_on :macos
-  depends_on "openssl@1.1"
   depends_on "xz"
+  depends_on "zlib"
 
   def install
     setup_fuse
-    args = %W[
-      --disable-silent-rules
-      --enable-fuse
-      --enable-library
-      --with-ssl=#{Formula["openssl@1.1"].opt_prefix}
-    ]
-
-    system "./configure", *std_configure_args, *args
+    system "./configure", "--disable-silent-rules",
+                          "--enable-fuse",
+                          "--enable-library",
+                          "--with-system-zlib",
+                          "--with-system-bzlib",
+                          "--with-xz",
+                          *std_configure_args
     system "make", "install"
   end
 
