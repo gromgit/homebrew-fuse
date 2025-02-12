@@ -8,6 +8,12 @@ class FusehfsMac < Formula
   license "GPL-2.0-or-later"
   head "https://github.com/thejoelpatrol/fusehfs.git", branch: "master"
 
+  bottle do
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma: "937bc2d207749a4a9008abc5961f683c6b6753703ef8e78704746bec751e6dd3"
+    sha256 cellar: :any,                 ventura:      "1c82b43b527c4ebb8e7979172a093856d8b7ca1be38d668888799db82239ed2a"
+  end
+
   depends_on xcode: :build
   depends_on MacfuseRequirement
   depends_on :macos
