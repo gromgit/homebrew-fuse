@@ -8,12 +8,10 @@ class WdfsMac < Formula
   license "GPL-2.0-or-later"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/wdfs-mac-1.4.2"
-    sha256 cellar: :any, arm64_monterey: "c3c3814f21f2e828a99f9fbed147a40ba6fbbf0ff5176245a4a6439d726c0d21"
-    sha256 cellar: :any, monterey:       "2e8a0932b4f6148f09b8df5be63e3e0e69536a452820f19b0d8b3e261d4f7bc6"
-    sha256 cellar: :any, big_sur:        "8e9cbe0059e88abf08f411c3b30b63c6a5b73e57a2d150a4cdfcded9e02863ac"
-    sha256 cellar: :any, catalina:       "ff22c3b38115e75154a5bfd334481acc8594f04486cd667ab5f0a78fd9be67b9"
-    sha256 cellar: :any, mojave:         "a8a7c080c4e56fe4b8eebaf6f66d594ebd72f5155ae01aa33e704883625e615b"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    rebuild 1
+    sha256 cellar: :any, arm64_sonoma: "470836a78df1eefa59cf45a46d2592313bdb32a51d0797266fe2c6ee1c588867"
+    sha256 cellar: :any, ventura:      "d4350a182eeecb7003c5ff582c5a1329e156f894d9ac0a0aa64485f607fdc55d"
   end
 
   depends_on "pkgconf" => :build
