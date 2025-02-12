@@ -16,7 +16,7 @@ class Mp3fsMac < Formula
     sha256 cellar: :any, mojave:         "64aeb9e00ab95135f27a62319c607ee47ecbaf24459e27289da40ff8c70366a2"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "flac"
   depends_on "lame"
   depends_on "libid3tag"
@@ -28,7 +28,7 @@ class Mp3fsMac < Formula
 
   def install
     setup_fuse
-    system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}"
+    system "./configure", *std_configure_args
     system "make", "install"
   end
 
