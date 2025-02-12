@@ -19,8 +19,9 @@ class SimpleMtpfsMac < Formula
   depends_on "autoconf" => :build
   depends_on "autoconf-archive" => :build # required for AX_CXX_COMPILE_STDCXX_17
   depends_on "automake" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "libmtp"
+  depends_on "libusb"
   depends_on MacfuseRequirement
   depends_on :macos
 
@@ -29,7 +30,7 @@ class SimpleMtpfsMac < Formula
   def install
     setup_fuse
     system "./autogen.sh"
-    system "./configure", "--prefix=#{prefix}"
+    system "./configure", "--disable-silent-rules", *std_configure_args
     system "make"
     system "make", "install"
   end
