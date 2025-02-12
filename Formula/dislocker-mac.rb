@@ -9,13 +9,9 @@ class DislockerMac < Formula
   revision 2
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/dislocker-mac-0.7.3"
-    rebuild 1
-    sha256 arm64_monterey: "911c8174a086be60b70d9a1d3caf7ca02d35830ec34d1870bf05b17d24b7321c"
-    sha256 monterey:       "701af14f991f776425578a38ee054bca520f4d2310071a90031df65558e6132a"
-    sha256 big_sur:        "2d972fe6fb9e2cba0674c4309805166224cdf8a752d5855eb8d52758e2378856"
-    sha256 catalina:       "14cea99377a68eef03508d53550987025eab4b1d0cdf4d07e7b144f0489d7594"
-    sha256 mojave:         "51573fbf958a3ceb98a57b28d1f2ab2548cbd4f51eb5ed9cec7aa0e236be39d6"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    sha256 cellar: :any, arm64_sonoma: "018c699c1d89ce79a16974486a39b5a23763cd4fc0063d1de9bc326a34fa5a40"
+    sha256 cellar: :any, ventura:      "054aa62cbb45f561f88d200c95b308a45126320b361b5807dea5064ace6bf894"
   end
 
   depends_on "cmake" => :build
