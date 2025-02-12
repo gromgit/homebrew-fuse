@@ -16,7 +16,7 @@ class WdfsMac < Formula
     sha256 cellar: :any, mojave:         "a8a7c080c4e56fe4b8eebaf6f66d594ebd72f5155ae01aa33e704883625e615b"
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "glib"
   depends_on MacfuseRequirement
   depends_on :macos
@@ -24,12 +24,11 @@ class WdfsMac < Formula
 
   def install
     setup_fuse
-    system "./configure", "--disable-debug", "--disable-dependency-tracking",
-                          "--prefix=#{prefix}"
+    system "./configure", *std_configure_args
     system "make", "install"
   end
 
   test do
-    system "#{bin}/wdfs", "-v"
+    system bin/"wdfs", "-v"
   end
 end
