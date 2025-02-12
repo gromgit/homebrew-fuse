@@ -20,6 +20,10 @@ class GitfsMac < Formula
     sha256 cellar: :any, mojave:         "7d0605b4d2d6022c607ae6dfbdf87ae984b2f73bbe43e35cddf60fef0b79d3dc"
   end
 
+  # Last release on 2019-10-20 and upstream has locked pygit2==0.28.2, which Homebrew
+  # has been ignoring and manually updating to support recent `libgit2` versions.
+  disable! date: "2023-10-06", because: :unmaintained
+
   depends_on "libgit2"
   depends_on MacfuseRequirement
   depends_on :macos
