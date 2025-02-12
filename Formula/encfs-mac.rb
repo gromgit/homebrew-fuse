@@ -12,12 +12,9 @@ class EncfsMac < Formula
   head "https://github.com/vgough/encfs.git", branch: "master"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/encfs-mac-1.9.5"
-    sha256 arm64_monterey: "238100c7b23cb0b9030c72f707402947f58b354d3e9af7121100c23498d7c915"
-    sha256 monterey:       "606d9e55178edbf88c29b36942740f731ace9c913e8db1c0351cc821276115a5"
-    sha256 big_sur:        "1e40532f256119f88304d5fa3033b8a60e513f3c3531cd3471455a83fcebafa7"
-    sha256 catalina:       "ab083e7303625337405e8f384f99d51a5208c54f4cd713dbd99b3bc196da2e90"
-    sha256 mojave:         "7c363d28eac6e6582b352202db79f17f0a0efa4871a4991313c158cd04911dcd"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    sha256 arm64_sonoma: "e487eff9455449dd1c22e5381732fb040c20c124e436dce941c891b2d24d7c51"
+    sha256 ventura:      "8d8411520042ab3ee86816119cdd99761fbadaf2064e22ba20df571bb9fcba5c"
   end
 
   depends_on "cmake" => :build
