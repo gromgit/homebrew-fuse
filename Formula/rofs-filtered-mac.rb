@@ -16,18 +16,50 @@ class RofsFilteredMac < Formula
   end
 
   depends_on "cmake" => :build
+  depends_on "pkgconf" => :build
   depends_on MacfuseRequirement
   depends_on :macos
 
+  # Use pkgconfig to find FUSE
+  patch :DATA
+
   def install
     setup_fuse
-    mkdir "build" do
-      system "cmake", "..", "-DCMAKE_INSTALL_SYSCONFDIR=#{etc}", *fuse_cmake_args, *std_cmake_args
-      system "make", "install"
-    end
+    system "cmake", "-S", ".", "-B", "build",
+                    "-DCMAKE_INSTALL_SYSCONFDIR=#{etc}",
+                    *fuse_cmake_args, *std_cmake_args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
   end
 
   test do
     system "#{bin}/rofs-filtered", "--version"
   end
 end
+__END__
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 53a6687..cb4f121 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,8 +12,8 @@ add_definitions(-D_GNU_SOURCE)
+ set(CMAKE_C_FLAGS "-Wall -std=c99")
+ 
+ # find fuse library
+-find_package (FUSE REQUIRED)
+-include_directories (${FUSE_INCLUDE_DIR})
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(FUSE fuse REQUIRED)
+ add_definitions(-D_FILE_OFFSET_BITS=64)
+ 
+ # generate config file
+@@ -24,7 +24,9 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
+ # create and configure targets
+ add_executable(rofs-filtered rofs-filtered.c)
+-target_link_libraries(rofs-filtered ${FUSE_LIBRARIES})
++target_include_directories(rofs-filtered PUBLIC ${FUSE_INCLUDE_DIRS})
++target_link_libraries(rofs-filtered PUBLIC ${LIBS} ${FUSE_LDFLAGS})
++target_compile_options(rofs-filtered PUBLIC ${FUSE_CFLAGS})
+ 
+ # configure installation
+ install(TARGETS rofs-filtered DESTINATION ${CMAKE_INSTALL_BINDIR})
