@@ -30,7 +30,7 @@ class Ntfs3gMac < Formula
     depends_on "libtool" => :build
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "coreutils" => :test
   depends_on "gettext"
   depends_on MacfuseRequirement
@@ -40,7 +40,7 @@ class Ntfs3gMac < Formula
     setup_fuse
     ENV.append "LDFLAGS", "-lintl"
 
-    args = std_configure_args + %W[
+    args = %W[
       --exec-prefix=#{prefix}
       --mandir=#{man}
       --with-fuse=external
@@ -49,8 +49,8 @@ class Ntfs3gMac < Formula
 
     system "./autogen.sh" if build.head?
     # Workaround for hardcoded /sbin in ntfsprogs
-    inreplace "ntfsprogs/Makefile.in", "/sbin", sbin
-    system "./configure", *args
+    inreplace Dir["{ntfsprogs,src}/Makefile.in"], "$(DESTDIR)/sbin/", "$(DESTDIR)#{sbin}/"
+    system "./configure", *args, *std_configure_args
     system "make"
     system "make", "install"
 
