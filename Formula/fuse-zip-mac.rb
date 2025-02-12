@@ -9,12 +9,10 @@ class FuseZipMac < Formula
   head "https://bitbucket.org/agalanin/fuse-zip", using: :hg, branch: "master"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/fuse-zip-mac-0.7.2"
-    sha256 cellar: :any, arm64_monterey: "5921343a41dad6c06a363adacd28acf76b6dcc57825342feae6da640bd04a1cc"
-    sha256 cellar: :any, monterey:       "c5c646516f1642b7fc9401c7013b70fe8aa5807ac7168fee904e6c61bfc3ab7b"
-    sha256 cellar: :any, big_sur:        "2fc541f86072d8faba8a4aa99ab1de342f38e6f4af8ffecf8764a45b1b747e2b"
-    sha256 cellar: :any, catalina:       "b2e45519d7a30220bcbb666abc00e299436965dd64c55abe4d656542a1e0fa29"
-    sha256 cellar: :any, mojave:         "f4c68265733a7625566fbdaa7addf5696f52909920fd940630ece3e90b80309e"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    rebuild 1
+    sha256 cellar: :any, arm64_sonoma: "07d4a035c41b76adc6fa4e320ba0e002bc6ff6e8ca52e0e47d0ad42b267762f0"
+    sha256 cellar: :any, ventura:      "185b074a45baad043449b409896b0425ffcdc83eeac02d903f6b5a84867cb7e2"
   end
 
   depends_on "pkgconf" => :build
