@@ -9,12 +9,10 @@ class CurlftpfsMac < Formula
   head ":pserver:anonymous:@curlftpfs.cvs.sourceforge.net:/cvsroot/curlftpfs", using: :cvs
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/curlftpfs-mac-0.9.2"
-    sha256 cellar: :any, arm64_monterey: "172f79e5a34ad1e14deaaa60af373a23000272842c56e95436a929e539236046"
-    sha256 cellar: :any, monterey:       "cdfd5ef137f06d76e5ee7f7f62fee475fc07c6858ad461b1b3ba1e0d0f811555"
-    sha256 cellar: :any, big_sur:        "cd9cee6bb3058e276f82313f91a1647466b7d7ad385aaeaae75d66f9f6fa56f4"
-    sha256 cellar: :any, catalina:       "989cd7c3567a7f55aa7f6b32f251adbfdf508c35515a38cd0030d66ff11c36d1"
-    sha256 cellar: :any, mojave:         "a29922525b73e1083725b7b15ff047f55d63314e794c4a9060c271274f379aa0"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    rebuild 1
+    sha256 cellar: :any, arm64_sonoma: "52266b0b218496e9f24f982e74165991d97b49791862e683fb240d635e63f063"
+    sha256 cellar: :any, ventura:      "1ed49dce5000b70b4ef4e47b3d8c535b4c25994cde3122a461483aa34e5d6cbe"
   end
 
   depends_on "autoconf" => :build
