@@ -19,15 +19,31 @@ class RofsFilteredMac < Formula
   depends_on MacfuseRequirement
   depends_on :macos
 
+  patch :DATA
+
   def install
     setup_fuse
-    mkdir "build" do
-      system "cmake", "..", "-DCMAKE_INSTALL_SYSCONFDIR=#{etc}", *fuse_cmake_args, *std_cmake_args
-      system "make", "install"
-    end
+    system "cmake", "-S", ".", "-B", "build",
+                    "-DCMAKE_INSTALL_SYSCONFDIR=#{etc}", "-DCMAKE_C_COMPILER=/usr/bin/cc",
+                    *fuse_cmake_args, *std_cmake_args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
   end
 
   test do
     system "#{bin}/rofs-filtered", "--version"
   end
 end
+__END__
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 53a6687..fc700e6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,6 +24,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
+ # create and configure targets
+ add_executable(rofs-filtered rofs-filtered.c)
++target_include_directories(rofs-filtered PUBLIC /usr/local/include/fuse)
+ target_link_libraries(rofs-filtered ${FUSE_LIBRARIES})
+ 
+ # configure installation
