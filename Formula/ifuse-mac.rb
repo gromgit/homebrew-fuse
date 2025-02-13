@@ -9,12 +9,10 @@ class IfuseMac < Formula
   head "https://github.com/libimobiledevice/ifuse.git", branch: "master"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ifuse-mac-1.1.4"
-    sha256 cellar: :any, arm64_monterey: "da8f39c40ab72cf3a5ae28b7f8b118c0aae52f1ea6249c8fb71f131752a7e679"
-    sha256 cellar: :any, monterey:       "b2b302e5373d5461fc0d41c680e500b5874c11a195a337e265ac6fad5cb9fba3"
-    sha256 cellar: :any, big_sur:        "f6c2e432e98e35ea512c85e9eed06015e157477c58ccc3209fc915401a4a3bdc"
-    sha256 cellar: :any, catalina:       "bafcd207118ffb63fcb67ce909f52bde7dc2fa138a592be30e6d7cdb96580377"
-    sha256 cellar: :any, mojave:         "5c2d874a7377fa5c91bad47e7ee82adb4d965e3019fbf4b5128c318549f66180"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    rebuild 1
+    sha256 cellar: :any, arm64_sonoma: "06ceadb0e0c288cc0f02b5c64c7051f8d54dd39d697801c305ba70101780e3ee"
+    sha256 cellar: :any, ventura:      "d7aecf23caa314cb17ae46d790af547fceca621a300f19f74b2593c0c4cafe10"
   end
 
   depends_on "autoconf" => :build
