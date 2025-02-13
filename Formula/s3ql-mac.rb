@@ -19,12 +19,14 @@ class S3qlMac < Formula
     sha256 cellar: :any, mojave:         "c8438bb43cc23a6addf967de989d564af559793f639553834232319913915b67"
   end
 
+  deprecate! date: "2020-03-20", because: "requires FUSE 3 for v3.4.0 onwards, and doesn't build on modern macOS"
+
   depends_on "pkg-config" => :build
   depends_on "libffi"
   depends_on MacfuseRequirement
   depends_on :macos
-  depends_on "openssl@1.1"
-  depends_on "python@3.8"
+  depends_on "openssl@3"
+  depends_on "python@3.13"
 
   resource "apsw-3-9-2" do
     url "https://files.pythonhosted.org/packages/b5/a1/3de5a2d35fc34939672f4e1bd7d68cca359a31b76926f00d95f434c63aaa/apsw-3.9.2-r1.tar.gz"
