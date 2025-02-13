@@ -19,7 +19,7 @@ class S3qlMac < Formula
     sha256 cellar: :any, mojave:         "c8438bb43cc23a6addf967de989d564af559793f639553834232319913915b67"
   end
 
-  deprecate! date: "2020-03-20", because: "requires FUSE 3 for v3.4.0 onwards, and doesn't build on modern macOS"
+  deprecate! date: "2025-02-11", because: "requires FUSE 3 for v3.4.0 onwards, and doesn't build on modern macOS"
 
   depends_on "pkg-config" => :build
   depends_on "libffi"
