@@ -6,7 +6,7 @@ class IfuseMac < Formula
   url "https://github.com/libimobiledevice/ifuse/archive/refs/tags/1.1.4.tar.gz"
   sha256 "2a00769e8f1d8bad50898b9d00baf12c8ae1cda2d19ff49eaa9bf580e5dbe78c"
   license "LGPL-2.1-or-later"
-  head "https://cgit.sukimashita.com/ifuse.git"
+  head "https://github.com/libimobiledevice/ifuse.git", branch: "master"
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/ifuse-mac-1.1.4"
@@ -20,7 +20,7 @@ class IfuseMac < Formula
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on "glib"
   depends_on "libimobiledevice"
   depends_on "libplist"
@@ -29,9 +29,7 @@ class IfuseMac < Formula
 
   def install
     setup_fuse
-    system "./autogen.sh"
-    system "./configure", "--disable-dependency-tracking",
-                          "--prefix=#{prefix}"
+    system "./autogen.sh", *std_configure_args
     system "make", "install"
   end
 
