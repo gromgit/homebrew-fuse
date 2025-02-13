@@ -17,6 +17,8 @@ class SshfsMac < Formula
     sha256 cellar: :any, mojave:         "6389b69b921295f5be6eb35336649f558375eb24da60573b376a313331a4d18c"
   end
 
+  deprecate! date: "2025-02-11", because: :unmaintained
+
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
