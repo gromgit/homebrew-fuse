@@ -9,6 +9,12 @@ class RatarmountMac < Formula
   sha256 "fc5fadfc4dc268613eb3df832a0b3a3bc7fd40cd119b6aff83beaaa29ed05254"
   license "MIT"
 
+  bottle do
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    sha256 cellar: :any, arm64_sonoma: "68b4006721eabdf2e61d7cd70923e6947e7584632e90f959b27b148291e285dc"
+    sha256 cellar: :any, ventura:      "89fef5efaf90f0a381e74a53f42d301c3f3b81ad15ddcc20929b8a93e0d48dc7"
+  end
+
   depends_on "libgit2"
   depends_on MacfuseRequirement
   depends_on :macos
