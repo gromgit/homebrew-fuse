@@ -7,11 +7,9 @@ class XmountMac < Formula
   sha256 "abded7b53646c5d56ab9caf30473d75d0deb543e8262cadf2af572da3e1d127d"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/xmount-mac-0.7.6"
-    sha256 monterey: "3892b95a295e6c00bcf433d083248399d4d826f922db317e38a4563f6dd5d086"
-    sha256 big_sur:  "7759a60875ac63e16cf33d1b87376be2f1cc57adc2ac4653e71d7bc10b5707db"
-    sha256 catalina: "9e25523204f40e98d32026209e5380ecda4048b9f9a4abed15574fb07c50d765"
-    sha256 mojave:   "2a195cb467d9df4a0152f56aa66e29a5b3e039558a60a9fb969d41fb53ddc781"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    sha256 arm64_sonoma: "1d67ae2174104c69471b892aceaface732e0853c15c039c260ef78c1f493eea9"
+    sha256 ventura:      "aa2caa902402f9aa415b5bf570c046f5dcf7129621b7a514de1e4cc031b4ab7d"
   end
 
   depends_on "cmake" => :build
