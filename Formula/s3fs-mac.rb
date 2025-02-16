@@ -40,6 +40,13 @@ class S3fsMac < Formula
     system "make", "install"
   end
 
+  def caveats
+    <<~EOS
+      This is the final version that supports FUSE 2.
+      Further updates require a macOS FUSE 3 implementation.
+    EOS
+  end
+
   test do
     system "#{bin}/s3fs", "--version"
   end
