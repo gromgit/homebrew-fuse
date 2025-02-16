@@ -8,11 +8,10 @@ class RofsFilteredMac < Formula
   license "GPL-2.0-or-later"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/rofs-filtered-mac-1.7"
-    sha256 cellar: :any, monterey: "d1b89e344c767ca3c38cbc5dda85a840892961fca26726c09be0582db57d0200"
-    sha256 cellar: :any, big_sur:  "cb7cbae756a0415b639c86a4d7998fd95bc66cde8be46f6cac08d8a158595f55"
-    sha256 cellar: :any, catalina: "b1606a594b8aa539680f7796ef2dd16f8f38fb239da08b2af2a5b1914a9c480f"
-    sha256 cellar: :any, mojave:   "d3fc41566f4d522148ed320f31751e48b325935fe94f79cd17293b840011bdf7"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_sonoma: "666320aa517fcda5fea5a9189caf62889ea80efc97991325934610f526565742"
+    sha256 cellar: :any,                 ventura:      "0340ec5bd37f169ca31e5240a26766abef47040363f13f1fc0f7de2cd58a3e59"
   end
 
   depends_on "cmake" => :build
