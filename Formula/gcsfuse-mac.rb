@@ -3,14 +3,14 @@ require_relative "../require/macfuse"
 class GcsfuseMac < Formula
   desc "User-space file system for interacting with Google Cloud"
   homepage "https://github.com/googlecloudplatform/gcsfuse"
-  url "https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v0.42.5.tar.gz"
-  sha256 "272ad522ebbbfe3da87ee00aeff5fe347d25a4a49499c254e482a59bbed5c692"
+  url "https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v2.4.0.tar.gz"
+  sha256 "44a9e9da84f04be59ef736d283624c116ec90d103c0f87c874b8ce5e51d5df85"
   license "Apache-2.0"
   head "https://github.com/GoogleCloudPlatform/gcsfuse.git"
 
   livecheck do
     url :stable
-    regex(/^v?(\d+(?:\.\d+)+)$/i)
+    strategy :github_latest
   end
 
   bottle do
@@ -20,17 +20,11 @@ class GcsfuseMac < Formula
     sha256 cellar: :any_skip_relocation, big_sur:        "7aae298075c4ab1a56635d3bec54360e6986c59596b66a132fcc2cdba8633a14"
   end
 
-  deprecate! date: "2025-02-11", because: :does_not_build
-
   depends_on "go" => :build
   depends_on MacfuseRequirement
   depends_on :macos
 
-  # Review for removal on next release
-  patch do
-    url "https://github.com/GoogleCloudPlatform/gcsfuse/commit/c2abca911ff03b84ab64214b6717d8d7cc74c10f.patch?full_index=1"
-    sha256 "62930a0ae8322a071d489b1dd386206742b962123312b1368589c731867945b4"
-  end
+  patch :DATA
 
   def install
     setup_fuse
@@ -40,20 +34,36 @@ class GcsfuseMac < Formula
     system "go", "build", "./tools/build_gcsfuse"
 
     # Use that tool to build gcsfuse itself.
-    gcsfuse_version = build.head? ? Utils.git_short_head : version
-    system "./build_gcsfuse", buildpath, prefix, gcsfuse_version, "-buildvcs=false"
+    gcsfuse_version = build.head? ? Utils.git_short_head : version.to_s
+    system "./build_gcsfuse", buildpath, prefix, gcsfuse_version
   end
 
   def caveats
     <<~EOS
-      Upstream doesn't officially support macOS (https://github.com/GoogleCloudPlatform/gcsfuse/issues/1299)
-      and current versions don't build at all on macOS.
+      Upstream hasn't decided whether to support macOS (https://github.com/GoogleCloudPlatform/gcsfuse/issues/1299)
+      and versions after v2.4.0 don't build at all on macOS.
       This formula will not be updated until macOS is officially supported.
     EOS
   end
 
   test do
-    system "#{bin}/gcsfuse", "--help"
+    system bin/"gcsfuse", "--help"
     system "#{sbin}/mount_gcsfuse", "--help"
   end
 end
+
+__END__
+diff --git a/tools/build_gcsfuse/main.go b/tools/build_gcsfuse/main.go
+index b1a4022..678f747 100644
+--- a/tools/build_gcsfuse/main.go
++++ b/tools/build_gcsfuse/main.go
+@@ -134,8 +134,6 @@ func buildBinaries(dstDir, srcDir, version string, buildArgs []string) (err erro
+ 		cmd := exec.Command(
+ 			"go",
+ 			"build",
+-			"-C",
+-			srcDir,
+ 			"-o",
+ 			path.Join(dstDir, bin.outputPath))
+ 
+
