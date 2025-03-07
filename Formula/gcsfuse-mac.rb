@@ -3,10 +3,10 @@ require_relative "../require/macfuse"
 class GcsfuseMac < Formula
   desc "User-space file system for interacting with Google Cloud"
   homepage "https://github.com/googlecloudplatform/gcsfuse"
-  url "https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v2.4.0.tar.gz"
-  sha256 "44a9e9da84f04be59ef736d283624c116ec90d103c0f87c874b8ce5e51d5df85"
+  url "https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v2.10.0.tar.gz"
+  sha256 "20178d804ebacb5ea2842ae33658f52abda11063c078ad2a56ff819cad5c49a0"
   license "Apache-2.0"
-  head "https://github.com/GoogleCloudPlatform/gcsfuse.git"
+  head "https://github.com/GoogleCloudPlatform/gcsfuse.git", branch: "master"
 
   livecheck do
     url :stable
@@ -22,6 +22,11 @@ class GcsfuseMac < Formula
   depends_on "go" => :build
   depends_on MacfuseRequirement
   depends_on :macos
+
+  patch do
+    url "https://raw.githubusercontent.com/gromgit/formula-patches/4c36aab39be3efbb406b756e60f0359cdf64bca5/gcsfuse-mac/macos.patch?full_index=1"
+    sha256 "518e94c31f3fcba5bb3455f86b42250fcea03bcfe3a883c8364f685defb6fe2f"
+  end
 
   patch :DATA
 
@@ -39,9 +44,7 @@ class GcsfuseMac < Formula
 
   def caveats
     <<~EOS
-      Upstream hasn't decided whether to support macOS (https://github.com/GoogleCloudPlatform/gcsfuse/issues/1299)
-      and versions after v2.4.0 don't build at all on macOS.
-      This formula will not be updated until macOS is officially supported.
+      Upstream doesn't actively support macOS (https://github.com/GoogleCloudPlatform/gcsfuse/issues/1299).
     EOS
   end
 
