@@ -105,7 +105,7 @@ class GitfsMac < Formula
     EOS
 
     system Formula["python@3.9"].opt_bin/"python3", "test.py"
-    assert_predicate testpath/"testing/.git/config", :exist?
+    assert_path_exists testpath/"testing/.git/config"
     cd "testing" do
       system "git", "remote", "add", "homebrew", "https://github.com/Homebrew/homebrew-core.git"
       assert_match "homebrew", shell_output("git remote")
