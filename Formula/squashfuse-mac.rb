@@ -9,8 +9,8 @@ class SquashfuseMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_sonoma: "b2f082db1c2fa3a20ef405780f6f82cafab0f24b5f0951087eee701901b8376c"
-    sha256 cellar: :any, ventura:      "a18fed686e4254c616665297a869b364ee1789fef823795e36c2e03380d837de"
+    sha256 cellar: :any, arm64_sonoma: "aee0cf2b09b831d88fec6290c66b41540f7251bbea8fb1c27c139a2da566c793"
+    sha256 cellar: :any, ventura:      "ed0b43ad61083d4b3c53985628b6b73233fa85f6a858cca8d6d687db5f3b7d3d"
   end
 
   depends_on "autoconf" => :build
