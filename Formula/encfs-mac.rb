@@ -8,7 +8,7 @@ class EncfsMac < Formula
   # The code comprising the EncFS library (libencfs) is licensed under the LGPL.
   # The main programs (encfs, encfsctl, etc) are licensed under the GPL.
   license "GPL-3.0-or-later"
-  revision 1
+  revision 2
   head "https://github.com/vgough/encfs.git", branch: "master"
 
   bottle do
@@ -36,6 +36,7 @@ class EncfsMac < Formula
     system "cmake", "-S", ".", "-B", "build",
                     "-DBUILD_UNIT_TESTS=OFF",
                     "-DUSE_INTERNAL_TINYXML=OFF",
+                    "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
                     *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
