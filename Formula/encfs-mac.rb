@@ -13,8 +13,8 @@ class EncfsMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 arm64_sonoma: "e487eff9455449dd1c22e5381732fb040c20c124e436dce941c891b2d24d7c51"
-    sha256 ventura:      "8d8411520042ab3ee86816119cdd99761fbadaf2064e22ba20df571bb9fcba5c"
+    sha256 arm64_sonoma: "04797584c9dde670d286a5369261def970ab4a5b84081999874fe84b9e24dee6"
+    sha256 ventura:      "c1378c0f82327e7ad461b6215b7e88680d4326e94736955879313931ceacaf7a"
   end
 
   depends_on "cmake" => :build
