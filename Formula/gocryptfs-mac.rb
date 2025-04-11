@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class GocryptfsMac < Formula
   desc "Encrypted overlay filesystem written in Go"
   homepage "https://nuetzlich.net/gocryptfs/"
-  url "https://github.com/rfjakob/gocryptfs/releases/download/v2.5.2/gocryptfs_v2.5.2_src-deps.tar.gz"
-  sha256 "cc45bdc774592d392c4625c242529c2632bcf1e55ed16d8e81b142fc58616a60"
+  url "https://github.com/rfjakob/gocryptfs/releases/download/v2.5.3/gocryptfs_v2.5.3_src-deps.tar.gz"
+  sha256 "4b6d874b5383be5ed33d7ef7a5a6152d2b6a5d1965215a426ec855c043138ee2"
   license "MIT"
 
   bottle do
