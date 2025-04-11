@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class DwarfsFuseMac < Formula
   desc "Fast high compression read-only file system (macFUSE driver)"
   homepage "https://github.com/mhx/dwarfs"
-  url "https://github.com/mhx/dwarfs/releases/download/v0.11.2/dwarfs-0.11.2.tar.xz"
-  sha256 "1b38faf399a6d01cd0e5f919b176e1cab76e4a8507088d060a91b92c174d912b"
+  url "https://github.com/mhx/dwarfs/releases/download/v0.12.1/dwarfs-0.12.1.tar.xz"
+  sha256 "5523a5c3aea244cbfbccfe64f1df6053b3901e6af8916fac1530faf0f7a5f07f"
   license "GPL-3.0-or-later"
 
   livecheck do
@@ -21,12 +21,12 @@ class DwarfsFuseMac < Formula
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "dwarfs"
-  depends_on "llvm" if DevelopmentTools.clang_build_version < 1500
+  depends_on "llvm" if DevelopmentTools.clang_build_version <= 1500
   depends_on MacfuseRequirement
   depends_on :macos
 
   fails_with :clang do
-    build 1499
+    build 1500
     cause "Not all required C++20 features are supported"
   end
 
@@ -45,12 +45,13 @@ class DwarfsFuseMac < Formula
       -DDISABLE_MOLD=ON
     ]
 
-    if DevelopmentTools.clang_build_version < 1500
+    if DevelopmentTools.clang_build_version <= 1500
       ENV.llvm_clang
 
       # Needed in order to find the C++ standard library
       # See: https://github.com/Homebrew/homebrew-core/issues/178435
-      ENV.prepend "LDFLAGS", "-L#{Formula["llvm"].opt_lib}/c++ -L#{Formula["llvm"].opt_lib} -lunwind"
+      ENV.prepend "LDFLAGS", "-L#{Formula["llvm"].opt_lib}/unwind -lunwind"
+      ENV.prepend_path "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib/"c++"
     end
 
     system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
