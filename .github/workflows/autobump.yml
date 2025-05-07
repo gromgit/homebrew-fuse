@@ -1,0 +1,28 @@
+name: "Autobump specific formulae"
+on:
+  schedule:
+  - cron: "15 2-23/4 * * *"
+
+jobs:
+  autobump:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Update Homebrew formula
+      uses: dawidd6/action-homebrew-bump-formula@v4
+      with:
+        # Required, custom personal GitHub access token with only the 'public_repo' scope enabled
+        token: ${{secrets.AUTOBUMP_TOKEN}}
+        # Optional, will commit with this user name
+        user_name: gromgit
+        # Optional, will commit with this user email
+        user_email: the.gromgit@gmail.com
+        # Optional, will create tap repo fork in organization
+        # org: ORG
+        # Bump all outdated formulae in this tap
+        tap: gromgit/fuse
+        # Bump only these formulae if outdated
+        # formula: mint-lang,vlang-weekly
+        # Optional, if don't want to check for already open PRs
+        force: false # true
+        # Need to set this input if want to use `brew livecheck`
+        livecheck: true
