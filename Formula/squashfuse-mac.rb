@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class SquashfuseMac < Formula
   desc "FUSE filesystem to mount squashfs archives"
   homepage "https://github.com/vasi/squashfuse"
-  url "https://github.com/vasi/squashfuse/releases/download/0.6.0/squashfuse-0.6.0.tar.gz"
-  sha256 "56ff48814d3a083fad0ef427742bc95c9754d1ddaf9b08a990d4e26969f8eeeb"
+  url "https://github.com/vasi/squashfuse/releases/download/0.6.1/squashfuse-0.6.1.tar.gz"
+  sha256 "7b18a58c40a3161b5c329ae925b72336b5316941f906b446b8ed6c5a90989f8c"
   license "BSD-2-Clause"
 
   bottle do
