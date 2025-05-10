@@ -24,8 +24,8 @@ class GcsfuseMac < Formula
   depends_on :macos
 
   patch do
-    url "https://raw.githubusercontent.com/gromgit/formula-patches/4c36aab39be3efbb406b756e60f0359cdf64bca5/gcsfuse-mac/macos.patch?full_index=1"
-    sha256 "518e94c31f3fcba5bb3455f86b42250fcea03bcfe3a883c8364f685defb6fe2f"
+    url "https://raw.githubusercontent.com/gromgit/formula-patches/f69773ce21e06e4c6407da25af33486f5ec6185d/gcsfuse-mac/macos.patch?full_index=1"
+    sha256 "ab3e204bf099cbabefee825f634cfb9c33349002059b1522488c12bf5790ef11"
   end
 
   patch :DATA
