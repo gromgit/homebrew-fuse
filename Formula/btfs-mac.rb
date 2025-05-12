@@ -3,10 +3,9 @@ require_relative "../require/macfuse"
 class BtfsMac < Formula
   desc "BitTorrent filesystem based on FUSE"
   homepage "https://github.com/johang/btfs"
-  url "https://github.com/johang/btfs/archive/refs/tags/v2.24.tar.gz"
-  sha256 "d71ddefe3c572e05362542a0d9fd0240d8d4e1578ace55a8b3245176e7fd8935"
+  url "https://github.com/johang/btfs/archive/refs/tags/v3.1.tar.gz"
+  sha256 "c363f04149f97baf1c5e10ac90677b8309724f2042ab045a45041cfb7b44649b"
   license "GPL-3.0-only"
-  revision 1
   head "https://github.com/johang/btfs.git", branch: "master"
 
   bottle do
@@ -21,9 +20,17 @@ class BtfsMac < Formula
   depends_on "libtorrent-rasterbar"
   depends_on MacfuseRequirement
   depends_on :macos
+  depends_on "openssl@3"
+
+  # Ref: https://github.com/johang/btfs/pull/103
+  # NOTE: Review for removal on next version
+  patch do
+    url "https://github.com/johang/btfs/commit/ff3f838a251cea45398e8780cf531ec0e3d8941f.patch?full_index=1"
+    sha256 "a99fcbb4b8bb199821dd6a5f481b821fa08aa2a983fced78ed2e8f7e1aaac1c2"
+  end
 
   def install
-    setup_fuse
+    setup_fuse3
     system "autoreconf", "--force", "--install", "--verbose"
     system "./configure", *std_configure_args, "--disable-silent-rules"
     system "make", "install"
