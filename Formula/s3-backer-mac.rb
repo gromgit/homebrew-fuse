@@ -9,8 +9,8 @@ class S3BackerMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_sonoma: "74c3dc5284de2816f8ac93749c530cb6031a88cb862cd6b3cd815fc962d61c7f"
-    sha256 cellar: :any, ventura:      "9e4cc5154864642ffaaea319c13994eab5ae558ca0278ad67f1ffc3aeaa7d95a"
+    sha256 cellar: :any, arm64_sonoma: "7f67d78e85e19ec2447968526fddc16c9285c32f2d81eb5cdbaa2771fb2e7153"
+    sha256 cellar: :any, ventura:      "51f68b3c5cba34ac4e669b9cc8b2b1f37a940fc01e3d356decb4aaf750f1e96d"
   end
 
   depends_on "pkgconf" => :build
