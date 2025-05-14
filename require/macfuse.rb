@@ -73,6 +73,8 @@ class Formula
     mkdir "#{alt_fuse_root}/lib/pkgconfig" do
       cp "/usr/local/lib/pkgconfig/fuse.pc", "."
       inreplace "fuse.pc", "/usr/local", alt_fuse_root.to_s
+      cp "/usr/local/lib/pkgconfig/fuse3.pc", "."
+      inreplace "fuse3.pc", "/usr/local", alt_fuse_root.to_s
     end
     ENV.prepend_path "PKG_CONFIG_PATH", "#{alt_fuse_root}/lib/pkgconfig"
   end
