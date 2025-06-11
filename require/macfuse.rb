@@ -115,10 +115,37 @@ class Formula
     odebug "CFLAGS = #{ENV.fetch("CFLAGS", nil)}"
   end
 
+  def setup_fuse3_flags
+    ENV.append "CFLAGS", "-I#{alt_fuse_root}/include/fuse3"
+    ENV.append "CFLAGS", "-D_FILE_OFFSET_BITS=64"
+    ENV.append "CFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
+    ENV.append "CPPFLAGS", "-I#{alt_fuse_root}/include/fuse3"
+    ENV.append "CPPFLAGS", "-D_FILE_OFFSET_BITS=64"
+    ENV.append "CPPFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
+    ENV.append "CXXFLAGS", "-I#{alt_fuse_root}/include/fuse3"
+    ENV.append "CXXFLAGS", "-D_FILE_OFFSET_BITS=64"
+    ENV.append "CXXFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
+    ENV.append "LDFLAGS", "-L#{alt_fuse_root}/lib"
+    ENV.append "CGO_CPPFLAGS", "-I#{alt_fuse_root}/include/fuse3"
+    ENV.append "CGO_CPPFLAGS", "-D_FILE_OFFSET_BITS=64"
+    ENV.append "CGO_CPPFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
+    ENV.append "CGO_LDFLAGS", "-L#{alt_fuse_root}/lib"
+    odebug "PKG_CONFIG = #{ENV.fetch("PKG_CONFIG", nil)}"
+    odebug "PKG_CONFIG_PATH = #{ENV.fetch("PKG_CONFIG_PATH", nil)}"
+    odebug "CFLAGS = #{ENV.fetch("CFLAGS", nil)}"
+  end
+
   def setup_fuse
     return unless need_alt_fuse?
 
     setup_fuse_env
     setup_fuse_flags
+  end
+
+  def setup_fuse3
+     return unless need_alt_fuse?
+
+    setup_fuse_env
+    setup_fuse3_flags
   end
 end
