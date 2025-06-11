@@ -143,7 +143,7 @@ class Formula
   end
 
   def setup_fuse3
-     return unless need_alt_fuse?
+    return unless need_alt_fuse?
 
     setup_fuse_env
     setup_fuse3_flags
