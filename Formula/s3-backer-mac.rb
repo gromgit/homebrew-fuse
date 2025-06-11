@@ -21,7 +21,7 @@ class S3BackerMac < Formula
   depends_on "openssl@3"
 
   def install
-    setup_fuse
+    setup_fuse3
     system "./configure", "--disable-silent-rules", *std_configure_args
     system "make", "install"
   end
