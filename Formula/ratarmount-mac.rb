@@ -5,8 +5,8 @@ class RatarmountMac < Formula
 
   desc "Mount and efficiently access archives as filesystems"
   homepage "https://github.com/mxmlnkn/ratarmount"
-  url "https://github.com/mxmlnkn/ratarmount/archive/refs/tags/v1.1.0.tar.gz"
-  sha256 "0a3aa8606ed732f4fda11883590112aa51616c467da5a0b372867e13f37d112b"
+  url "https://github.com/mxmlnkn/ratarmount/archive/refs/tags/v1.1.1.tar.gz"
+  sha256 "fc692adbefcd2d885d2fe758b7c2c429436af0ebbe67960b9d126930adaf48d6"
   license "MIT"
 
   bottle do
