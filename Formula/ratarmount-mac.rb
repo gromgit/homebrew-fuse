@@ -12,8 +12,9 @@ class RatarmountMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_sonoma: "6a49a889aa51efa45aecea12c0472e88d8441d90a97cc24a1ccbac7c850a404a"
-    sha256 cellar: :any, ventura:      "6b67cdfc97daa3bd5dd5fe4a4da6a55a8816b74ee895a7bee7298bb10681e03a"
+    sha256 cellar: :any, arm64_sequoia: "7ec99c689cd5d72df1467c6a087eff1ebacad8f7547db28cdbb3c4319883afde"
+    sha256 cellar: :any, arm64_sonoma:  "aa5b7ad5bdae5129a98a445932a9620a75430daf8f1a1a55c8970e91c70cf46b"
+    sha256 cellar: :any, ventura:       "443d2dab420fb03d37f29a7d1d33348dcc7fc041dc0da9739e085d58a67aec80"
   end
 
   depends_on "libgit2"
