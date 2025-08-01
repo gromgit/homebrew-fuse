@@ -5,10 +5,9 @@ class RatarmountMac < Formula
 
   desc "Mount and efficiently access archives as filesystems"
   homepage "https://github.com/mxmlnkn/ratarmount"
-  url "https://github.com/mxmlnkn/ratarmount/archive/refs/tags/v1.1.1.tar.gz"
-  sha256 "fc692adbefcd2d885d2fe758b7c2c429436af0ebbe67960b9d126930adaf48d6"
+  url "https://github.com/mxmlnkn/ratarmount/archive/refs/tags/v1.1.2.tar.gz"
+  sha256 "5681ec008d9fb85773699f7c9dd9f73e4a27cd5c5b5828cb7281487f63aa0a45"
   license "MIT"
-  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
