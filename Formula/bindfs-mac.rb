@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class BindfsMac < Formula
   desc "FUSE file system for mounting to another location"
   homepage "https://bindfs.org/"
-  url "https://bindfs.org/downloads/bindfs-1.18.0.tar.gz"
-  sha256 "46fcf95b871109265e93cd42e5ae282c722716488ad9f0da1e1f98535be37f7a"
+  url "https://bindfs.org/downloads/bindfs-1.18.1.tar.gz"
+  sha256 "2a7064d993a5f255c52d72385ef14e349c131bc44195766e2173428e06d279fd"
   license "GPL-2.0-or-later"
 
   bottle do
@@ -21,7 +21,7 @@ class BindfsMac < Formula
     depends_on "libtool" => :build
   end
 
-  depends_on "pkg-config" => :build
+  depends_on "pkgconf" => :build
   depends_on MacfuseRequirement
   depends_on :macos
 
