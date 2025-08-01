@@ -10,7 +10,7 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'pr-pull')
     strategy:
       matrix:
-        os: [macos-13, macos-14]
+        os: [macos-13, macos-14, macos-15]
     runs-on: ${{ matrix.os }}
     permissions:
       contents: write
