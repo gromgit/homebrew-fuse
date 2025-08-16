@@ -5,8 +5,8 @@ class RatarmountMac < Formula
 
   desc "Mount and efficiently access archives as filesystems"
   homepage "https://github.com/mxmlnkn/ratarmount"
-  url "https://files.pythonhosted.org/packages/bc/16/6432bedec590ef45a3e5e99cac919ec69ad4ab5f36001849d328aa8792fb/ratarmount-1.1.2.tar.gz"
-  sha256 "5e2c2d999ec7199c23249ad40f74ce3f7a35f5107007f62ed3dc5dc0ad77fa19"
+  url "https://files.pythonhosted.org/packages/e0/5c/ffddb34553d65cb9bf1a0baa59bb61fcf3beebab0e0a944347a501b2e258/ratarmount-1.2.0.tar.gz"
+  sha256 "acca4e5803c75f50f94d4c75ead5f44aa4c4661c9e77d50eb25d1876e6f4dec9"
   license "MIT"
   head "https://github.com/mxmlnkn/ratarmount.git", branch: "master"
 
@@ -34,8 +34,8 @@ class RatarmountMac < Formula
   end
 
   resource "indexed-gzip" do
-    url "https://files.pythonhosted.org/packages/e7/c4/54bb145774c8b1563308899580142dd17ff6da584ee8c8c6ee307733d14e/indexed_gzip-1.9.5.tar.gz"
-    sha256 "105366567759db6c7df866d869611ded3bb83d5c0e50fbb01d02c1922b98b457"
+    url "https://files.pythonhosted.org/packages/d4/22/e9e94407bae83444adf598535b684d28cfbbcbe19f58eeba46f4db7bc0f3/indexed_gzip-1.10.1.tar.gz"
+    sha256 "3993fd72570b254045d2361d937a984350719f2205066f4e4c16435a1df361e3"
   end
 
   resource "indexed-zstd" do
@@ -54,8 +54,8 @@ class RatarmountMac < Formula
   end
 
   resource "mfusepy" do
-    url "https://files.pythonhosted.org/packages/39/09/b9a9e61ae0845c3de0249772dfee2294d269a7d644a9778bc42df97af6ae/mfusepy-1.1.1.tar.gz"
-    sha256 "3647727a6e7775d47fdeff61355935f1ed5edb31c5124d233138f2a91ea01f9f"
+    url "https://files.pythonhosted.org/packages/1c/94/c9d5dcba4a6a2b32ba23e22fd13ca08e6f5408420b2dfe42984af22277b6/mfusepy-3.0.0.tar.gz"
+    sha256 "eddade33e427bac9c455464cd0a7d12d63c033255ec6b1e0d6ada143a945c6f2"
   end
 
   resource "multivolumefile" do
@@ -99,8 +99,8 @@ class RatarmountMac < Formula
   end
 
   resource "rapidgzip" do
-    url "https://files.pythonhosted.org/packages/a6/b6/27975b6e7ec25c3fac16cbc73270954fb36ad239dda8b1f7bfb3f424dd2c/rapidgzip-0.14.5.tar.gz"
-    sha256 "faed46013a1a62a5193c49615a896683ea5c14ed4744bcb4bd1869b1420551d8"
+    url "https://files.pythonhosted.org/packages/fa/df/f4abf845cb27f60156b124af95f483d2861cd607811120650293a1835327/rapidgzip-0.15.0.tar.gz"
+    sha256 "e81079c190c458652076f3667f90aa5886fbf2c92a5a3d0169cfb1faf1e45dfa"
   end
 
   resource "rarfile" do
@@ -109,8 +109,8 @@ class RatarmountMac < Formula
   end
 
   resource "ratarmountcore" do
-    url "https://files.pythonhosted.org/packages/5c/96/f2122e7e778ddf62e609df3359f31cec3abde7a98dd392ea1f7d6994ecc8/ratarmountcore-0.9.2.tar.gz"
-    sha256 "6ce53e3d6c09ac7178f044688709d5e6e39684d6da0bc9a7c35f5aaced41d645"
+    url "https://files.pythonhosted.org/packages/60/ab/3f75901c28a4680d0e416b3e618587e25422613dd4735ad98cad74a40a7e/ratarmountcore-0.10.0.tar.gz"
+    sha256 "178d8f6be572e22847264f34c4b0d2166bec8b6de650b69e485b60e98a7c1ba0"
   end
 
   resource "texttable" do
