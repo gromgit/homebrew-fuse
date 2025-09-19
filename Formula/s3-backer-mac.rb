@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class S3BackerMac < Formula
   desc "FUSE-based single file backing store via Amazon S3"
   homepage "https://github.com/archiecobbs/s3backer"
-  url "https://archie-public.s3.amazonaws.com/s3backer/s3backer-2.1.4.tar.gz"
-  sha256 "0451471209cc872708e91b2784a4a1b9f3ca44c89a7bffb8f6145aed28c941e7"
+  url "https://archie-public.s3.amazonaws.com/s3backer/s3backer-2.1.6.tar.gz"
+  sha256 "55ff3123ab08d45822e6b349d9e305ca2ca13339474314cfc31a074d5308acf6"
   license "GPL-2.0-or-later"
 
   bottle do
