@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class SecurefsMac < Formula
   desc "Filesystem with transparent authenticated encryption"
   homepage "https://github.com/netheril96/securefs"
-  url "https://github.com/netheril96/securefs/archive/refs/tags/v1.1.1.tar.gz"
-  sha256 "a4b0ceaaca98d25ed062bce0649bd43c83d5ea78d93d1fa4f227a2d59bfb7e62"
+  url "https://github.com/netheril96/securefs/archive/refs/tags/v2.0.0.tar.gz"
+  sha256 "d7fac7adc70c09473173aeadee5b7041d7e63fbf392ef40bdd77888590bb12a2"
   license "MIT"
   head "https://github.com/netheril96/securefs.git", branch: "master"
 
