@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class XmountMac < Formula
   desc "Convert between multiple input & output disk image types"
   homepage "https://www.sits.lu/xmount"
-  url "https://code.sits.lu/foss/xmount/-/archive/1.2.0/xmount-1.2.0.tar.gz"
-  sha256 "abded7b53646c5d56ab9caf30473d75d0deb543e8262cadf2af572da3e1d127d"
+  url "https://code.sits.lu/foss/xmount/-/archive/1.2.1/xmount-1.2.1.tar.gz"
+  sha256 "61b0b777ca0cd4eda30aeeeca7ec17a49d2657599a37745fb94f8dcc432b93c7"
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
