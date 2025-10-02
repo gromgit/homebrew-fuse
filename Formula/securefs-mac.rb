@@ -15,8 +15,8 @@ class SecurefsMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_sonoma: "40399d847dfb764c1ae953a74384e888d8570568a08296e4547a9abfc4c503f0"
-    sha256 cellar: :any, ventura:      "68e50e832267f11d6f5ba2d9507aedf2b961e91b07afd5c3616ae4b90700a7ba"
+    sha256 cellar: :any, arm64_sequoia: "78b2a05c1291ba2828512745ac2b959786288389e44fe44dc0d4cda2a6bd68cc"
+    sha256 cellar: :any, arm64_sonoma:  "54efe58e868a530d252e05beb72537171bd1f4559c16f876d92c31394a89ffb4"
   end
 
   depends_on "cmake" => :build
