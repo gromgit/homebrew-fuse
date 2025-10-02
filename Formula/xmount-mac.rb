@@ -8,8 +8,8 @@ class XmountMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 arm64_sonoma: "1d67ae2174104c69471b892aceaface732e0853c15c039c260ef78c1f493eea9"
-    sha256 ventura:      "aa2caa902402f9aa415b5bf570c046f5dcf7129621b7a514de1e4cc031b4ab7d"
+    sha256 arm64_sequoia: "cc8c7f233c8e40a6512736f137aff799dc3f986e6be60c3eea476a8d9b127383"
+    sha256 arm64_sonoma:  "61f67c7481c3f76e4d9d8b11a7100bae495b5b655524739722d867593fc494a2"
   end
 
   depends_on "cmake" => :build
