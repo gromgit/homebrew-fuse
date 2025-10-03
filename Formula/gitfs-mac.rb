@@ -11,12 +11,9 @@ class GitfsMac < Formula
   head "https://github.com/vtemian/gitfs.git", branch: "main"
 
   bottle do
-    root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gitfs-mac-0.5.2"
-    sha256 cellar: :any, arm64_monterey: "5aa42d1f875f89f6860de825ba6f522435e9e78361b3eddc3b32799d3c5aa498"
-    sha256 cellar: :any, monterey:       "ba780fac3f0470ed7e5a01f2bd1b0df66918bd50eac1b58e8373e3e0dc52974d"
-    sha256 cellar: :any, big_sur:        "e0086949aa4b8e18713a50cacb8bf2f1f73dba28e6523273b53856da35ea9dc7"
-    sha256 cellar: :any, catalina:       "aa14fd52fbd30a3d46fd57ec011ad73fefabc3350c5b962c10c71961bc9f7265"
-    sha256 cellar: :any, mojave:         "7d0605b4d2d6022c607ae6dfbdf87ae984b2f73bbe43e35cddf60fef0b79d3dc"
+    root_url "https://ghcr.io/v2/gromgit/fuse"
+    sha256 cellar: :any, arm64_sequoia: "e48dd7b94f4ff6bbec3b51fa4c607a04bdb2338267315d3da988c1d9f6254bd5"
+    sha256 cellar: :any, arm64_sonoma:  "903d6859b1d8cb7d0fa54ee4294e6bd3c57d796495b4850ba4cb50b6c5bf7d63"
   end
 
   depends_on "libgit2"
