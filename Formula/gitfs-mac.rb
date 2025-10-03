@@ -5,11 +5,10 @@ class GitfsMac < Formula
 
   desc "Version controlled file system"
   homepage "https://www.presslabs.com/gitfs"
-  url "https://github.com/presslabs/gitfs/archive/refs/tags/0.5.2.tar.gz"
-  sha256 "921e24311e3b8ea3a5448d698a11a747618ee8dd62d5d43a85801de0b111cbf3"
+  url "https://github.com/vtemian/gitfs/archive/refs/tags/v1.0.0.tar.gz"
+  sha256 "75835c6e4cad400c06e86ecb2efedfa7a8ffe5c5939c4e70040f6e861b4e85d3"
   license "Apache-2.0"
-  revision 1
-  head "https://github.com/presslabs/gitfs.git"
+  head "https://github.com/vtemian/gitfs.git", branch: "main"
 
   bottle do
     root_url "https://github.com/gromgit/homebrew-fuse/releases/download/gitfs-mac-0.5.2"
@@ -20,14 +19,10 @@ class GitfsMac < Formula
     sha256 cellar: :any, mojave:         "7d0605b4d2d6022c607ae6dfbdf87ae984b2f73bbe43e35cddf60fef0b79d3dc"
   end
 
-  # Last release on 2019-10-20 and upstream has locked pygit2==0.28.2, which Homebrew
-  # has been ignoring and manually updating to support recent `libgit2` versions.
-  disable! date: "2023-10-06", because: :unmaintained
-
   depends_on "libgit2"
   depends_on MacfuseRequirement
   depends_on :macos
-  depends_on "python@3.9"
+  depends_on "python@3.13"
 
   uses_from_macos "libffi"
 
@@ -36,51 +31,40 @@ class GitfsMac < Formula
     sha256 "cb1378c4cd676d6f243641c50e277504abf45f70f1ea76e446efcdbb69624bbe"
   end
 
-  resource "cached-property" do
-    url "https://files.pythonhosted.org/packages/57/8e/0698e10350a57d46b3bcfe8eff1d4181642fd1724073336079cb13c5cf7f/cached-property-1.5.1.tar.gz"
-    sha256 "9217a59f14a5682da7c4b8829deadbfc194ac22e9908ccf7c8820234e80a1504"
+  resource "certifi" do
+    url "https://files.pythonhosted.org/packages/73/f7/f14b46d4bcd21092d7d3ccef689615220d8a08fb25e564b65d20738e672e/certifi-2025.6.15.tar.gz"
+    sha256 "d747aa5a8b9bbbb1bb8c22bb13e22bd1f18e9796defa16bab421f7f7a317323b"
   end
 
   resource "cffi" do
-    url "https://files.pythonhosted.org/packages/66/6a/98e023b3d11537a5521902ac6b50db470c826c682be6a8c661549cb7717a/cffi-1.14.4.tar.gz"
-    sha256 "1a465cbe98a7fd391d47dce4b8f7e5b921e6cd805ef421d04f5f66ba8f06086c"
+    url "https://files.pythonhosted.org/packages/fc/97/c783634659c2920c3fc70419e3af40972dbaf758daa229a7d6ea6135c90d/cffi-1.17.1.tar.gz"
+    sha256 "1c39c6016c32bc48dd54561950ebd6836e1670f2ae46128f67cf49e789c52824"
   end
 
-  resource "fusepy" do
-    url "https://files.pythonhosted.org/packages/04/0b/4506cb2e831cea4b0214d3625430e921faaa05a7fb520458c75a2dbd2152/fusepy-3.0.1.tar.gz"
-    sha256 "72ff783ec2f43de3ab394e3f7457605bf04c8cf288a2f4068b4cde141d4ee6bd"
-  end
-
-  resource "pygit2" do
-    url "https://files.pythonhosted.org/packages/6b/23/a8c5b726a58282fe2cadcc63faaddd4be147c3c8e0bd38b233114adf98fd/pygit2-1.6.1.tar.gz"
-    sha256 "c3303776f774d3e0115c1c4f6e1fc35470d15f113a7ae9401a0b90acfa1661ac"
-
-    # libgit2 1.3 support
-    # https://github.com/libgit2/pygit2/pull/1089
-    patch do
-      url "https://raw.githubusercontent.com/Homebrew/formula-patches/54d3a0d1f241fdd4e9229312ced0d8da85d964b1/pygit2/libgit2-1.3.0.patch"
-      sha256 "4d501c09d6642d50d89a1a4d691980e3a4a2ebcb6de7b45d22cce16a451b9839"
-    end
-  end
-
-  resource "six" do
-    url "https://files.pythonhosted.org/packages/dd/bf/4138e7bfb757de47d1f4b6994648ec67a51efe58fa907c1e11e350cddfca/six-1.12.0.tar.gz"
-    sha256 "d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"
-  end
-
-  resource "raven" do
-    url "https://files.pythonhosted.org/packages/79/57/b74a86d74f96b224a477316d418389af9738ba7a63c829477e7a86dd6f47/raven-6.10.0.tar.gz"
-    sha256 "3fa6de6efa2493a7c827472e984ce9b020797d0da16f1db67197bcc23c8fae54"
+  resource "mfusepy" do
+    url "https://files.pythonhosted.org/packages/1c/94/c9d5dcba4a6a2b32ba23e22fd13ca08e6f5408420b2dfe42984af22277b6/mfusepy-3.0.0.tar.gz"
+    sha256 "eddade33e427bac9c455464cd0a7d12d63c033255ec6b1e0d6ada143a945c6f2"
   end
 
   resource "pycparser" do
-    url "https://files.pythonhosted.org/packages/68/9e/49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a/pycparser-2.19.tar.gz"
-    sha256 "a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
+    url "https://files.pythonhosted.org/packages/1d/b2/31537cf4b1ca988837256c910a668b553fceb8f069bedc4b1c826024b52c/pycparser-2.22.tar.gz"
+    sha256 "491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6"
   end
 
-  # pygit2 1.6.1 support
-  # https://github.com/presslabs/gitfs/pull/379
-  patch :DATA
+  resource "pygit2" do
+    url "https://files.pythonhosted.org/packages/c1/4a/72a5f3572912d93d8096f8447a20fe3aff5b5dc65aca08a2083eae54d148/pygit2-1.18.0.tar.gz"
+    sha256 "fbd01d04a4d2ce289aaa02cf858043679bf0dd1f9855c6b88ed95382c1f5011a"
+  end
+
+  resource "sentry-sdk" do
+    url "https://files.pythonhosted.org/packages/04/4c/af31e0201b48469786ddeb1bf6fd3dfa3a291cc613a0fe6a60163a7535f9/sentry_sdk-2.30.0.tar.gz"
+    sha256 "436369b02afef7430efb10300a344fb61a11fe6db41c2b11f41ee037d2dd7f45"
+  end
+
+  resource "urllib3" do
+    url "https://files.pythonhosted.org/packages/15/22/9ee70a2574a4f4599c47dd506532914ce044817c7752a79b6a51286319bc/urllib3-2.5.0.tar.gz"
+    sha256 "3fc47733c7e419d4bc3f6b3dc2b4f890bb743906a30d56ba4a5bfa4bbff92760"
+  end
 
   def install
     virtualenv_install_with_resources
@@ -95,7 +79,7 @@ class GitfsMac < Formula
   end
 
   test do
-    xy = Language::Python.major_minor_version Formula["python@3.9"].opt_bin/"python3"
+    xy = Language::Python.major_minor_version Formula["python@3.13"].opt_bin/"python3"
     ENV.prepend_create_path "PYTHONPATH", libexec/"lib/python#{xy}/site-packages"
 
     (testpath/"test.py").write <<~EOS
@@ -104,7 +88,7 @@ class GitfsMac < Formula
       pygit2.init_repository('testing/.git', True)
     EOS
 
-    system Formula["python@3.9"].opt_bin/"python3", "test.py"
+    system Formula["python@3.13"].opt_bin/"python3", "test.py"
     assert_path_exists testpath/"testing/.git/config"
     cd "testing" do
       system "git", "remote", "add", "homebrew", "https://github.com/Homebrew/homebrew-core.git"
@@ -112,29 +96,3 @@ class GitfsMac < Formula
     end
   end
 end
-__END__
-diff --git a/gitfs/mounter.py b/gitfs/mounter.py
-index 31b436d..391e899 100644
---- a/gitfs/mounter.py
-+++ b/gitfs/mounter.py
-@@ -19,7 +19,7 @@ import resource
- 
- from fuse import FUSE
- from pygit2 import Keypair, UserPass
--from pygit2.remote import RemoteCallbacks
-+from pygit2.callbacks import RemoteCallbacks
- 
- from gitfs import __version__
- from gitfs.utils import Args
-diff --git a/requirements.txt b/requirements.txt
-index fb7d0f3..42c4d1f 100644
---- a/requirements.txt
-+++ b/requirements.txt
-@@ -2,6 +2,6 @@ atomiclong==0.1.1
- cffi==1.12.3
- fusepy==3.0.1
- pycparser==2.19
--pygit2==0.28.2
-+pygit2==1.16.1
- raven==6.10.0
- six==1.12.0
