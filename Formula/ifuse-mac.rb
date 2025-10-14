@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class IfuseMac < Formula
   desc "FUSE module for iOS devices"
   homepage "https://libimobiledevice.org/"
-  url "https://github.com/libimobiledevice/ifuse/archive/refs/tags/1.1.4.tar.gz"
-  sha256 "2a00769e8f1d8bad50898b9d00baf12c8ae1cda2d19ff49eaa9bf580e5dbe78c"
+  url "https://github.com/libimobiledevice/ifuse/archive/refs/tags/1.2.0.tar.gz"
+  sha256 "29ab853037d781ef19f734936454c7f7806d1c46fbcca6e15ac179685ab37c9c"
   license "LGPL-2.1-or-later"
   head "https://github.com/libimobiledevice/ifuse.git", branch: "master"
 
@@ -26,7 +26,11 @@ class IfuseMac < Formula
   depends_on :macos
 
   def install
-    setup_fuse
+    # This file can be generated only if `.git` directory is present
+    # Create it manually
+    (buildpath/".tarball-version").write version.to_s
+
+    setup_fuse3
     system "./autogen.sh", *std_configure_args
     system "make", "install"
   end
