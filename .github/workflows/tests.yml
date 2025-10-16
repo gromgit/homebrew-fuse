@@ -32,7 +32,7 @@ jobs:
 
       - run: brew test-bot --only-tap-syntax
 
-      - run: brew test-bot --only-formulae --root-url='https://ghcr.io/v2/gromgit/fuse'
+      - run: brew test-bot --verbose --debug --only-formulae --root-url='https://ghcr.io/v2/gromgit/fuse'
         if: github.event_name == 'pull_request'
 
       - name: Upload bottles as artifact
