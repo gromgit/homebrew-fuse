@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class DwarfsFuseMac < Formula
   desc "Fast high compression read-only file system (macFUSE driver)"
   homepage "https://github.com/mhx/dwarfs"
-  url "https://github.com/mhx/dwarfs/releases/download/v0.13.0/dwarfs-0.13.0.tar.xz"
-  sha256 "d0654fcc1219bfd11c96f737011d141c3ae5929620cd22928e49f25c37a15dc9"
+  url "https://github.com/mhx/dwarfs/releases/download/v0.14.0/dwarfs-0.14.0.tar.xz"
+  sha256 "514b851af356102abca9103dd12c92a31fad6d2f705c4cfaff4e815b5753250f"
   license "GPL-3.0-or-later"
 
   livecheck do
@@ -56,6 +56,7 @@ class DwarfsFuseMac < Formula
 
   # Workaround for Boost 1.89.0 until upstream Folly fix.
   # Issue ref: https://github.com/facebook/folly/issues/2489
+  # Fix to Undefined symbols for architecture x86_64: "_XXH3_64bits"
   patch :DATA
 
   def install
@@ -94,7 +95,43 @@ class DwarfsFuseMac < Formula
   end
 
   test do
-    system sbin/"dwarfs", "--help"
+    # produce a dwarfs image
+    system bin/"mkdwarfs", "-i", prefix, "-o", "test.dwarfs", "-l4"
+
+    # check the image
+    system bin/"dwarfsck", "test.dwarfs"
+
+    # get JSON info about the image
+    info = JSON.parse(shell_output("#{bin}/dwarfsck test.dwarfs -j"))
+    assert_equal info["created_by"], "libdwarfs v#{version}"
+    assert info["inode_count"] >= 10
+
+    # extract the image
+    system bin/"dwarfsextract", "-i", "test.dwarfs"
+    assert_path_exists "bin/mkdwarfs"
+    assert_path_exists "share/man/man1/mkdwarfs.1"
+    assert compare_file bin/"mkdwarfs", "bin/mkdwarfs"
+
+    (testpath/"test.cpp").write <<~CPP
+      #include <iostream>
+      #include <dwarfs/version.h>
+
+      int main(int argc, char **argv) {
+        int v = dwarfs::get_dwarfs_library_version();
+        int major = v / 10000;
+        int minor = (v % 10000) / 100;
+        int patch = v % 100;
+        std::cout << major << "." << minor << "." << patch << std::endl;
+        return 0;
+      }
+    CPP
+
+    # ENV.llvm_clang doesn't work in the test block
+    ENV["CXX"] = Formula["llvm"].opt_bin/"clang++" if OS.mac? && DevelopmentTools.clang_build_version <= 1500
+
+    system ENV.cxx, "-std=c++20", "test.cpp", "-I#{include}", "-L#{lib}", "-o", "test", "-ldwarfs_common"
+
+    assert_equal version.to_s, shell_output("./test").chomp
   end
 end
 
@@ -109,13 +146,14 @@ __END__
      thread
    REQUIRED
  )
---- a/folly/CMake/folly-deps.cmake
-+++ b/folly/CMake/folly-deps.cmake
-@@ -41,7 +41,6 @@ find_package(Boost 1.51.0 MODULE
-     filesystem
-     program_options
-     regex
--    system
-     thread
-   REQUIRED
- )
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -507,7 +507,7 @@ if(WITH_TESTS OR WITH_BENCHMARKS OR WITH_FUZZ)
+   if(WITH_BENCHMARKS)
+     target_sources(dwarfs_test_helpers PRIVATE test/test_strings.cpp)
+   endif()
+-  target_link_libraries(dwarfs_test_helpers PUBLIC dwarfs_reader dwarfs_writer dwarfs_tool)
++  target_link_libraries(dwarfs_test_helpers PUBLIC dwarfs_reader dwarfs_writer dwarfs_tool PkgConfig::XXHASH)
+   set_property(TARGET dwarfs_test_helpers PROPERTY CXX_STANDARD ${DWARFS_CXX_STANDARD})
+   target_compile_definitions(dwarfs_test_helpers
+        PUBLIC TEST_DATA_DIR=\"${CMAKE_SOURCE_DIR}/test\"
