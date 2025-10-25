@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class DwarfsFuseMac < Formula
   desc "Fast high compression read-only file system (macFUSE driver)"
   homepage "https://github.com/mhx/dwarfs"
-  url "https://github.com/mhx/dwarfs/releases/download/v0.14.0/dwarfs-0.14.0.tar.xz"
-  sha256 "514b851af356102abca9103dd12c92a31fad6d2f705c4cfaff4e815b5753250f"
+  url "https://github.com/mhx/dwarfs/releases/download/v0.14.1/dwarfs-0.14.1.tar.xz"
+  sha256 "620cf27f2e142a5f8fc05552a70704c3bf4df23c3279c6026b3f37954d0529c5"
   license "GPL-3.0-or-later"
 
   livecheck do
@@ -145,14 +145,3 @@ __END__
      thread
    REQUIRED
  )
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -507,7 +507,7 @@ if(WITH_TESTS OR WITH_BENCHMARKS OR WITH_FUZZ)
-   if(WITH_BENCHMARKS)
-     target_sources(dwarfs_test_helpers PRIVATE test/test_strings.cpp)
-   endif()
--  target_link_libraries(dwarfs_test_helpers PUBLIC dwarfs_reader dwarfs_writer dwarfs_tool)
-+  target_link_libraries(dwarfs_test_helpers PUBLIC dwarfs_reader dwarfs_writer dwarfs_tool PkgConfig::XXHASH)
-   set_property(TARGET dwarfs_test_helpers PROPERTY CXX_STANDARD ${DWARFS_CXX_STANDARD})
-   target_compile_definitions(dwarfs_test_helpers
-        PUBLIC TEST_DATA_DIR=\"${CMAKE_SOURCE_DIR}/test\"
