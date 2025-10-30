@@ -92,6 +92,13 @@ class Formula
     Dir.glob("#{alt_fuse_root}/**/*").each { |f| odebug ">>> #{f}" }
   end
 
+  def disable_macfuse_extensions
+    ENV.append "CFLAGS", "-DFUSE_DARWIN_ENABLE_EXTENSIONS=0"
+    ENV.append "CPPFLAGS", "-DFUSE_DARWIN_ENABLE_EXTENSIONS=0"
+    ENV.append "CXXFLAGS", "-DFUSE_DARWIN_ENABLE_EXTENSIONS=0"
+    ENV.append "CGO_CPPFLAGS", "-DFUSE_DARWIN_ENABLE_EXTENSIONS=0"
+  end
+
   def setup_fuse_flags
     ENV.append "CFLAGS", "-I#{alt_fuse_root}/include"
     ENV.append "CFLAGS", "-I#{alt_fuse_root}/include/fuse"
@@ -110,6 +117,7 @@ class Formula
     ENV.append "CGO_CPPFLAGS", "-D_FILE_OFFSET_BITS=64"
     ENV.append "CGO_CPPFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
     ENV.append "CGO_LDFLAGS", "-L#{alt_fuse_root}/lib"
+    disable_macfuse_extensions
     odebug "PKG_CONFIG = #{ENV.fetch("PKG_CONFIG", nil)}"
     odebug "PKG_CONFIG_PATH = #{ENV.fetch("PKG_CONFIG_PATH", nil)}"
     odebug "CFLAGS = #{ENV.fetch("CFLAGS", nil)}"
@@ -130,6 +138,7 @@ class Formula
     ENV.append "CGO_CPPFLAGS", "-D_FILE_OFFSET_BITS=64"
     ENV.append "CGO_CPPFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
     ENV.append "CGO_LDFLAGS", "-L#{alt_fuse_root}/lib"
+    disable_macfuse_extensions
     odebug "PKG_CONFIG = #{ENV.fetch("PKG_CONFIG", nil)}"
     odebug "PKG_CONFIG_PATH = #{ENV.fetch("PKG_CONFIG_PATH", nil)}"
     odebug "CFLAGS = #{ENV.fetch("CFLAGS", nil)}"
