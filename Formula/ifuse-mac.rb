@@ -10,9 +10,7 @@ class IfuseMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    rebuild 1
-    sha256 cellar: :any, arm64_sonoma: "06ceadb0e0c288cc0f02b5c64c7051f8d54dd39d697801c305ba70101780e3ee"
-    sha256 cellar: :any, ventura:      "d7aecf23caa314cb17ae46d790af547fceca621a300f19f74b2593c0c4cafe10"
+    sha256 cellar: :any, arm64_sequoia: "7b2a54ceeca52d5ada2e625f7e3edbcdd7f6eedfc8b8f6286137fb38fcff50e6"
   end
 
   depends_on "autoconf" => :build
