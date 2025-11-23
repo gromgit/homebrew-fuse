@@ -3,8 +3,9 @@ require_relative "../require/macfuse"
 class ArchivemountMac < Formula
   desc "File system for accessing archives using libarchive"
   homepage "https://git.sr.ht/~nabijaczleweli/archivemount-ng"
-  url "https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/0.9.1.tar.gz"
-  sha256 "882faf07fe9241a5015eff9691c4702fdadb177265833b385135562a1c2c2059"
+  url "https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/1b.tar.gz"
+  version "1b"
+  sha256 "de10cfee3bff8c1dd2b92358531d3c0001db36a99e1098ed0c9d205d110e903d"
   license "LGPL-2.0-or-later"
 
   bottle do
@@ -21,9 +22,8 @@ class ArchivemountMac < Formula
   depends_on :macos
 
   def install
-    setup_fuse
-    system "./configure", "--disable-silent-rules", *std_configure_args
-    system "make", "install"
+    setup_fuse3
+    system "make", "PREFIX=#{prefix}", "install"
   end
 
   test do
