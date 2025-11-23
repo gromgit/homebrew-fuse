@@ -9,9 +9,10 @@ class ArchivemountMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    rebuild 1
-    sha256 cellar: :any, arm64_sonoma: "abe39d7d99aae950033e62df6c1ac3c33b7b8a7863eeb92d2bb82c1b3b5662fc"
-    sha256 cellar: :any, ventura:      "be2622a6cb26b8dc581c35b1cad1f07ddafbfea379e5f4db250258ab6583f615"
+    rebuild 2
+    sha256 cellar: :any, arm64_tahoe:   "50738aa449a8b214387c1cc148b30b760fb64ced8dd0c85f0d0c29db25986a73"
+    sha256 cellar: :any, arm64_sequoia: "02e40045fc073d935a4abf9b83e469b1c5f50b15fa84f53b95f1164e658279aa"
+    sha256 cellar: :any, arm64_sonoma:  "482da34d8d8dbd9a2ce53f4ae40e1f84ca946e188d681ef9cc72d9535e98b3cd"
   end
 
   depends_on "pkgconf" => :build
