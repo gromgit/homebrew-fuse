@@ -6,6 +6,7 @@ class DwarfsFuseMac < Formula
   url "https://github.com/mhx/dwarfs/releases/download/v0.14.1/dwarfs-0.14.1.tar.xz"
   sha256 "620cf27f2e142a5f8fc05552a70704c3bf4df23c3279c6026b3f37954d0529c5"
   license "GPL-3.0-or-later"
+  revision 1
 
   livecheck do
     url :stable
@@ -88,6 +89,7 @@ class DwarfsFuseMac < Formula
       ENV.prepend_path "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib/"c++"
     end
 
+    setup_fuse
     system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
     system "cmake", "--build", "build", "--parallel"
     system "cmake", "--install", "build"
