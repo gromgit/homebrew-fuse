@@ -51,13 +51,25 @@ class Formula
 
   def setup_fuse_includes
     mkdir "#{alt_fuse_root}/include" do
-      Dir["/usr/local/include/fuse*"].each { |f| cp_r f, "." }
+      Dir["/usr/local/include/fuse", "/usr/local/include/fuse.h"].each { |f| cp_r f, "." }
+    end
+  end
+
+  def setup_fuse3_includes
+    mkdir "#{alt_fuse_root}/include" do
+      Dir["/usr/local/include/fuse3", "/usr/local/include/fuse.h"].each { |f| cp_r f, "." }
     end
   end
 
   def setup_fuse_libs
     mkdir "#{alt_fuse_root}/lib" do
-      Dir["/usr/local/lib/*fuse*"].each { |f| cp_r f, "." }
+      Dir["/usr/local/lib/libfuse.*"].each { |f| cp_r f, "." }
+    end
+  end
+
+  def setup_fuse3_libs
+    mkdir "#{alt_fuse_root}/lib" do
+      Dir["/usr/local/lib/libfuse3.*"].each { |f| cp_r f, "." }
     end
   end
 
@@ -73,6 +85,12 @@ class Formula
     mkdir "#{alt_fuse_root}/lib/pkgconfig" do
       cp "/usr/local/lib/pkgconfig/fuse.pc", "."
       inreplace "fuse.pc", "/usr/local", alt_fuse_root.to_s
+    end
+    ENV.prepend_path "PKG_CONFIG_PATH", "#{alt_fuse_root}/lib/pkgconfig"
+  end
+
+  def setup_fuse3_pkgconfig
+    mkdir "#{alt_fuse_root}/lib/pkgconfig" do
       cp "/usr/local/lib/pkgconfig/fuse3.pc", "."
       inreplace "fuse3.pc", "/usr/local", alt_fuse_root.to_s
     end
@@ -89,6 +107,14 @@ class Formula
     setup_fuse_includes
     setup_fuse_libs
     setup_fuse_pkgconfig
+    Dir.glob("#{alt_fuse_root}/**/*").each { |f| odebug ">>> #{f}" }
+  end
+
+  def setup_fuse3_env
+    odebug "Setting up FUSE3 temp environment under #{alt_fuse_root}"
+    setup_fuse3_includes
+    setup_fuse3_libs
+    setup_fuse3_pkgconfig
     Dir.glob("#{alt_fuse_root}/**/*").each { |f| odebug ">>> #{f}" }
   end
 
@@ -159,7 +185,7 @@ class Formula
   def setup_fuse3
     return unless need_alt_fuse?
 
-    setup_fuse_env
+    setup_fuse3_env
     setup_fuse3_flags
   end
 end
