@@ -15,9 +15,9 @@ class GcsfuseMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "9f284896b5576dc2a98d1c96c9f2b53f35051ac0bb01c38b8828fd5826c93f69"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "73758bd920293d0574c6c8ca147ffbd54c51734f8fec12307fd81bc3b5d6b633"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "658ac578828a18b15d8e68639a47fd3c2c7da1a6e04c8c5c4b0d610d0b7b5f4e"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "45a24d5fbc15ebf5c2eadc4e89dabfdd6919b8a978d79aef0aa0eb77be09793f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a0a51b15c46502ea6ae80bade59b5b3be38a24dd8b48e6075b2be718c977b93f"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c618a8584ece71eff0af4733f2cc886daef816c3aad52180e8c8fa436bd9f88f"
   end
 
   depends_on "go" => :build
