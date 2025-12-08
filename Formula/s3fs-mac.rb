@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class S3fsMac < Formula
   desc "FUSE-based file system backed by Amazon S3"
   homepage "https://github.com/s3fs-fuse/s3fs-fuse/wiki"
-  url "https://github.com/s3fs-fuse/s3fs-fuse/archive/refs/tags/v1.95.tar.gz"
-  sha256 "0c97b8922f005500d36f72aee29a1345c94191f61d795e2a7b79fb7e3e6f5517"
+  url "https://github.com/s3fs-fuse/s3fs-fuse/archive/refs/tags/v1.97.tar.gz"
+  sha256 "28413457cbf923b9b81e546caffabb8edd5c18f263e698ad86f564fd4b5b344d"
   license "GPL-2.0-or-later"
   head "https://github.com/s3fs-fuse/s3fs-fuse.git", branch: "master"
 
@@ -34,17 +34,15 @@ class S3fsMac < Formula
   end
 
   def install
+    # s3fs >= 1.96 configure only probes the fuse-t and fuse3 pkg-config modules,
+    # but its macOS code still uses the FUSE 2 API; use macFUSE's fuse module instead
+    # TODO: Review for removal in next release
+    inreplace "configure.ac", "[fuse3 >= ${min_fuse_version}", "[fuse >= ${min_fuse_version}"
+
     setup_fuse
     system "./autogen.sh"
     system "./configure", "--with-gnutls", *std_configure_args
     system "make", "install"
-  end
-
-  def caveats
-    <<~EOS
-      This is the final version that supports FUSE 2.
-      Further updates require a macOS FUSE 3 implementation.
-    EOS
   end
 
   test do
