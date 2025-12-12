@@ -57,7 +57,7 @@ class Formula
 
   def setup_fuse3_includes
     mkdir "#{alt_fuse_root}/include" do
-      Dir["/usr/local/include/fuse3", "/usr/local/include/fuse.h"].each { |f| cp_r f, "." }
+      Dir["/usr/local/include/fuse3"].each { |f| cp_r f, "." }
     end
   end
 
