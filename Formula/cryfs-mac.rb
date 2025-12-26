@@ -10,8 +10,9 @@ class CryfsMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_sonoma: "b5175d3198f2be05e267ffdee0000ce54a2f2a56dba534e71a3755b1abcedda3"
-    sha256 cellar: :any, ventura:      "38006b9bbd045368a952af0dc34997a2f51eb2b0a5d41feccd75e8e699aee0d0"
+    sha256 cellar: :any, arm64_tahoe:   "cf79aa4893fe09f288540e992d1c8065cdab0344ada444ed4099c5e80fd5d910"
+    sha256 cellar: :any, arm64_sequoia: "009d5696e71ed22394ff67d5a9e45bfcf605d0d9347f9db7d6316bf336a5e1d7"
+    sha256 cellar: :any, arm64_sonoma:  "ab98abc9ef34928585d59a7dd93a7d9de1cedadac40b7ab797c515ba06168b44"
   end
 
   depends_on "cmake" => :build
