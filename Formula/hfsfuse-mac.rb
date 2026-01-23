@@ -10,9 +10,9 @@ class HfsfuseMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_tahoe:   "f3f8f016549b023c31c1fbca1998d31d5d1452319a3152b0d21a8107c0c81cf8"
-    sha256 cellar: :any, arm64_sequoia: "f3843985cb817343609f990fa7bd1c346453017814defbf4311c5f031c6ba8cd"
-    sha256 cellar: :any, arm64_sonoma:  "33a1216d966ed9426cbf2be528b17556e07ce0757161d62d774a69b2b72dfd3f"
+    sha256 cellar: :any, arm64_tahoe:   "40bc7ca7da883db1de616e8269ae321b7fe2d0c86d9daa74c5a926e0039acdd8"
+    sha256 cellar: :any, arm64_sequoia: "3891ac7d10aeab4f0101b8631e42fe31aaff5f8ecb2957253369053a3daff406"
+    sha256 cellar: :any, arm64_sonoma:  "2dd4ecd2b46025de7f1a78c2edb0d4af03c7f6e1f2f38da410e315c73db9cdc2"
   end
 
   depends_on "libarchive"
