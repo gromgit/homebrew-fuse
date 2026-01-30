@@ -8,6 +8,8 @@ This tap exists to support macOS FUSE-related software that have been dropped fr
 
 All my old Intel Mac hardware is dead, and I'm not inclined to spend additional resources spinning up VMs or building Hackintoshes at this stage. As of 2025-Feb-10, the only bottles built will be for those macOS versions supported by GitHub runners (currently Ventura on Intel and Sonoma on ARM). Sorry.
 
+As of 30 Jan 2026, macOS 14 bottles will no longer be provided, due to mysterious build timeouts that make no sense.
+
 ---
 
 ## How do I install these formulae?
