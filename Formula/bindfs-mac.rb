@@ -9,8 +9,8 @@ class BindfsMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma: "18280a50ddee23ed3cfd05cb40e6a69a1d343ce118553f5098e9e9d289b66fb4"
-    sha256 cellar: :any,                 ventura:      "a2c590ee0ca1bfc22e4e485b680490791e9a17812f8b9041c2469063280641e1"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "abe6cbec99f98023c699adf447c9673884a3d55cd4e9aa9f188226bec78750c9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a3d392955a8c59f9bdb757dfe9900608b2a3c54f21021d628d8adb679a352649"
   end
 
   head do
