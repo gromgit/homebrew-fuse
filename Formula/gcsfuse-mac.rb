@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class GcsfuseMac < Formula
   desc "User-space file system for interacting with Google Cloud"
   homepage "https://github.com/googlecloudplatform/gcsfuse"
-  url "https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v3.5.6.tar.gz"
-  sha256 "5ea2704df658628ce7ea397ec3696c1f7fc728b4be2ec953f19860cf5e2c8b08"
+  url "https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v3.7.3.tar.gz"
+  sha256 "a3c3a4185b53031df10147b02ecf7ece16083d98eb7768eae8a1e29fb97ac9f4"
   license "Apache-2.0"
   head "https://github.com/GoogleCloudPlatform/gcsfuse.git", branch: "master"
 
