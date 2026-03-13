@@ -19,8 +19,8 @@ class AvfsMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 arm64_sonoma: "925ae6c3197657008289364ab4549266ea0a4a1a782314d6759eb97571f5d5e3"
-    sha256 ventura:      "0d46af6e0d31f778779b687dc7adadbf1afac641e2c2e35f8c837726ab635c37"
+    sha256 arm64_tahoe:   "09e130d97d483441bbb2ad2c16a81557c482ef508a4f5448666ac13eb92cd148"
+    sha256 arm64_sequoia: "35edcdb1c8bf28b9b16e81b6f0ad84452317331b09a50930cd6219facc91012b"
   end
 
   depends_on "pkgconf" => :build
