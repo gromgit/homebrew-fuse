@@ -5,8 +5,8 @@ class RatarmountMac < Formula
 
   desc "Mount and efficiently access archives as filesystems"
   homepage "https://github.com/mxmlnkn/ratarmount"
-  url "https://files.pythonhosted.org/packages/f6/2f/ce04f40f3cc82bb3ffbc97bffe3b7a2abe83a382c81fe2452ad54792acdf/ratarmount-1.2.1.tar.gz"
-  sha256 "28be2f1b9477ba4d0d8d75ddbc2468fc906970d36f4940bd932d1a51818e06a0"
+  url "https://files.pythonhosted.org/packages/9a/38/b99223940402cc2eba3b6c8586fbbfb9e91cc7fda691fc4e5d4cdbda4c86/ratarmount-1.2.2.tar.gz"
+  sha256 "4f0675d4ac4562a413ae4d381829368a02c8f5b518a85254f1ff08dafbe7ab7f"
   license "MIT"
   head "https://github.com/mxmlnkn/ratarmount.git", branch: "master"
 
@@ -23,6 +23,11 @@ class RatarmountMac < Formula
   depends_on "python@3.13"
   depends_on "zstd"
 
+  resource "backports-zstd" do
+    url "https://files.pythonhosted.org/packages/f4/b1/36a5182ce1d8ef9ef32bff69037bd28b389bbdb66338f8069e61da7028cb/backports_zstd-1.3.0.tar.gz"
+    sha256 "e8b2d68e2812f5c9970cabc5e21da8b409b5ed04e79b4585dbffa33e9b45ebe2"
+  end
+
   resource "brotli" do
     url "https://files.pythonhosted.org/packages/f7/16/c92ca344d646e71a43b8bb353f0a6490d7f6e06210f8554c8f874e454285/brotli-1.2.0.tar.gz"
     sha256 "e310f77e41941c13340a95976fe66a8a95b01e783d430eeaf7a2f87e0a57dd0a"
@@ -34,18 +39,18 @@ class RatarmountMac < Formula
   end
 
   resource "indexed-gzip" do
-    url "https://files.pythonhosted.org/packages/d4/22/e9e94407bae83444adf598535b684d28cfbbcbe19f58eeba46f4db7bc0f3/indexed_gzip-1.10.1.tar.gz"
-    sha256 "3993fd72570b254045d2361d937a984350719f2205066f4e4c16435a1df361e3"
+    url "https://files.pythonhosted.org/packages/e8/f9/a127e4f1f806b18d43272b6d0bb56f74ca1a16628d60ebc674a62ebf37eb/indexed_gzip-1.10.3.tar.gz"
+    sha256 "1347f3b6c5522c5c50db5d9e2801257cea86639e87b46c6635f22005ee3ded25"
   end
 
   resource "indexed-zstd" do
-    url "https://files.pythonhosted.org/packages/52/22/5b908d5e987043ce8390b0d9101c93fae0c0de0c9c8417c562976eeb8be6/indexed_zstd-1.6.1.tar.gz"
-    sha256 "8b74378f9461fceab175215b65e1c489864ddb34bd816058936a627f0cca3a8b"
+    url "https://files.pythonhosted.org/packages/57/b6/96ce71640c3896cb4fcc4f071eb321d05016d64ea694d5d346da12c911d9/indexed_zstd-1.7.0.tar.gz"
+    sha256 "b08f417c562f7e7c91454735d5ecec0a132fd0f4aa789b50bb1c6b466e14b504"
   end
 
   resource "inflate64" do
-    url "https://files.pythonhosted.org/packages/e3/a7/974e6daa6c353cf080b540c18f11840e81b36d18106963a0a857b1fc2adf/inflate64-1.0.3.tar.gz"
-    sha256 "a89edd416c36eda0c3a5d32f31ff1555db2c5a3884aa8df95e8679f8203e12ee"
+    url "https://files.pythonhosted.org/packages/3e/f3/41bb2901543abe7aad0b0b0284ae5854bb75f848cf406bf8a046bf525f67/inflate64-1.0.4.tar.gz"
+    sha256 "b398c686960c029777afc0ed281a86f66adb956cfc3fbf6667cc6453f7b407ce"
   end
 
   resource "libarchive-c" do
@@ -54,8 +59,8 @@ class RatarmountMac < Formula
   end
 
   resource "mfusepy" do
-    url "https://files.pythonhosted.org/packages/1c/94/c9d5dcba4a6a2b32ba23e22fd13ca08e6f5408420b2dfe42984af22277b6/mfusepy-3.0.0.tar.gz"
-    sha256 "eddade33e427bac9c455464cd0a7d12d63c033255ec6b1e0d6ada143a945c6f2"
+    url "https://files.pythonhosted.org/packages/91/47/746287c8962274f73ee25edb3840d80899464bfffbe2c435424c2d60a071/mfusepy-3.1.1.tar.gz"
+    sha256 "338ece54513d7d1a5e9492837679a0c7432ecf96a03490a2683a1ce1d19570e1"
   end
 
   resource "multivolumefile" do
@@ -64,18 +69,18 @@ class RatarmountMac < Formula
   end
 
   resource "psutil" do
-    url "https://files.pythonhosted.org/packages/e1/88/bdd0a41e5857d5d703287598cbf08dad90aed56774ea52ae071bae9071b6/psutil-7.1.3.tar.gz"
-    sha256 "6c86281738d77335af7aec228328e944b30930899ea760ecf33a4dba66be5e74"
+    url "https://files.pythonhosted.org/packages/aa/c6/d1ddf4abb55e93cebc4f2ed8b5d6dbad109ecb8d63748dd2b20ab5e57ebe/psutil-7.2.2.tar.gz"
+    sha256 "0746f5f8d406af344fd547f1c8daa5f5c33dbc293bb8d6a16d80b4bb88f59372"
   end
 
   resource "py7zr" do
-    url "https://files.pythonhosted.org/packages/97/62/d6f18967875aa60182198a0dd287d3a50d8aea1d844239ea00c016f7be88/py7zr-1.0.0.tar.gz"
-    sha256 "f6bfee81637c9032f6a9f0eb045a4bfc7a7ff4138becfc42d7cb89b54ffbfef1"
+    url "https://files.pythonhosted.org/packages/0c/e6/01fb15361ca75ee5d01df6361825a49816a836c99980c5481da0e40c6877/py7zr-1.1.0.tar.gz"
+    sha256 "087b1a94861ad9eb4d21604f6aaa0a8986a7e00580abd79fedd6f82fecf0592c"
   end
 
   resource "pybcj" do
-    url "https://files.pythonhosted.org/packages/ce/75/bbcf098abf68081fa27c09d642790daa99d9156132c8b0893e3fecd946ab/pybcj-1.0.6.tar.gz"
-    sha256 "70bbe2dc185993351955bfe8f61395038f96f5de92bb3a436acb01505781f8f2"
+    url "https://files.pythonhosted.org/packages/12/0c/2670b672655b18454841b8e88f024b9159d637a4c07f6ce6db85accf8467/pybcj-1.0.7.tar.gz"
+    sha256 "72d64574069ffb0a800020668376b7ebd7adea159adbf4d35f8effc62f0daa67"
   end
 
   resource "pycryptodomex" do
@@ -84,18 +89,13 @@ class RatarmountMac < Formula
   end
 
   resource "pyppmd" do
-    url "https://files.pythonhosted.org/packages/f6/d7/b3084ff1ac6451ef7dd93d4f7627eeb121a3bed4f8a573a81978a43ddb06/pyppmd-1.2.0.tar.gz"
-    sha256 "cc04af92f1d26831ec96963439dfb27c96467b5452b94436a6af696649a121fd"
+    url "https://files.pythonhosted.org/packages/81/d7/803232913cab9163a1a97ecf2236cd7135903c46ac8d49613448d88e8759/pyppmd-1.3.1.tar.gz"
+    sha256 "ced527f08ade4408c1bfc5264e9f97ffac8d221c9d13eca4f35ec1ec0c7b6b2e"
   end
 
   resource "python-xz" do
     url "https://files.pythonhosted.org/packages/fe/2f/7ed0c25005eba0efb1cea3cdf4a325852d63167cc77f96b0a0534d19e712/python-xz-0.4.0.tar.gz"
     sha256 "398746593b706fa9fac59b8c988eab8603e1fe2ba9195111c0b45227a3a77db3"
-  end
-
-  resource "pyzstd" do
-    url "https://files.pythonhosted.org/packages/47/82/7bcafbf06ee83a66990ce5badbb8f4dc32184346bab20de7e468b1a2f6ec/pyzstd-0.18.0.tar.gz"
-    sha256 "81b6851ab1ca2e5f2c709e896a1362e3065a64f271f43db77fb7d5e4a78e9861"
   end
 
   resource "rapidgzip" do
@@ -109,8 +109,8 @@ class RatarmountMac < Formula
   end
 
   resource "ratarmountcore" do
-    url "https://files.pythonhosted.org/packages/f8/15/b9c2a47a4adba9b7bef8a057896a8e96db1d286ae538bd1d9d2fd147febd/ratarmountcore-0.10.2.tar.gz"
-    sha256 "35e2935e1e135140d1bb8d82061c1527fb168ba5653d0218c06f3ec106711e6c"
+    url "https://files.pythonhosted.org/packages/69/db/845aac13bee32f391606ae4118b21564f0e2537af5d2882e0ff1ac3b6e47/ratarmountcore-0.10.3.tar.gz"
+    sha256 "259644bc057b844ba6f73edd9923118757e0933f2ea6c54d841e2f897f2a5f5f"
   end
 
   resource "texttable" do
