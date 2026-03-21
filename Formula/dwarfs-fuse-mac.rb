@@ -3,10 +3,9 @@ require_relative "../require/macfuse"
 class DwarfsFuseMac < Formula
   desc "Fast high compression read-only file system (macFUSE driver)"
   homepage "https://github.com/mhx/dwarfs"
-  url "https://github.com/mhx/dwarfs/releases/download/v0.14.1/dwarfs-0.14.1.tar.xz"
-  sha256 "620cf27f2e142a5f8fc05552a70704c3bf4df23c3279c6026b3f37954d0529c5"
+  url "https://github.com/mhx/dwarfs/releases/download/v0.15.1/dwarfs-0.15.1.tar.xz"
+  sha256 "a180086f9a898b4b52a5217e336c0134d63a10b395b493f2e19f231d575a87ec"
   license "GPL-3.0-or-later"
-  revision 3
 
   livecheck do
     url :stable
