@@ -3,10 +3,9 @@ require_relative "../require/macfuse"
 class DwarfsFuseMac < Formula
   desc "Fast high compression read-only file system (macFUSE driver)"
   homepage "https://github.com/mhx/dwarfs"
-  url "https://github.com/mhx/dwarfs/releases/download/v0.14.1/dwarfs-0.14.1.tar.xz"
-  sha256 "620cf27f2e142a5f8fc05552a70704c3bf4df23c3279c6026b3f37954d0529c5"
+  url "https://github.com/mhx/dwarfs/releases/download/v0.15.2/dwarfs-0.15.2.tar.xz"
+  sha256 "6b7edcb2121347e273753d949f72913f006ec12477248384b24c48989ec34995"
   license "GPL-3.0-or-later"
-  revision 3
 
   livecheck do
     url :stable
@@ -53,11 +52,6 @@ class DwarfsFuseMac < Formula
     build 1500
     cause "Not all required C++20 features are supported"
   end
-
-  # Workaround for Boost 1.89.0 until upstream Folly fix.
-  # Issue ref: https://github.com/facebook/folly/issues/2489
-  # Fix to Undefined symbols for architecture x86_64: "_XXH3_64bits"
-  patch :DATA
 
   def install
     args = %W[
@@ -135,15 +129,3 @@ class DwarfsFuseMac < Formula
     assert_equal version.to_s, shell_output("./test").chomp
   end
 end
-
-__END__
---- a/folly/CMake/folly-config.cmake.in
-+++ b/folly/CMake/folly-config.cmake.in
-@@ -38,7 +38,6 @@ find_dependency(Boost 1.51.0 MODULE
-     filesystem
-     program_options
-     regex
--    system
-     thread
-   REQUIRED
- )
