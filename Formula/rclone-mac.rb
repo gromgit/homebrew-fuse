@@ -10,8 +10,8 @@ class RcloneMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "fc158e7fc449662304b0b64a8ab2535bdd7963883b529a794e19440fe8b8f97e"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2357646f76f20d61f09029c9a2a4527807d2c83c30188aff807afa7e8046224b"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "169983d16eb7860cc1802e63c31422b872052daf6b2df791c6baf8d6cb705b69"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "53e8eb4f88b316f6e33dd7e6933fe7fdd4e1a660ade1c8bfdd27e0df16bd03bc"
   end
 
   depends_on "go" => :build
