@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class HfsfuseMac < Formula
   desc "FUSE driver for HFS+ filesystems (read-only)"
   homepage "https://github.com/0x09/hfsfuse"
-  url "https://github.com/0x09/hfsfuse/releases/download/0.410/hfsfuse-0.410.tar.gz"
-  sha256 "639aca1f7597535531c572a0d5ff0a06202e5c01371b282c328b7eebfd5f7b51"
+  url "https://github.com/0x09/hfsfuse/releases/download/0.416/hfsfuse-0.416.tar.gz"
+  sha256 "c99e854c73d12281d1005cd8b89e5e1fdf0b9fb1f5ffa1845c91de3d48fac666"
   license all_of: ["BSD-2-Clause", "MIT"]
   head "https://github.com/0x09/hfsfuse.git", branch: "master"
 
