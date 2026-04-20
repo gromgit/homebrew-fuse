@@ -5,8 +5,8 @@ class RatarmountMac < Formula
 
   desc "Mount and efficiently access archives as filesystems"
   homepage "https://github.com/mxmlnkn/ratarmount"
-  url "https://files.pythonhosted.org/packages/9a/38/b99223940402cc2eba3b6c8586fbbfb9e91cc7fda691fc4e5d4cdbda4c86/ratarmount-1.2.2.tar.gz"
-  sha256 "4f0675d4ac4562a413ae4d381829368a02c8f5b518a85254f1ff08dafbe7ab7f"
+  url "https://files.pythonhosted.org/packages/66/e1/c9e2d07762a85c8968ef40cca050723f8164b89a5ccb26a0b31f0b1e5b37/ratarmount-1.2.3.tar.gz"
+  sha256 "4e529430f38d6a64ec13feab080ff19a1709d131a54c370bb2ee5f14531dc80e"
   license "MIT"
   head "https://github.com/mxmlnkn/ratarmount.git", branch: "master"
 
@@ -43,8 +43,8 @@ class RatarmountMac < Formula
   end
 
   resource "indexed-zstd" do
-    url "https://files.pythonhosted.org/packages/57/b6/96ce71640c3896cb4fcc4f071eb321d05016d64ea694d5d346da12c911d9/indexed_zstd-1.7.0.tar.gz"
-    sha256 "b08f417c562f7e7c91454735d5ecec0a132fd0f4aa789b50bb1c6b466e14b504"
+    url "https://files.pythonhosted.org/packages/de/c8/ccd92a94357bc84528adc7237561e5926e752709bfa707c4e4e42703ad16/indexed_zstd-1.7.1.tar.gz"
+    sha256 "0eca6a4f5e6b905eaa1acd3d97b1ade34078a829483a43839f5cf2efe97150f4"
   end
 
   resource "inflate64" do
@@ -108,8 +108,8 @@ class RatarmountMac < Formula
   end
 
   resource "ratarmountcore" do
-    url "https://files.pythonhosted.org/packages/69/db/845aac13bee32f391606ae4118b21564f0e2537af5d2882e0ff1ac3b6e47/ratarmountcore-0.10.3.tar.gz"
-    sha256 "259644bc057b844ba6f73edd9923118757e0933f2ea6c54d841e2f897f2a5f5f"
+    url "https://files.pythonhosted.org/packages/44/92/8b79074b1f98154c41ac72670386728ce78124f9eb4e11021660fb952ef3/ratarmountcore-0.10.4.tar.gz"
+    sha256 "9bda3eda5d7d98599740ee453d35892dd7000d825e9cf333e93c62990bf09696"
   end
 
   resource "texttable" do
