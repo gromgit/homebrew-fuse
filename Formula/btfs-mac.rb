@@ -3,10 +3,9 @@ require_relative "../require/macfuse"
 class BtfsMac < Formula
   desc "BitTorrent filesystem based on FUSE"
   homepage "https://github.com/johang/btfs"
-  url "https://github.com/johang/btfs/archive/refs/tags/v2.24.tar.gz"
-  sha256 "d71ddefe3c572e05362542a0d9fd0240d8d4e1578ace55a8b3245176e7fd8935"
+  url "https://github.com/johang/btfs/archive/refs/tags/v3.1.tar.gz"
+  sha256 "c363f04149f97baf1c5e10ac90677b8309724f2042ab045a45041cfb7b44649b"
   license "GPL-3.0-only"
-  revision 1
   head "https://github.com/johang/btfs.git", branch: "master"
 
   bottle do
@@ -23,7 +22,7 @@ class BtfsMac < Formula
   depends_on :macos
 
   def install
-    setup_fuse
+    setup_fuse3
     system "autoreconf", "--force", "--install", "--verbose"
     system "./configure", *std_configure_args, "--disable-silent-rules"
     system "make", "install"
