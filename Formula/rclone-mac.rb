@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class RcloneMac < Formula
   desc "Rsync for cloud storage (with macOS FUSE mount support)"
   homepage "https://rclone.org/"
-  url "https://github.com/rclone/rclone/archive/refs/tags/v1.74.0.tar.gz"
-  sha256 "fac84dba8daf15112507adf9f7913a8e566969e485fb4d5abdc3b8f7974e853a"
+  url "https://github.com/rclone/rclone/archive/refs/tags/v1.74.2.tar.gz"
+  sha256 "2373a74751cfd2034cc6b792a9a15d119087cb77975f3c9fcd7a4503c15102b0"
   license "MIT"
   head "https://github.com/rclone/rclone.git", branch: "master"
 
