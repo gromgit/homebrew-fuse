@@ -25,31 +25,21 @@ class Formula
     # -DFUSE_LIBRARIES=#{alt_fuse_root}/lib/libfuse.dylib
   end
 
-  def setup_fuse_includes
+  def setup_fuse_includes(fuse_suffix: "")
     mkdir "#{alt_fuse_root}/include" do
-      Dir["/usr/local/include/fuse", "/usr/local/include/fuse.h"].each { |f| cp_r f, "." }
+      dirs = %W[/usr/local/include/fuse#{fuse_suffix}]
+      dirs += %w[/usr/local/include/fuse.h] if fuse_suffix == ""
+      Dir[*dirs].each { |f| cp_r f, "." }
     end
   end
 
-  def setup_fuse3_includes
-    mkdir "#{alt_fuse_root}/include" do
-      Dir["/usr/local/include/fuse3"].each { |f| cp_r f, "." }
-    end
-  end
-
-  def setup_fuse_libs
+  def setup_fuse_libs(fuse_suffix: "")
     mkdir "#{alt_fuse_root}/lib" do
-      Dir["/usr/local/lib/libfuse.*"].each { |f| cp_r f, "." }
+      Dir["/usr/local/lib/libfuse#{fuse_suffix}.*"].each { |f| cp_r f, "." }
     end
   end
 
-  def setup_fuse3_libs
-    mkdir "#{alt_fuse_root}/lib" do
-      Dir["/usr/local/lib/libfuse3.*"].each { |f| cp_r f, "." }
-    end
-  end
-
-  def setup_fuse_pkgconfig
+  def setup_fuse_pkgconfig(fuse_suffix: "")
     ### OLD METHOD: Fake pkg-config
     # mkdir "#{alt_fuse_root}/bin" do
     #  cp path/"../../lib/fuse-pkg-config", "."
@@ -59,16 +49,8 @@ class Formula
 
     ### NEW METHOD: Fix fuse.pc in alt root
     mkdir "#{alt_fuse_root}/lib/pkgconfig" do
-      cp "/usr/local/lib/pkgconfig/fuse.pc", "."
-      inreplace "fuse.pc", "/usr/local", alt_fuse_root.to_s
-    end
-    ENV.prepend_path "PKG_CONFIG_PATH", "#{alt_fuse_root}/lib/pkgconfig"
-  end
-
-  def setup_fuse3_pkgconfig
-    mkdir "#{alt_fuse_root}/lib/pkgconfig" do
-      cp "/usr/local/lib/pkgconfig/fuse3.pc", "."
-      inreplace "fuse3.pc", "/usr/local", alt_fuse_root.to_s
+      cp "/usr/local/lib/pkgconfig/fuse#{fuse_suffix}.pc", "."
+      inreplace "fuse#{fuse_suffix}.pc", "/usr/local", alt_fuse_root.to_s
     end
     ENV.prepend_path "PKG_CONFIG_PATH", "#{alt_fuse_root}/lib/pkgconfig"
   end
@@ -78,19 +60,11 @@ class Formula
   #  "pkg-config"
   # end
 
-  def setup_fuse_env
-    odebug "Setting up FUSE temp environment under #{alt_fuse_root}"
-    setup_fuse_includes
-    setup_fuse_libs
-    setup_fuse_pkgconfig
-    Dir.glob("#{alt_fuse_root}/**/*").each { |f| odebug ">>> #{f}" }
-  end
-
-  def setup_fuse3_env
-    odebug "Setting up FUSE3 temp environment under #{alt_fuse_root}"
-    setup_fuse3_includes
-    setup_fuse3_libs
-    setup_fuse3_pkgconfig
+  def setup_fuse_env(fuse_suffix: "")
+    odebug "Setting up FUSE#{fuse_suffix} temp environment under #{alt_fuse_root}"
+    setup_fuse_includes(fuse_suffix: fuse_suffix)
+    setup_fuse_libs(fuse_suffix: fuse_suffix)
+    setup_fuse_pkgconfig(fuse_suffix: fuse_suffix)
     Dir.glob("#{alt_fuse_root}/**/*").each { |f| odebug ">>> #{f}" }
   end
 
@@ -101,69 +75,48 @@ class Formula
     ENV.append "CGO_CPPFLAGS", "-DFUSE_DARWIN_ENABLE_EXTENSIONS=0"
   end
 
-  def setup_fuse_flags
-    ENV.append "CFLAGS", "-I#{alt_fuse_root}/include/fuse"
+  def setup_fuse_flags(fuse_suffix: "")
+    ENV.append "CFLAGS", "-I#{alt_fuse_root}/include/fuse#{fuse_suffix}"
     ENV.append "CFLAGS", "-I#{alt_fuse_root}/include"
-    ENV.append "CFLAGS", "-D_FILE_OFFSET_BITS=64"
-    ENV.append "CFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
-    ENV.append "CPPFLAGS", "-I#{alt_fuse_root}/include/fuse"
+    ENV.append "CPPFLAGS", "-I#{alt_fuse_root}/include/fuse#{fuse_suffix}"
     ENV.append "CPPFLAGS", "-I#{alt_fuse_root}/include"
-    ENV.append "CPPFLAGS", "-D_FILE_OFFSET_BITS=64"
-    ENV.append "CPPFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
-    ENV.append "CXXFLAGS", "-I#{alt_fuse_root}/include/fuse"
+    ENV.append "CXXFLAGS", "-I#{alt_fuse_root}/include/fuse#{fuse_suffix}"
     ENV.append "CPPFLAGS", "-I#{alt_fuse_root}/include"
-    ENV.append "CXXFLAGS", "-D_FILE_OFFSET_BITS=64"
-    ENV.append "CXXFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
     ENV.append "LDFLAGS", "-L#{alt_fuse_root}/lib"
-    ENV.append "LDFLAGS", "-F/Library/Filesystems/macfuse.fs/Contents/Frameworks"
-    ENV.append "CGO_CPPFLAGS", "-I#{alt_fuse_root}/include/fuse"
+    ENV.append "CGO_CPPFLAGS", "-I#{alt_fuse_root}/include/fuse#{fuse_suffix}"
     ENV.append "CGO_CPPFLAGS", "-I#{alt_fuse_root}/include"
-    ENV.append "CGO_CPPFLAGS", "-D_FILE_OFFSET_BITS=64"
-    ENV.append "CGO_CPPFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
     ENV.append "CGO_LDFLAGS", "-L#{alt_fuse_root}/lib"
-    disable_macfuse_extensions
     odebug "PKG_CONFIG = #{ENV.fetch("PKG_CONFIG", nil)}"
     odebug "PKG_CONFIG_PATH = #{ENV.fetch("PKG_CONFIG_PATH", nil)}"
     odebug "CFLAGS = #{ENV.fetch("CFLAGS", nil)}"
   end
 
-  def setup_fuse3_flags
-    ENV.append "CFLAGS", "-I#{alt_fuse_root}/include/fuse3"
-    ENV.append "CFLAGS", "-I#{alt_fuse_root}/include"
+  def setup_common(disable_exts:)
+    disable_macfuse_extensions if disable_exts
     ENV.append "CFLAGS", "-D_FILE_OFFSET_BITS=64"
     ENV.append "CFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
-    ENV.append "CPPFLAGS", "-I#{alt_fuse_root}/include/fuse3"
-    ENV.append "CPPFLAGS", "-I#{alt_fuse_root}/include"
     ENV.append "CPPFLAGS", "-D_FILE_OFFSET_BITS=64"
     ENV.append "CPPFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
-    ENV.append "CXXFLAGS", "-I#{alt_fuse_root}/include/fuse3"
-    ENV.append "CXXFLAGS", "-I#{alt_fuse_root}/include"
     ENV.append "CXXFLAGS", "-D_FILE_OFFSET_BITS=64"
     ENV.append "CXXFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
-    ENV.append "LDFLAGS", "-L#{alt_fuse_root}/lib"
-    ENV.append "LDFLAGS", "-F/Library/Filesystems/macfuse.fs/Contents/Frameworks"
-    ENV.append "CGO_CPPFLAGS", "-I#{alt_fuse_root}/include/fuse3"
-    ENV.append "CGO_CPPFLAGS", "-I#{alt_fuse_root}/include"
     ENV.append "CGO_CPPFLAGS", "-D_FILE_OFFSET_BITS=64"
     ENV.append "CGO_CPPFLAGS", "-D_USE_FILE_OFFSET_BITS=64"
-    ENV.append "CGO_LDFLAGS", "-L#{alt_fuse_root}/lib"
-    disable_macfuse_extensions
-    odebug "PKG_CONFIG = #{ENV.fetch("PKG_CONFIG", nil)}"
-    odebug "PKG_CONFIG_PATH = #{ENV.fetch("PKG_CONFIG_PATH", nil)}"
-    odebug "CFLAGS = #{ENV.fetch("CFLAGS", nil)}"
+    ENV.append "LDFLAGS", "-F/Library/Filesystems/macfuse.fs/Contents/Frameworks"
   end
 
-  def setup_fuse
+  def setup_fuse(disable_exts: true)
+    setup_common(disable_exts: disable_exts)
     return unless need_alt_fuse?
 
-    setup_fuse_env
-    setup_fuse_flags
+    setup_fuse_env()
+    setup_fuse_flags()
   end
 
-  def setup_fuse3
+  def setup_fuse3(disable_exts: true)
+    setup_common(disable_exts: disable_exts)
     return unless need_alt_fuse?
 
-    setup_fuse3_env
-    setup_fuse3_flags
+    setup_fuse_env(fuse_suffix: "3")
+    setup_fuse_flags(fuse_suffix: "3")
   end
 end
