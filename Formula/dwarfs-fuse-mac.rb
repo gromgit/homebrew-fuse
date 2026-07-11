@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class DwarfsFuseMac < Formula
   desc "Fast high compression read-only file system (macFUSE driver)"
   homepage "https://github.com/mhx/dwarfs"
-  url "https://github.com/mhx/dwarfs/releases/download/v0.15.4/dwarfs-0.15.4.tar.xz"
-  sha256 "454f0e04a1cf6662d6842239ee816ddf3217bd4b8b9e1cc99b3ffb7f20854294"
+  url "https://github.com/mhx/dwarfs/releases/download/v0.15.5/dwarfs-0.15.5.tar.xz"
+  sha256 "e6315f514c2e0db099b7e1627eeed1b968ba316c4a1cb2d96306132303816c00"
   license "GPL-3.0-or-later"
 
   livecheck do
@@ -24,15 +24,10 @@ class DwarfsFuseMac < Formula
   depends_on "pkgconf" => :build
   depends_on "boost"
   depends_on "brotli"
-  depends_on "double-conversion"
   depends_on "flac"
   depends_on "fmt"
-  depends_on "gflags"
-  depends_on "glog"
   depends_on "howard-hinnant-date"
   depends_on "libarchive"
-  depends_on "libevent"
-  depends_on "libsodium"
   depends_on "llvm" if DevelopmentTools.clang_build_version <= 1500
   depends_on "lz4"
   depends_on MacfuseRequirement
@@ -50,7 +45,7 @@ class DwarfsFuseMac < Formula
 
   fails_with :clang do
     build 1500
-    cause "Not all required C++20 features are supported"
+    cause "Not all required C++23 features are supported"
   end
 
   def install
@@ -85,7 +80,7 @@ class DwarfsFuseMac < Formula
 
     setup_fuse
     system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
-    system "cmake", "--build", "build", "--parallel"
+    system "cmake", "--build", "build"
     system "cmake", "--install", "build"
   end
 
@@ -99,7 +94,7 @@ class DwarfsFuseMac < Formula
     # get JSON info about the image
     info = JSON.parse(shell_output("#{bin}/dwarfsck test.dwarfs -j"))
     assert_equal info["created_by"], "libdwarfs v#{version}"
-    assert info["inode_count"] >= 10
+    assert_operator 10, :<=, info["inode_count"]
 
     # extract the image
     system bin/"dwarfsextract", "-i", "test.dwarfs"
@@ -121,10 +116,8 @@ class DwarfsFuseMac < Formula
       }
     CPP
 
-    # ENV.llvm_clang doesn't work in the test block
-    ENV["CXX"] = formula_opt_bin("llvm")/"clang++" if OS.mac? && DevelopmentTools.clang_build_version <= 1500
-
-    system ENV.cxx, "-std=c++20", "test.cpp", "-I#{include}", "-L#{lib}", "-o", "test", "-ldwarfs_common"
+    system ENV.cxx, "-std=c++23", "test.cpp", "-I#{include}", "-L#{lib}", "-Wl,-rpath,#{lib}",
+                    "-o", "test", "-ldwarfs_common"
 
     assert_equal version.to_s, shell_output("./test").chomp
   end
