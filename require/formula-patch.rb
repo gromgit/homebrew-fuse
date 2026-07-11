@@ -108,8 +108,8 @@ class Formula
     setup_common(disable_exts: disable_exts)
     return unless need_alt_fuse?
 
-    setup_fuse_env()
-    setup_fuse_flags()
+    setup_fuse_env
+    setup_fuse_flags
   end
 
   def setup_fuse3(disable_exts: true)

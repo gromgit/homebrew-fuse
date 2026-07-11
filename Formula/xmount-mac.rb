@@ -25,7 +25,7 @@ class XmountMac < Formula
 
   def install
     setup_fuse
-    ENV.prepend_path "PKG_CONFIG_PATH", Formula["openssl@3"].opt_lib/"pkgconfig"
+    ENV.prepend_path "PKG_CONFIG_PATH", formula_opt_lib("openssl@3")/"pkgconfig"
 
     system "cmake", "-S", ".", "-B", "build", *fuse_cmake_args, *std_cmake_args
     system "cmake", "--build", "build"
