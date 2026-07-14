@@ -10,8 +10,8 @@ class S3fsMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_sonoma: "ecbfca73778ed850eeef256fcba17bb229036f9fbce767fd54abc2335236efee"
-    sha256 cellar: :any, ventura:      "0fb739e8007836e833c79d45159c78fbd05291b19afc9439683d2712d1b1dd68"
+    sha256 cellar: :any, arm64_tahoe:   "d68a2a2b163e8d032b22922156bef9c54f9ce0dbe74225d54b0da0f360f29fd2"
+    sha256 cellar: :any, arm64_sequoia: "0f6c30a3139b5e34803c109df921c9867f2b0cd7196980045b7582fa64c97fd2"
   end
 
   depends_on "autoconf" => :build
