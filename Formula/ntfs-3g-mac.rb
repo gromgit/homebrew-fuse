@@ -14,8 +14,8 @@ class Ntfs3gMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_tahoe:   "0483c0fc8757e0d68cbb62a037b3dad3f58fa8bc2d8003921be7bf67138860f3"
-    sha256 cellar: :any, arm64_sequoia: "a76eb632fed79324bc17a9e14cadeae83f96b51f8be71682865810aa4669b4e3"
+    sha256 cellar: :any, arm64_tahoe:   "37d9bc5a4e2d845a34a94ec98856cb5e4fc8d4a4d9e425205cc9e689595fd040"
+    sha256 cellar: :any, arm64_sequoia: "98b7f5c8fd74cf7e34252ebf2488aedd785d718412554e9dadc190e753b31196"
   end
 
   head do
