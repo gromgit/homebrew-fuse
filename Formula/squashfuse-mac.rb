@@ -6,6 +6,7 @@ class SquashfuseMac < Formula
   url "https://github.com/vasi/squashfuse/releases/download/0.6.2/squashfuse-0.6.2.tar.gz"
   sha256 "267f2852d6e20147eb1e21931f9d0fe7634a66612f1ede27e15fa60e56ce0eac"
   license "BSD-2-Clause"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
