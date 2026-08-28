@@ -15,8 +15,8 @@ class DwarfsFuseMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 arm64_tahoe:   "79fcac5f2951a56d69f026281739bcbda5b60ecba7dee496e0cacff39bf3b10b"
-    sha256 arm64_sequoia: "d6c20ebb5ad5c783ad46ff7b91db7878b7359e920bc5ce622fadea0a2ffe3bf3"
+    sha256 arm64_tahoe:   "d5afc2dd0058d7a982d475ca8a47c37b937a7fe61e8c7de4448f5b1a7a731737"
+    sha256 arm64_sequoia: "17bea3e54dbc0f7f6c97edd7805e55f6f979dbf056a15bee4e6caa09dc6ffc1d"
   end
 
   depends_on "cmake" => :build
