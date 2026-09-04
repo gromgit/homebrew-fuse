@@ -22,7 +22,7 @@ class UnionfsFuse < Formula
     setup_fuse
     inreplace "CMakeLists.txt", "/usr/local", alt_fuse_root.to_s
     mkdir "build" do
-      system "cmake", "..",
+      system "cmake", "-S", "..", "-B", ".",
         "-DCMAKE_C_COMPILER=clang",
         "-DCMAKE_C_FLAGS=-std=gnu99",
         *std_cmake_args
