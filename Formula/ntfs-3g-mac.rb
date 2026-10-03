@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class Ntfs3gMac < Formula
   desc "Read-write NTFS driver for FUSE"
   homepage "https://www.tuxera.com/community/open-source-ntfs-3g/"
-  url "https://tuxera.com/opensource/ntfs-3g_ntfsprogs-2026.7.7.tgz"
-  sha256 "d67b769025d32860549d35c2147e45024d172f81c540d750390ce3602c059dab"
+  url "https://tuxera.com/opensource/ntfs-3g_ntfsprogs-2026.9.28.tgz"
+  sha256 "350d9415c59f7c3fa74e23985ad2d56423c6a168337368f672e2e362d8f295c8"
   license all_of: ["GPL-2.0-or-later", "LGPL-2.0-or-later"]
 
   livecheck do
