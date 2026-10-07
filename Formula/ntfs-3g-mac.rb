@@ -3,8 +3,9 @@ require_relative "../require/macfuse"
 class Ntfs3gMac < Formula
   desc "Read-write NTFS driver for FUSE"
   homepage "https://www.tuxera.com/community/open-source-ntfs-3g/"
-  url "https://tuxera.com/opensource/ntfs-3g_ntfsprogs-2026.7.7.tgz"
-  sha256 "d67b769025d32860549d35c2147e45024d172f81c540d750390ce3602c059dab"
+  # tuxera.com returns 403 to CI runners, so use the GitHub tag tarball instead
+  url "https://github.com/tuxera/ntfs-3g/archive/refs/tags/2026.9.28.tar.gz"
+  sha256 "8a75293f07bf40df5701d296de32a4cb0e46d6ae135abb4f41b438df9868a390"
   license all_of: ["GPL-2.0-or-later", "LGPL-2.0-or-later"]
 
   livecheck do
@@ -27,6 +28,10 @@ class Ntfs3gMac < Formula
     depends_on "libtool" => :build
   end
 
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+  depends_on "libgcrypt" => :build
+  depends_on "libtool" => :build
   depends_on "pkgconf" => :build
   depends_on "coreutils" => :test
   depends_on "gettext"
@@ -44,7 +49,7 @@ class Ntfs3gMac < Formula
       --enable-extras
     ]
 
-    system "./autogen.sh" if build.head?
+    system "./autogen.sh"
     # Workaround for hardcoded /sbin in ntfsprogs
     inreplace Dir["{ntfsprogs,src}/Makefile.in"], "$(DESTDIR)/sbin/", "$(DESTDIR)#{sbin}/"
     system "./configure", *args, *std_configure_args
