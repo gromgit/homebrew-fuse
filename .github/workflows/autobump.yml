@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Update Homebrew formula
-      uses: dawidd6/action-homebrew-bump-formula@v4
+      uses: dawidd6/action-homebrew-bump-formula@v10
       with:
         # Required, custom personal GitHub access token with only the 'public_repo' scope enabled
         token: ${{secrets.AUTOBUMP_TOKEN}}
