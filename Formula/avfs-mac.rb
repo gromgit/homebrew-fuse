@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class AvfsMac < Formula
   desc "Virtual file system that facilitates looking inside archives"
   homepage "https://avf.sourceforge.io/"
-  url "https://downloads.sourceforge.net/project/avf/avfs/1.3.0/avfs-1.3.0.tar.bz2"
-  sha256 "07cd69d4c0c7ed080e80ff040d980286405ad38a443fdc52dc395efef11c44b1"
+  url "https://downloads.sourceforge.net/project/avf/avfs/1.4.0/avfs-1.4.0.tar.bz2"
+  sha256 "d4dcdaf5afd7ba146334b6d003600340011c97307d84229ece09fe684448f98e"
   license all_of: [
     "GPL-2.0-only",
     "LGPL-2.0-only", # for shared library
