@@ -3,9 +3,9 @@ require_relative "../require/macfuse"
 class ArchivemountMac < Formula
   desc "File system for accessing archives using libarchive"
   homepage "https://git.sr.ht/~nabijaczleweli/archivemount-ng"
-  url "https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/1b.tar.gz"
-  version "1b"
-  sha256 "de10cfee3bff8c1dd2b92358531d3c0001db36a99e1098ed0c9d205d110e903d"
+  url "https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/1c.tar.gz"
+  version "1c"
+  sha256 "7bc489a1a77ce718c84b751a57779ded6bb192cf54f9cd0bf7bff2527cf98bfc"
   license "LGPL-2.0-or-later"
 
   bottle do
