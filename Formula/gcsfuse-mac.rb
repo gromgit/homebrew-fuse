@@ -3,8 +3,8 @@ require_relative "../require/macfuse"
 class GcsfuseMac < Formula
   desc "User-space file system for interacting with Google Cloud"
   homepage "https://github.com/googlecloudplatform/gcsfuse"
-  url "https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v3.5.9.tar.gz"
-  sha256 "e6d44fe4fa1dceeb741f50ffcd2b714dc23e61de746ea48c76e12e1bb3efea83"
+  url "https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v3.13.0.tar.gz"
+  sha256 "34d3b9557ee74e37eef42bf1c4434eebda1789222b546a7d3253be45a1b16196"
   license "Apache-2.0"
   head "https://github.com/GoogleCloudPlatform/gcsfuse.git", branch: "master"
 
@@ -23,18 +23,28 @@ class GcsfuseMac < Formula
   depends_on MacfuseRequirement
   depends_on :macos
 
+  # Remove stuff that fails compilation:-
+  # 1. Linux-only syscalls
+  # 2. O_DIRECT support (jacobsa/fuse exports different interfaces across platforms)
   patch do
-    url "https://raw.githubusercontent.com/gromgit/formula-patches/f69773ce21e06e4c6407da25af33486f5ec6185d/gcsfuse-mac/macos.patch?full_index=1"
-    sha256 "ab3e204bf099cbabefee825f634cfb9c33349002059b1522488c12bf5790ef11"
+    file "Patches/gcsfuse/3.13.0.patch"
+    type :unofficial
   end
 
-  patch :DATA
+  deny_network_access!
+
+  def fetch
+    system "go", "mod", "download"
+  end
 
   def install
     setup_fuse
-    # Build the build_gcsfuse tool. Ensure that it doesn't pick up any
-    # libraries from the user's GOPATH; it should have no dependencies.
-    ENV.delete("GOPATH")
+
+    # `build_gcsfuse` builds with its own temporary GOPATH;
+    # keep using the module cache populated in `fetch`.
+    ENV["GOMODCACHE"] = "#{ENV.fetch("GOPATH")}/pkg/mod"
+
+    # Build the build_gcsfuse tool.
     system "go", "build", "./tools/build_gcsfuse"
 
     # Use that tool to build gcsfuse itself.
@@ -53,19 +63,3 @@ class GcsfuseMac < Formula
     system "#{sbin}/mount_gcsfuse", "--help"
   end
 end
-
-__END__
-diff --git a/tools/build_gcsfuse/main.go b/tools/build_gcsfuse/main.go
-index b1a4022..678f747 100644
---- a/tools/build_gcsfuse/main.go
-+++ b/tools/build_gcsfuse/main.go
-@@ -134,8 +134,6 @@ func buildBinaries(dstDir, srcDir, version string, buildArgs []string) (err erro
- 		cmd := exec.Command(
- 			"go",
- 			"build",
--			"-C",
--			srcDir,
- 			"-o",
- 			path.Join(dstDir, bin.outputPath))
- 
-
