@@ -9,8 +9,8 @@ class DislockerMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_sonoma: "018c699c1d89ce79a16974486a39b5a23763cd4fc0063d1de9bc326a34fa5a40"
-    sha256 cellar: :any, ventura:      "054aa62cbb45f561f88d200c95b308a45126320b361b5807dea5064ace6bf894"
+    sha256 cellar: :any, arm64_tahoe:   "e7a5410f87a3420f2f7a1efbdd49b63d85ff9fd441f5e845da2c195615d6eff3"
+    sha256 cellar: :any, arm64_sequoia: "f88dd69bfeaa251f0118078f3ec1a27499d42a70468390d9413cc4d5765075ca"
   end
 
   depends_on "cmake" => :build
