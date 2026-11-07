@@ -9,9 +9,8 @@ class UnionfsFuse < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "bd96797c922e35716d4bf81b585eccff801f33d416177b3c1f64408cf9049095"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "66afec09b9d1ec0d1549a8afe97a0fa6f1f65374c9e42898655f6ad9d718c02c"
-    sha256 cellar: :any_skip_relocation, ventura:       "c10761c0cb52fbaa60425a8e5c3a58cc0ae7868c33943a02c9006bdcb60f8f78"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "7dbb37810c74de0430f67f304e008868ba51b16a07cce3f1bbcce9f021dbb2af"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "cc0f4624d9699b5049a5c6f9aaf8745a7727f097b2aed85eed8051fe7399b215"
   end
 
   depends_on "cmake" => :build
