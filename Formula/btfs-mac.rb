@@ -10,8 +10,8 @@ class BtfsMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_tahoe:   "be7f26dd57547363b4656891b3e352b63536cbc622a77a74716d228d811ad26f"
-    sha256 cellar: :any, arm64_sequoia: "5fb293e5ea27a539779ee808a4fffe4c613624beb395975066d7767bf692ca0f"
+    sha256 cellar: :any, arm64_tahoe:   "1e29128ca0bf8cbaaea377aaddf272ddb52c1d864339cf0b606d24b5e401187a"
+    sha256 cellar: :any, arm64_sequoia: "c8bcc41b320fef9ff849f97091996011dd338041bf069eb77a73bd444cda2147"
   end
 
   depends_on "autoconf" => :build
