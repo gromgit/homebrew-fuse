@@ -1,0 +1,215 @@
+diff --git a/internal/cache/file/downloader/job.go b/internal/cache/file/downloader/job.go
+index 27955e2eb..bb66db11a 100644
+--- a/internal/cache/file/downloader/job.go
++++ b/internal/cache/file/downloader/job.go
+@@ -19,10 +19,8 @@ import (
+ 	"errors"
+ 	"fmt"
+ 	"io"
+-	"io/fs"
+ 	"os"
+ 	"reflect"
+-	"syscall"
+ 
+ 	"github.com/googlecloudplatform/gcsfuse/v3/cfg"
+ 	"github.com/googlecloudplatform/gcsfuse/v3/internal/cache/data"
+@@ -407,17 +405,7 @@ func (job *Job) createCacheFile() (*os.File, error) {
+ 	openFileFlags := os.O_TRUNC | os.O_WRONLY
+ 	var cacheFile *os.File
+ 	var err error
+-	// Try using O_DIRECT while opening file when parallel downloads are enabled
+-	// and O_DIRECT use is not disabled.
+-	if job.fileCacheConfig.EnableParallelDownloads && job.fileCacheConfig.EnableODirect {
+-		cacheFile, err = cacheutil.CreateFile(job.fileSpec, openFileFlags|syscall.O_DIRECT)
+-		if errors.Is(err, fs.ErrInvalid) || errors.Is(err, syscall.EINVAL) {
+-			logger.Warnf("downloadObjectAsync: failure in opening file with O_DIRECT, falling back to without O_DIRECT")
+-			cacheFile, err = cacheutil.CreateFile(job.fileSpec, openFileFlags)
+-		}
+-	} else {
+-		cacheFile, err = cacheutil.CreateFile(job.fileSpec, openFileFlags)
+-	}
++	cacheFile, err = cacheutil.CreateFile(job.fileSpec, openFileFlags)
+ 
+ 	return cacheFile, err
+ }
+diff --git a/internal/fs/fs.go b/internal/fs/fs.go
+index 8c1c60a60..5a1694544 100644
+--- a/internal/fs/fs.go
++++ b/internal/fs/fs.go
+@@ -3026,7 +3026,7 @@ func (fs *fileSystem) OpenFile(
+ 	// GCSFuse. This is critical for tailing reads on remotely updated files.
+ 	// This should be enabled for all file handles being opened, if direct
+ 	// IO is configured at file system level.
+-	if fs.newConfig.FileSystem.ExperimentalODirect || op.OpenFlags.IsDirect() {
++	if fs.newConfig.FileSystem.ExperimentalODirect {
+ 		op.UseDirectIO = true
+ 	}
+ 
+diff --git a/internal/fs/wrappers/monitoring.go b/internal/fs/wrappers/monitoring.go
+index 5006a2e9e..8e7e3c64e 100644
+--- a/internal/fs/wrappers/monitoring.go
++++ b/internal/fs/wrappers/monitoring.go
+@@ -60,14 +60,11 @@ func categorize(err error) metrics.FsErrorCategory {
+ 		errno = DefaultFSError
+ 	}
+ 	switch errno {
+-	case syscall.ELNRNG,
+-		syscall.ENODEV,
+-		syscall.ENONET,
++	case syscall.ENODEV,
+ 		syscall.ENOSTR,
+ 		syscall.ENOTSOCK,
+ 		syscall.ENXIO,
+ 		syscall.EPROTO,
+-		syscall.ERFKILL,
+ 		syscall.EXDEV:
+ 		return errDevice
+ 
+@@ -78,10 +75,8 @@ func categorize(err error) metrics.FsErrorCategory {
+ 		return errFileExists
+ 
+ 	case syscall.EBADF,
+-		syscall.EBADFD,
+ 		syscall.EFBIG,
+ 		syscall.EISDIR,
+-		syscall.EISNAM,
+ 		syscall.ENOTBLK:
+ 		return errFileDir
+ 
+@@ -100,8 +95,6 @@ func categorize(err error) metrics.FsErrorCategory {
+ 
+ 	case syscall.E2BIG,
+ 		syscall.EALREADY,
+-		syscall.EBADE,
+-		syscall.EBADR,
+ 		syscall.EDOM,
+ 		syscall.EINPROGRESS,
+ 		syscall.ENOEXEC,
+@@ -111,46 +104,22 @@ func categorize(err error) metrics.FsErrorCategory {
+ 		syscall.ESPIPE:
+ 		return errInvalidOp
+ 
+-	case syscall.EADV,
+-		syscall.EBADSLT,
+-		syscall.EBFONT,
+-		syscall.ECHRNG,
+-		syscall.EDOTDOT,
+-		syscall.EIDRM,
++	case syscall.EIDRM,
+ 		syscall.EILSEQ,
+-		syscall.ELIBACC,
+-		syscall.ELIBBAD,
+-		syscall.ELIBEXEC,
+-		syscall.ELIBMAX,
+-		syscall.ELIBSCN,
+-		syscall.EMEDIUMTYPE,
+-		syscall.ENAVAIL,
+-		syscall.ENOANO,
+-		syscall.ENOCSI,
+ 		syscall.ENODATA,
+-		syscall.ENOMEDIUM,
+ 		syscall.ENOMSG,
+-		syscall.ENOPKG,
+ 		syscall.ENOSR,
+-		syscall.ENOTNAM,
+ 		syscall.ENOTRECOVERABLE,
+ 		syscall.EOVERFLOW,
+-		syscall.ERESTART,
+-		syscall.ESRMNT,
+ 		syscall.ESTALE,
+ 		syscall.ETIME,
+-		syscall.ETOOMANYREFS,
+-		syscall.EUCLEAN,
+-		syscall.EUNATCH,
+-		syscall.EXFULL:
++		syscall.ETOOMANYREFS:
+ 		return errMisc
+ 
+ 	case syscall.EADDRINUSE,
+ 		syscall.EADDRNOTAVAIL,
+ 		syscall.EAFNOSUPPORT,
+ 		syscall.EBADMSG,
+-		syscall.EBADRQC,
+-		syscall.ECOMM,
+ 		syscall.ECONNABORTED,
+ 		syscall.ECONNREFUSED,
+ 		syscall.ECONNRESET,
+@@ -159,10 +128,6 @@ func categorize(err error) metrics.FsErrorCategory {
+ 		syscall.EHOSTDOWN,
+ 		syscall.EHOSTUNREACH,
+ 		syscall.EISCONN,
+-		syscall.EL2HLT,
+-		syscall.EL2NSYNC,
+-		syscall.EL3HLT,
+-		syscall.EL3RST,
+ 		syscall.EMSGSIZE,
+ 		syscall.EMULTIHOP,
+ 		syscall.ENETDOWN,
+@@ -171,17 +136,13 @@ func categorize(err error) metrics.FsErrorCategory {
+ 		syscall.ENOLINK,
+ 		syscall.ENOPROTOOPT,
+ 		syscall.ENOTCONN,
+-		syscall.ENOTUNIQ,
+ 		syscall.EPFNOSUPPORT,
+ 		syscall.EPIPE,
+ 		syscall.EPROTONOSUPPORT,
+ 		syscall.EPROTOTYPE,
+-		syscall.EREMCHG,
+ 		syscall.EREMOTE,
+-		syscall.EREMOTEIO,
+ 		syscall.ESHUTDOWN,
+ 		syscall.ESOCKTNOSUPPORT,
+-		syscall.ESTRPIPE,
+ 		syscall.ETIMEDOUT:
+ 		return errNetwork
+ 
+@@ -192,10 +153,6 @@ func categorize(err error) metrics.FsErrorCategory {
+ 		return errNotADir
+ 
+ 	case syscall.EACCES,
+-		syscall.EKEYEXPIRED,
+-		syscall.EKEYREJECTED,
+-		syscall.EKEYREVOKED,
+-		syscall.ENOKEY,
+ 		syscall.EPERM,
+ 		syscall.EROFS,
+ 		syscall.ETXTBSY:
+diff --git a/internal/util/diskutil/disk_util.go b/internal/util/diskutil/disk_util.go
+index e1248b811..04cb2fb0b 100644
+--- a/internal/util/diskutil/disk_util.go
++++ b/internal/util/diskutil/disk_util.go
+@@ -49,12 +49,7 @@ func GetVolumeBlockSize(path string) uint64 {
+ 		logger.Errorf("statsfs failed for %q: %v. Defaulting to block-size %d for this directory.", path, err, defaultVolumeBlockSize)
+ 		return defaultVolumeBlockSize
+ 	}
+-	// Prefer Frsize (fragment size) over Bsize for actual disk allocation if available.
+-	// Refer https://github.com/cockroachdb/pebble/pull/1072.
+ 	blockSize := uint64(stat.Bsize)
+-	if stat.Frsize > 0 {
+-		blockSize = uint64(stat.Frsize)
+-	}
+ 	// Sanity check: If the value is 0 or suspiciously large, fallback to default.
+ 	if blockSize == 0 {
+ 		logger.Errorf("statfs for %q returned Bsize = 0, so defaulting to %d", path, defaultVolumeBlockSize)
+diff --git a/internal/util/file_util.go b/internal/util/file_util.go
+index b5ba14fdd..3852b7e1d 100644
+--- a/internal/util/file_util.go
++++ b/internal/util/file_util.go
+@@ -78,7 +78,6 @@ type OpenFlagAttributes interface {
+ 	IsWriteOnly() bool
+ 	IsReadWrite() bool
+ 	IsAppend() bool
+-	IsDirect() bool
+ }
+ 
+ // Function to obtain the mutually exclusive access mode based on the flags passed.
+@@ -98,9 +97,6 @@ func getFileFlags(flags OpenFlagAttributes) int {
+ 	if flags.IsAppend() {
+ 		fileFlags |= O_APPEND
+ 	}
+-	if flags.IsDirect() {
+-		fileFlags |= O_DIRECT
+-	}
+ 	return fileFlags
+ }
+ 
