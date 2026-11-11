@@ -9,8 +9,8 @@ class SshfsMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_tahoe:   "114ec7f6cac5db3f7b4e4a63381f11958f3e20ea614eb9dda1356ed70ffbf4e5"
-    sha256 cellar: :any, arm64_sequoia: "211b6ce7c0e73abcca42f646fda6ad8573ff10de6f846636f382f8258f35d562"
+    sha256 cellar: :any, arm64_tahoe:   "7d760b60854885933941ef9482cbf4cbb5088067af264c927f5af7d22d89fd51"
+    sha256 cellar: :any, arm64_sequoia: "06ec2ea56ad23c597dfd9caede0d8b199becbae1de40966e9df305bca1821f0f"
   end
 
   depends_on "coreutils" => :build
