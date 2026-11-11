@@ -8,7 +8,7 @@ class EncfsMac < Formula
   # The code comprising the EncFS library (libencfs) is licensed under the LGPL.
   # The main programs (encfs, encfsctl, etc) are licensed under the GPL.
   license "GPL-3.0-or-later"
-  revision 2
+  revision 3
   head "https://github.com/vgough/encfs.git", branch: "master"
 
   bottle do
@@ -22,7 +22,7 @@ class EncfsMac < Formula
   depends_on "gettext"
   depends_on MacfuseRequirement
   depends_on :macos
-  depends_on "openssl@3"
+  depends_on "openssl@4"
   depends_on "tinyxml2"
 
   patch do
