@@ -6,6 +6,7 @@ class GocryptfsMac < Formula
   url "https://github.com/rfjakob/gocryptfs/releases/download/v2.6.1/gocryptfs_v2.6.1_src-deps.tar.gz"
   sha256 "9a966c1340a1a1d92073091643687b1205c46b57017c5da2bf7e97e3f5729a5a"
   license "MIT"
+  revision 1
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
@@ -18,7 +19,7 @@ class GocryptfsMac < Formula
   depends_on "pkg-config" => :build
   depends_on MacfuseRequirement
   depends_on :macos
-  depends_on "openssl@3"
+  depends_on "openssl@4"
 
   def install
     setup_fuse
