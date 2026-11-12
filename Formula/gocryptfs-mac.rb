@@ -9,8 +9,8 @@ class GocryptfsMac < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/gromgit/fuse"
-    sha256 cellar: :any, arm64_tahoe:   "6d596be4c32c0e5c956ac1b4b7e33e51e71f792d795a98f50b68bf4467fe39eb"
-    sha256 cellar: :any, arm64_sequoia: "1d6cacbe07df9eac2871ee1aa28d83d6e068a980af63585e32b62130ef46a4c1"
+    sha256 cellar: :any, arm64_tahoe:   "b273ecd34d6e3cb6cb9a4dd54a4411462f73bd36c4a521c6db8cf125b9d16f39"
+    sha256 cellar: :any, arm64_sequoia: "9554c1d1ac369c3653c35483121860795a0811d48bc3a54cfa5e820b5d1f42a2"
   end
 
   depends_on "go" => :build
